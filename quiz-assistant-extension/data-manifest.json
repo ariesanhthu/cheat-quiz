@@ -1,0 +1,34 @@
+{
+  "sources": [
+    {
+      "name": "quiz.json",
+      "count": 15,
+      "sha256": "626ef65fbf4792d004dfe0326e48aca8af851697d39c4a13ee601030c0eb6e3b"
+    },
+    {
+      "name": "quiz2.json",
+      "count": 40,
+      "sha256": "322ea5b18698d08652f4e84eeef8d10e356a472699348402955dae821e4fdb07"
+    },
+    {
+      "name": "quiz3.json",
+      "count": 40,
+      "sha256": "86da1ec0c4b1a4adfc1260d861dea54c5ccfed15d31fb6c498a90360e0fe7765"
+    },
+    {
+      "name": "quiz4.json",
+      "count": 30,
+      "sha256": "671940770c63ac008da7ba06cb5c92866ad981f796cbfe202d1950f482dd9214"
+    },
+    {
+      "name": "quiz5.json",
+      "count": 26,
+      "sha256": "2e480efdd5e681ba3033465a6819655f847804adfbb273247728f0b224ccf19e"
+    }
+  ],
+  "questions": 151,
+  "labelled": 149,
+  "pages": 433,
+  "chunks": 433,
+  "knowledgeSha256": "2673c3f322efffdc7e6a53f502db727fb219403d8597225a8be4490c8267021d"
+}

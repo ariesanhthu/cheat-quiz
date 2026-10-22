@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Local Quiz Assistant",
+  "version": "1.1.0",
+  "minimum_chrome_version": "120",
+  "description": "Tra cứu quiz cục bộ theo câu hỏi và phương án; AI dự phòng với giáo trình nguyên văn.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "alarms"
+  ],
+  "optional_host_permissions": ["https://api.openai.com/*", "http://127.0.0.1/*", "https://api.github.com/*"],
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*", "file:///*"],
+    "js": ["bootstrap.js", "core.js", "adapter.js", "content.js"],
+    "run_at": "document_idle",
+    "all_frames": false
+  }],
+  "action": {
+    "default_title": "Mở Quiz Assistant"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "settings.html"
+}

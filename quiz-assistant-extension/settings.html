@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cài đặt Quiz Assistant</title>
+  <style>
+    body{font:15px/1.5 system-ui,sans-serif;max-width:850px;margin:32px auto;padding:0 20px;color:#172033;background:#fafcff}
+    section{background:#fff;padding:20px;margin:18px 0;border:1px solid #d7e0ed;border-radius:10px}h1{font-size:25px}h2{font-size:19px}
+    label{display:block;margin:10px 0}input:not([type=checkbox]),select{font:inherit;padding:6px;max-width:100%;border:1px solid #b6c5d9;border-radius:5px}
+    input[type=text],input[type=password],input[type=url]{width:390px}button{font:inherit;cursor:pointer;padding:7px 12px;margin:5px;border:1px solid #9aaec7;border-radius:5px;background:#f0f5ff;color:#17345e}button:disabled{opacity:.5;cursor:default}
+    #status{position:sticky;top:0;background:#edf4ff;padding:10px;border-radius:6px;white-space:pre-wrap}small{color:#4e6077}code{overflow-wrap:anywhere}
+  </style>
+</head>
+<body>
+  <h1>Quiz Assistant</h1>
+  <p id="status" role="status" aria-live="polite">Đang tải…</p>
+  <section id="updates">
+    <h2>Phiên bản và cập nhật GitHub</h2>
+    <p id="updateStatus" role="status">Đang đọc phiên bản…</p>
+    <label><input id="autoUpdates" type="checkbox"> Tự kiểm tra bản mới trên GitHub mỗi 6 giờ</label>
+    <button id="checkUpdates" type="button">Kiểm tra bản mới</button>
+    <button id="downloadUpdate" type="button">Mở bản phát hành / tải ZIP</button>
+    <p><small>Bản Load unpacked: tải ZIP mới, giải nén đè vào cùng thư mục, rồi nhấn Reload tại chrome://extensions. Kho và cài đặt trong Chrome được giữ khi dùng cùng thư mục/extension ID. Tiện ích không tự ghi đè mã nguồn hoặc tự khởi động lại Chrome.</small></p>
+  </section>
+  <section>
+    <h2>Kho câu hỏi</h2>
+    <p id="inventory"></p>
+    <p>TF-IDF tính cả câu hỏi và toàn bộ phương án, giữ các biến thể cùng câu hỏi. Hiển thị top 3; điểm tương đồng không phải xác suất đúng.</p>
+    <label>Nhập JSON hoặc CSV (tối đa 10 MB): <input id="file" type="file" accept=".json,.csv"></label>
+    <label><input id="append" type="checkbox" checked> Thêm vào kho hiện tại</label>
+    <label><input id="trust" type="checkbox"> Tin cậy đáp án của file nhập và cho phép tự chọn khi khớp</label>
+    <button id="import" type="button">Nhập file</button>
+    <button id="reset" type="button">Khôi phục 5 bộ quiz gốc</button>
+    <button id="rebuild" type="button">Dựng lại chỉ mục</button>
+    <button id="clear" type="button">Xóa kho hiện tại</button>
+    <p><small>Kho đi kèm dùng đáp án bạn đã cung cấp, chưa thẩm định độc lập nội dung. File nhập mặc định cần kiểm tra; <code>verified: true</code> trong file cũng đánh dấu nguồn tin cậy. Nhập lỗi sẽ giữ nguyên kho cũ.</small></p>
+  </section>
+  <form id="settings">
+    <section>
+      <h2>Chọn phương án trên trang</h2>
+      <label><input id="autoSelect" type="checkbox"> Tự chọn khi khớp duy nhất</label>
+      <label><input id="overwrite" type="checkbox"> Cho phép ghi đè lựa chọn có sẵn khi bắt đầu xử lý</label>
+      <label>Ngưỡng gần đúng (0.85–1): <input id="threshold" type="number" min="0.85" max="1" step="0.01" required></label>
+      <label>Chênh lệch tối thiểu (0.01–1): <input id="margin" type="number" min="0.01" max="1" step="0.01" required></label>
+      <p><small>Khớp nguyên câu và bộ phương án được ưu tiên. Khác số, phủ định, đáp án trùng nhau hoặc kho mâu thuẫn sẽ yêu cầu kiểm tra. Các ngưỡng gần đúng là cấu hình khởi đầu, chưa được hiệu chỉnh thành xác suất đúng.</small></p>
+    </section>
+    <section>
+      <h2>AI dự phòng + knowledge base</h2>
+      <p>Retrieve giáo trình nguyên văn theo trang, gửi câu hỏi, phương án và tối đa 6 đoạn liên quan để AI đối chiếu. Mặc định chỉ gợi ý; dẫn chứng phải có thật trong các đoạn đã gửi.</p>
+      <label><input id="autoAI" type="checkbox"> Tự hỏi AI khi TF-IDF chưa xác định được đáp án (có chi phí API)</label>
+      <label><input id="aiAutoSelect" type="checkbox"> Cho phép tự chọn gợi ý AI có dẫn chứng và khớp duy nhất</label>
+      <label>Nhà cung cấp: <select id="provider"><option value="openai">OpenAI API trực tiếp (khóa cá nhân trong phiên)</option><option value="proxy">Proxy API cục bộ (khóa API ở máy chủ)</option><option value="codex-cli">Codex CLI · đăng nhập ChatGPT, không API key</option><option value="claude-cli">Claude Code · đăng nhập Claude, không API key</option></select></label>
+      <label>Model (CLI có thể để trống để dùng mặc định): <input id="model" type="text" placeholder="Nhập model bạn có quyền sử dụng" maxlength="150"></label>
+      <label>Proxy / CLI bridge: <input id="endpoint" type="url" value="http://127.0.0.1:8787/responses"></label>
+      <label>API key / token kết nối cục bộ: <input id="credential" type="password" autocomplete="off" placeholder="Chỉ lưu trong phiên trình duyệt" maxlength="1000"></label>
+      <p id="credentialStatus"></p>
+      <p><small>Không có AI: để “Tự hỏi AI” tắt và dùng TF-IDF bình thường. Dùng tài khoản đăng nhập: chạy <code>codex login</code> hoặc <code>claude auth login</code> trong terminal, rồi chạy CLI bridge theo README (cổng 8788). Tiện ích không đọc cookie hay token đăng nhập của ChatGPT/Claude; ô token phía trên là token riêng của bridge.</small></p>
+      <button id="grant" type="button">Cấp quyền kết nối AI</button>
+      <button id="clearCredential" type="button">Quên khóa / token</button>
+      <p><small>Đăng nhập ChatGPT không cấp quyền OpenAI API. Khóa không được lưu trong trang quiz hoặc kho câu hỏi. Lỗi mạng, 429, JSON sai hoặc dẫn chứng không tồn tại sẽ giữ kết quả cục bộ. Không tự gửi lại yêu cầu AI.</small></p>
+    </section>
+    <button id="save" type="submit">Lưu cài đặt</button>
+  </form>
+  <script src="core.js"></script><script src="settings.js"></script>
+</body></html>

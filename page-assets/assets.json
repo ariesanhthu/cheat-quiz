@@ -1,0 +1,552 @@
+{
+  "https://courses.ctda.hcmus.edu.vn/theme/yui_combo.php?rollup/3.18.1/yui-moodlesimple-min.css": {
+    "file": "moodle-yui.css",
+    "type": "text/css;charset=UTF-8",
+    "sha256": "3f17684bd2fb02d2350dc28525ddfc85483e0970ca057486090f3bfd1dfe577e"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/yui_image.php?file=3.18.1/sprite_icons.png": {
+    "file": "0234fb13303e83d984.missing",
+    "status": 404,
+    "type": "application/octet-stream"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/styles.php/academi/1792331416_1791448210/all": {
+    "file": "moodle-theme.css",
+    "type": "text/css; charset=utf-8",
+    "sha256": "5a99930b9e82511f85126e849b89c92236dc0641bf98571200db358c6ddde9ef"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/expanded": {
+    "file": "731215b132721a8de6.svg",
+    "type": "image/svg+xml",
+    "sha256": "699e18f6add1d3dcfa01a5f702ae618955eb2b2a488973e3f757f47115c6d716"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/mod_forum/1792689458/t/unsubscribed": {
+    "file": "cdd0142f682dd6180a.svg",
+    "type": "image/svg+xml",
+    "sha256": "1242128f3eab901e3abd5a0291f336308fa0f41f5cbe64667b2c67a3045e34b7"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/collapsed": {
+    "file": "92b10930c27ad54bef.svg",
+    "type": "image/svg+xml",
+    "sha256": "89f35ce2b9c44ce11fbcbfde739f15e661b637e244c7f94f89f667d94ddb4f1c"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/mod_forum/1792689458/t/subscribed": {
+    "file": "8235534b580a93beeb.svg",
+    "type": "image/svg+xml",
+    "sha256": "a50c1e0ff324958a5cec9427ff8d75e12ed3edde72874e3208a91dddef8ff1ab"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/print": {
+    "file": "475d7e97a96c7da6d1.svg",
+    "type": "image/svg+xml",
+    "sha256": "78b8425c47611465eb25b5b41c9d233adc645c00eada1dc17ce1b3c3c96f3845"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/mod_googlemeet/1792689458/i/processing64": {
+    "file": "2b1c9284c84f5f134d.gif",
+    "type": "image/gif",
+    "sha256": "d5db34ac675a21f54c2671c397922f937e30ddac23ae5da87e5063ec97f78ae4"
+  },
+  "https://courses.ctda.hcmus.edu.vn/mod/wiki/pix/attachment.png": {
+    "file": "3e6bc7fd3218cac862.missing",
+    "status": 404,
+    "type": "application/octet-stream"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/mod_workshop/1792689458/userplan/task-todo": {
+    "file": "aec04670a1c06c2353.svg",
+    "type": "image/svg+xml",
+    "sha256": "bb55ff5a551ff98cd7c1d6c4b28aefdfcce2bfa7bdb0c0706edd5bdb2941a2fd"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/mod_workshop/1792689458/userplan/task-done": {
+    "file": "eb1e0ec7e870846d38.svg",
+    "type": "image/svg+xml",
+    "sha256": "7459b512b20bdd0de3535fd9542f6607ea67062a88ef03f109252a3efde2afef"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/quiz/1792689458/navflagged": {
+    "file": "883c1857add863930b.svg",
+    "type": "image/svg+xml",
+    "sha256": "470bc4f0a598ee059306062ab4de716a126f970eb75f3748876510b15b9eab59"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/mod_workshop/1792689458/userplan/task-info": {
+    "file": "a539c80cd078a9becd.svg",
+    "type": "image/svg+xml",
+    "sha256": "6cd40a76cbe03c71533ccf1a02ef12fb62971f827f761563392147c99001b403"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/mod_workshop/1792689458/userplan/task-fail": {
+    "file": "4fdde8f71699255ce2.svg",
+    "type": "image/svg+xml",
+    "sha256": "83441d060af6e097fac46525630eb9b3a7d4df91ace89198e0bb25e485a4de8e"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_completion_progress/1792689458/tick": {
+    "file": "09a95c330e672899ed.svg",
+    "type": "image/svg+xml",
+    "sha256": "65a5368cc4054042938396f12ebfcf6ff82846db63ce56c73a35ad933e01750c"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_completion_progress/1792689458/cross": {
+    "file": "3da89e6bb1b022ca43.svg",
+    "type": "image/svg+xml",
+    "sha256": "1d5b882ba1175e0c8e5554a883519b1a433d09293b07f2dff08ac08f0fcd8d0e"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/back_enabled": {
+    "file": "f44232588c1f59fb55.png",
+    "type": "image/png",
+    "sha256": "9fd6f47b90ca92e855bdf80a0d57178af3a59c307e5c0246bb24dc781d3ae69b"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/back_disabled": {
+    "file": "68eefd80f21298d1c0.png",
+    "type": "image/png",
+    "sha256": "6950463a4f9db9435b8df01fa276eaf88aa65b8913b82e979317d741305bb5d6"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/forward_enabled": {
+    "file": "17fb2715caefe71f9c.png",
+    "type": "image/png",
+    "sha256": "bcb3b13b5aaf9015767aff77d621f1f9557adcd8eb8284d06f0b51e2475556b0"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/back_enabled_hover": {
+    "file": "a9df18767608135542.png",
+    "type": "image/png",
+    "sha256": "b3a398bdb9afa40edff875c14c972ac9329e018e2e5e175ebb8e104c59be37e1"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/forward_enabled_hover": {
+    "file": "0c599ceb6ff5607fd9.png",
+    "type": "image/png",
+    "sha256": "4fa2d689a633713d9fb8900611a646c5df0ba24deb9597ab955c62cba77ae3b4"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/forward_disabled": {
+    "file": "1465a2f65254c69c66.png",
+    "type": "image/png",
+    "sha256": "ede9f1003cef25add5cc2b13f531a014ed9bea78154d4fba008b21f353030295"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/sort_both": {
+    "file": "7bee9f98fd4615f143.png",
+    "type": "image/png",
+    "sha256": "624f0a471a2535c4754e1f6974b0e64ee70d6907738346e2a11d0bff20258b8c"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/sort_asc": {
+    "file": "695e20125aa16df086.png",
+    "type": "image/png",
+    "sha256": "ee6010bb0a8d17e58307136a0fbf0b196d949ab6c50eb66d1ff8f0a7d2a4d48b"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/sort_asc_disabled": {
+    "file": "071ac23a058ccdac67.png",
+    "type": "image/png",
+    "sha256": "539d9e0fc1f3b7196e726c4985397ad804082193d21e68cdf258764d34f85ff6"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/sort_desc": {
+    "file": "b9d7dee3765e474543.png",
+    "type": "image/png",
+    "sha256": "26da8e7eaf746a08dec2928977be21aa67212484540a12042b86aa2d904b80e8"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_configurable_reports/1792689458/datatable/sort_desc_disabled": {
+    "file": "fb27af9d6676b86d86.png",
+    "type": "image/png",
+    "sha256": "3450cc1e5a1585690226a713a726753b3fa2d177e41338a36e0a3188e3f02663"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/onedrive": {
+    "file": "73a2dd9a9f1b49d923.svg",
+    "type": "image/svg+xml",
+    "sha256": "268a4acfaa10f088074b818c22cdc1a0b460931def1a9cbb6046afcb7e3aff21"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/sway": {
+    "file": "3fe675e2bdceaf2c7a.svg",
+    "type": "image/svg+xml",
+    "sha256": "9d8b5452ef81e9b9271d1fff8657a24d22bef5618fa7ebd5e5e0d3def58ccbba"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/teams": {
+    "file": "bbe0c2a1d51176afd5.svg",
+    "type": "image/svg+xml",
+    "sha256": "bf776559dba0c8116313f7fa01cedf4ed3dbb531930ee64f1fc8ff9884554a4f"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/stream": {
+    "file": "ee187c2f77df135b3b.svg",
+    "type": "image/svg+xml",
+    "sha256": "c7a4664ed20348e6443e55ca95900daae94dc7a11b54511178fa35b8a54849dd"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/onenote": {
+    "file": "a9b5950e75cc24994c.svg",
+    "type": "image/svg+xml",
+    "sha256": "10d2fbba5deae681afb7e3a40a9accd46bdde5bb37a8b029019334d0a3737ff1"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/microsoft": {
+    "file": "5d8dfd80e8c1e96164.svg",
+    "type": "image/svg+xml",
+    "sha256": "3d41251f93127b4b42c2f69fa423d204946cf9c307d786ea36b8d9bef4179282"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/forms": {
+    "file": "e56f093df40bab4ba1.svg",
+    "type": "image/svg+xml",
+    "sha256": "3544dddf6324d036833d15abf66d75e6e17b1d1efb06cbed5e5c8928f0f2a818"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/outlook": {
+    "file": "b94bca0283d8f9a3e7.svg",
+    "type": "image/svg+xml",
+    "sha256": "7e572e9f43748485d259bc2c048ad9a345ca83d16a912c24afc3f26cd49f8704"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/sharepoint": {
+    "file": "e18a5a3b13b3bfb46a.svg",
+    "type": "image/svg+xml",
+    "sha256": "511e033ff7992c3a06495a5f1561c0271fbc30d175babd1b9a9647c37a544485"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/delve": {
+    "file": "b4f04e252ae41c603a.svg",
+    "type": "image/svg+xml",
+    "sha256": "99f7be5fa933d24f6ba5f5d3c177c42aaa53029971aecc419b2a5ff837100a26"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/i/settings": {
+    "file": "2d25eb202382eb1f66.svg",
+    "type": "image/svg+xml",
+    "sha256": "3d00d1bad99c0cea14158ada6d74f9ce0b9792577387d34454d27fa089cd1ca0"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/calendar": {
+    "file": "3b7ccf9c46f0c1d11f.svg",
+    "type": "image/svg+xml",
+    "sha256": "ad7b44468030ce38beb8ad2b6654e16048c39807569364902351319d579cb888"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/i/restore": {
+    "file": "ed34a5fa614391bf83.svg",
+    "type": "image/svg+xml",
+    "sha256": "df8a5ac67a1376949d5d9f7f8d1706f2da3cb72e17ce7378e7769211a8591fa8"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/reset": {
+    "file": "c44514305585a6f6fd.svg",
+    "type": "image/svg+xml",
+    "sha256": "0ad291f415d28e3cdb6d964c8531726bc2c3481509d64596cd36416d66e88d59"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/word": {
+    "file": "ea7825ece6a3ec7a8f.svg",
+    "type": "image/svg+xml",
+    "sha256": "f24f7c9f614a470e4e4c34d327b37255ae5204f33727300f9062642bbbca3db8"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/courserequest": {
+    "file": "e7a54c0967ba64ad52.png",
+    "type": "image/png",
+    "sha256": "baadb1d61d277b40ee98f6fd98a9222e409a074d8e0bf1087d2da8405e6a8b5d"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/excel": {
+    "file": "e7d364b6dc0c5e56f2.svg",
+    "type": "image/svg+xml",
+    "sha256": "2443b29df5b69f89e97c7a0a8c67bf0f64c05e44617e42ed339c4760d155dc64"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/vivaconnections": {
+    "file": "23021eeb52a66ae6ee.svg",
+    "type": "image/svg+xml",
+    "sha256": "81dcd25089cbccaa5c0e60b2e6e1f469f14ceb00c6feb8d5d7c00d5d7ad1bf79"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/powerpoint": {
+    "file": "63e8236e63810be644.svg",
+    "type": "image/svg+xml",
+    "sha256": "e5617bea49df58f6e8672f23dea20094454a47632512df8bb2cb7bfec15d888b"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/vivaglint": {
+    "file": "d26bf8a9d12b5b4b97.svg",
+    "type": "image/svg+xml",
+    "sha256": "08dbe29722e97716a330d2fdaabd3af73581aaf83ebf26aa4c5b9c6ee69d2936"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/vivaengage": {
+    "file": "0789224f89e84c4f91.svg",
+    "type": "image/svg+xml",
+    "sha256": "8a76de45b45b1db306fcd48fabc2b4eacbd20bc63b79ac5b4476801cdabdf874"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/vivagoals": {
+    "file": "3ba0f89f0c78d1cab9.svg",
+    "type": "image/svg+xml",
+    "sha256": "9833eb66782abf9cea2fcb8c2a7fec98fabed3c0aaa767455bf8e84d4bd12c4d"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/vivaamplify": {
+    "file": "56c158ffc86614f03f.svg",
+    "type": "image/svg+xml",
+    "sha256": "6beb9d6356fc930da89733329a8b2ae776d094124bac8d41b9d7e550156f83e4"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/vivainsights": {
+    "file": "01548504f804cb300a.svg",
+    "type": "image/svg+xml",
+    "sha256": "c01f16397ad6fc408e46d496bcb68bed8905563848ce8855762ce1362247161d"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/vivalearning": {
+    "file": "c12ee136d181dc8613.svg",
+    "type": "image/svg+xml",
+    "sha256": "85b621a1b21d4bca90fd5898a899a7f07de8681871f58f799b50f18979695fde"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/vivapulse": {
+    "file": "69c04ce1af3bb850fb.svg",
+    "type": "image/svg+xml",
+    "sha256": "f2be2b6bdc7de7b2fb6acb470470c48b384e73c3f83dd4bf20fa71fc8201e37d"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/block_microsoft/1792689458/linkedin": {
+    "file": "c2a4a832ce92c61151.svg",
+    "type": "image/svg+xml",
+    "sha256": "ac184ed71628b215faf48a26ce146c51210b5b16ffd772d5b0e22e460d76e203"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/collapsed_empty": {
+    "file": "e9be75b0246c6f8933.svg",
+    "type": "image/svg+xml",
+    "sha256": "89f35ce2b9c44ce11fbcbfde739f15e661b637e244c7f94f89f667d94ddb4f1c"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/i/loading_small": {
+    "file": "df607ae78b8892b25b.svg",
+    "type": "image/svg+xml",
+    "sha256": "3b25ac77f8046bf9562d8da8383260bf7ef95dee5a54f42edb79ba573bc6411a"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/up": {
+    "file": "6799fd36cd966b1f7b.svg",
+    "type": "image/svg+xml",
+    "sha256": "624f6d6e3e4714be308320176d36d076c41c204d76ca289a6562c47b9251f5f6"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/filter_oembed/1792689458/play": {
+    "file": "7bf9653d3a281cce04.svg",
+    "type": "image/svg+xml",
+    "sha256": "b415e3f4cde5b2821a403a34ed5bc61f44af0a4dd53f8e328abb4b85ad99b75a"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/delete": {
+    "file": "80f5b0b338bb2a836e.svg",
+    "type": "image/svg+xml",
+    "sha256": "0fdcd82754a76119971f3022e025ddce605361c813f1bfb5b846524c4b83129b"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/down": {
+    "file": "22c50d34c57f6d4d84.svg",
+    "type": "image/svg+xml",
+    "sha256": "22f2ae863c98bc6151ce9d8d7950347ed11dff6ea428a46d7f53c8adfb4fa621"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/add": {
+    "file": "128280dfd6f4602a1b.svg",
+    "type": "image/svg+xml",
+    "sha256": "30d7b35a364016b659fc1c7b2844f4e6f9fa6ed89bc17ba146cf24123ef3b97c"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/copy": {
+    "file": "ca588c883e22844e78.svg",
+    "type": "image/svg+xml",
+    "sha256": "810097c9edd6dd5b9fd621efd22383cc2950e25dfb7e6f4f6814283045129a1d"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/local_o365/1792689458/onenotecolor": {
+    "file": "ea404b03625634b775.png",
+    "type": "image/png",
+    "sha256": "c96c1a4bde5c94038bdae7122a32fb1ec53882d363dd59b46044e7440116e8ef"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/local_o365/1792689458/o365color": {
+    "file": "9b939cec155cd90368.png",
+    "type": "image/png",
+    "sha256": "df209b3e40466b6bd386ac300d98e79f9244d2575ecd7e69be710d19d44cebbc"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/local_o365/1792689458/outlookcolor": {
+    "file": "10100aa97a0acd1674.png",
+    "type": "image/png",
+    "sha256": "1bb3dfaf0954b196767018cd0dbbd9bd17b1373eb17c7d36bd81eeb2f8e89836"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/tiny_aiplacement/1792689458/sparkles-image": {
+    "file": "f56054c7751bd019fb.svg",
+    "type": "image/svg+xml",
+    "sha256": "abb5b5f57fd922ae784eeccf2232f496ff0541538eea2ffa22d7dd987ee2cac6"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/atto_h5p/1792689458/icon-white": {
+    "file": "4428785bcd63370d48.svg",
+    "type": "image/svg+xml",
+    "sha256": "47b9fdd28da7d2ae212208e19eb20972ea3c5867dc2151c1c1b474122d3e5582"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/tiny_aiplacement/1792689458/sparkles-text": {
+    "file": "f2280405a019d28be4.svg",
+    "type": "image/svg+xml",
+    "sha256": "921a755d69d89965a25a88d921c6bfba8e3bfabf2efed86405c908d730be9617"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/font.php/academi/core/1792689458/fa-brands-400.ttf": {
+    "file": "8e9f1bcda068d5b13a.ttf",
+    "type": "font/ttf",
+    "sha256": "c4c68e0616fd5eb4369df492af0c55ace43a728744e0e9aa1e50c835dc1ca2d2"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/font.php/academi/core/1792689458/fa-regular-400.woff2": {
+    "file": "db427891a5ab7f628d.woff2",
+    "type": "font/woff2",
+    "sha256": "a766b0ec6782888c8a7c3927b9cf25e472953f09dd839bb820354b1591f5c88b"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/font.php/academi/core/1792689458/fa-regular-400.ttf": {
+    "file": "919d6b2c065558ac9d.ttf",
+    "type": "font/ttf",
+    "sha256": "c7908ae0c2dc972a2cc0f9404ae4b5fd1dc310d4dc2db6bfc9c5fd5faa8819c6"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/font.php/academi/core/1792689458/fa-brands-400.woff2": {
+    "file": "25fcde4f5477aa65ec.woff2",
+    "type": "font/woff2",
+    "sha256": "255ce3bdbe420b5f6dbaae6649d7d2480dcd8604f64c1d9e33c5d57db0d9edd1"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/font.php/academi/core/1792689458/fa-solid-900.woff2": {
+    "file": "97fc5eed5518529399.woff2",
+    "type": "font/woff2",
+    "sha256": "599b18f9b0aa0bd7a76b01e724a7a189422fb20fb233a4586d420c777d3c2c23"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/font.php/academi/core/1792689458/fa-solid-900.ttf": {
+    "file": "3f0565001f673ab5bb.ttf",
+    "type": "font/ttf",
+    "sha256": "4312f534f4fc39b771774db6a5a00e22992437d8707a02ce163b4e47e432e65c"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/y/tm": {
+    "file": "7493a74f390c28dfef.png",
+    "type": "image/png",
+    "sha256": "64e38c17744403c84187a2b55acb0f3d8c911e6222630f2aefaabe8c3ebadf28"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/i/expired": {
+    "file": "970107ca15406d5306.svg",
+    "type": "image/svg+xml",
+    "sha256": "5b0c870aa6b7231bdea212f8d880fe71e581cd82e838abfd68bb9466f243973c"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/theme/1792689458/fp/path_folder": {
+    "file": "18289f26f3b5e95989.svg",
+    "type": "image/svg+xml",
+    "sha256": "1e6b3b6d4efce8d8ab17df523df6086ce2c5c5a2beab20fb66c2b6906259f42c"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/y/tn": {
+    "file": "8b25370bbe9268badd.gif",
+    "type": "image/gif",
+    "sha256": "716fc879a0111773116b713b147384eee01a516395d4dc50104eaea4016b142e"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/i/flagged": {
+    "file": "16af466c38cf9e7a0f.svg",
+    "type": "image/svg+xml",
+    "sha256": "470bc4f0a598ee059306062ab4de716a126f970eb75f3748876510b15b9eab59"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/y/tp": {
+    "file": "1357be7005368aaadc.png",
+    "type": "image/png",
+    "sha256": "fc556068a4b0ab6d0e9042d67ac3c4f9d15ff354d8f2dab375c184bbc505f244"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/y/ln": {
+    "file": "a899be32f2acf3f735.gif",
+    "type": "image/gif",
+    "sha256": "255deaa559071aebf0342594fa5353d7c4cf5521eb5036240e6a32bdf00d7475"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/y/lm": {
+    "file": "12959da85f08d05dfa.png",
+    "type": "image/png",
+    "sha256": "64e38c17744403c84187a2b55acb0f3d8c911e6222630f2aefaabe8c3ebadf28"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/y/lp": {
+    "file": "bf988b04a97909cf29.png",
+    "type": "image/png",
+    "sha256": "fc556068a4b0ab6d0e9042d67ac3c4f9d15ff354d8f2dab375c184bbc505f244"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/y/loading": {
+    "file": "f93724c6e85e2ebd33.gif",
+    "type": "image/gif",
+    "sha256": "ef991b5cda0dc41cf0552c0c7ed0648c84e3660f79a29e288720e673b43b32e8"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/y/vline": {
+    "file": "9939f56d183ecaf02b.gif",
+    "type": "image/gif",
+    "sha256": "a9f5e1289962f3bcb0fb993aecde4b0378f0ec72cdbe40187e33caba3b83a277"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/theme/1792689458/fp/link": {
+    "file": "74d6c575ee7c9e2c1f.svg",
+    "type": "image/svg+xml",
+    "sha256": "84ff1a9c204091af974cc079600f572ee9077ce4e0dbef18321e20018d9223bf"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/theme/1792689458/fp/alias_sm": {
+    "file": "feb0913c4eb9f2e391.svg",
+    "type": "image/svg+xml",
+    "sha256": "72e33848f0d5d01c6f8af62db8a3986d41993fd23a1f2cd7e654c4a7531a3e41"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/theme/1792689458/fp/link_sm": {
+    "file": "56b5c1820436b2d101.svg",
+    "type": "image/svg+xml",
+    "sha256": "84ff1a9c204091af974cc079600f572ee9077ce4e0dbef18321e20018d9223bf"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/s/dead": {
+    "file": "00bd69106626eff9b5.png",
+    "type": "image/png",
+    "sha256": "4aee3600adc22769005e35e25fb08774e59959112ef4dda1eedb319d281f1674"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/theme/1792689458/fp/alias": {
+    "file": "fd50927cbe0d0e693e.svg",
+    "type": "image/svg+xml",
+    "sha256": "72e33848f0d5d01c6f8af62db8a3986d41993fd23a1f2cd7e654c4a7531a3e41"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/theme/1792689458/mod/quiz/flag-on": {
+    "file": "fa56573bfe1d187bcb.svg",
+    "type": "image/svg+xml",
+    "sha256": "c868e0331d7c4225ea14367f2be675f17537ca88f9cf7b9a2a449d4555b631b2"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/theme/1792689458/mod/quiz/warningtriangle": {
+    "file": "c6cad2cd2459a48538.svg",
+    "type": "image/svg+xml",
+    "sha256": "82a69305fa088a4410561d66a94865f990c940be883b5275c976eaa74ec8ce99"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/i/grade_correct": {
+    "file": "869b3b74669317655c.svg",
+    "type": "image/svg+xml",
+    "sha256": "b404e0022653a15c06262b3d76e48c1d3479e70a052afed1b2fa4f003553e8b0"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/i/grade_partiallycorrect": {
+    "file": "4a7c2170edb76addb8.svg",
+    "type": "image/svg+xml",
+    "sha256": "0b48970639fcfd2f16e302ae474d441e54f9e9c34bdb4cc3574bacd6a5baebe0"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/theme/1792689458/ic-search": {
+    "file": "09b2f7b577a62ebe74.png",
+    "type": "image/png",
+    "sha256": "1f5a29156a05755d5d6666007cc78cb10307ea6252593edf32a32fe567bf33e6"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/i/grade_incorrect": {
+    "file": "59c1df0c69458764be.svg",
+    "type": "image/svg+xml",
+    "sha256": "95b3adc3981b8868e81285294225f86b1b29297eabac0285b31027243fc7ffed"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/t/locked": {
+    "file": "288274c1355dcc2f2b.svg",
+    "type": "image/svg+xml",
+    "sha256": "ffefec397d8e52934b159141293fe2b950612368b20a2c7864523d5b822c5b16"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792689458/i/ajaxloader": {
+    "file": "73a1a34cb3b2c1bf45.gif",
+    "type": "image/gif",
+    "sha256": "14d3030c677b7ef390c68b6b0a93225d78172d0e28085e4af599ddf0bfec7f6f"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/styles.php/academi/1792331416_1791448210/url(%22%22": {
+    "file": "597c858874e54c3729.missing",
+    "status": 404,
+    "type": "application/octet-stream"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/theme/1792689458/ic-forward-img": {
+    "file": "2e906783d55111c275.png",
+    "type": "image/png",
+    "sha256": "5853f0d624d2d21d15d35be851b90de3634bce5c42d927c5cdb3ed1aecca8bb7"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/theme/1792689458/ic-backward-img": {
+    "file": "b4b040356d21dcbe98.png",
+    "type": "image/png",
+    "sha256": "18e1c13ba06174d9085559ac7560a8c5e3fbd61d26806dd4968b9d28d3ef4801"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792331416/i/arrow-left": {
+    "file": "651208ef89c4e59e32.svg",
+    "type": "image/svg+xml",
+    "sha256": "02fe71f62e5862cb7204c02ce2ff745a1ddd0513636df84aed0839e27cc39cbb"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792331416/i/arrow-right": {
+    "file": "dc68c969e8ab0cd154.svg",
+    "type": "image/svg+xml",
+    "sha256": "d382777b7009100f49bc0dd71de7e9f59277eaee5fe43e67966d4bb81a46401e"
+  },
+  "https://courses.ctda.hcmus.edu.vn/pluginfile.php/1/theme_academi/favicon/1792331416/FIT-CTDA.png": {
+    "file": "c1479050b5d41ff226.png",
+    "type": "image/png",
+    "sha256": "1b5fbc89659c031821b585333b2e7caabbd8b2447d801169877c4c9599874da7"
+  },
+  "https://courses.ctda.hcmus.edu.vn/pluginfile.php/1/theme_academi/logo/1792331416/logo-FIT-Moodle-white.png": {
+    "file": "83a14b7c59243b3439.png",
+    "type": "image/png",
+    "sha256": "3375ca67a92b4884beda3f12fa206126e79723698add67780293bd595a007fec"
+  },
+  "https://courses.ctda.hcmus.edu.vn/pluginfile.php/109990/user/icon/academi/f1?rev=5090451": {
+    "file": "35e97259a897bf796b.png",
+    "type": "image/png",
+    "sha256": "afca79b66582678d686f5c359bc658181f06ed4ee7c556537d303f3b95393e09"
+  },
+  "https://courses.ctda.hcmus.edu.vn/pluginfile.php/109990/user/icon/academi/f2?rev=5090451": {
+    "file": "7cfba74c45919690c9.png",
+    "type": "image/png",
+    "sha256": "2cd05cd2f766054240c83da9281758dfd700c942a2e02d0d9e2cd964da1444c6"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/core/1792331416/i/unflagged": {
+    "file": "69898aa3ce1b2b15ec.svg",
+    "type": "image/svg+xml",
+    "sha256": "49d54cde232cd74a086067bed678f7d38a0cd17c1b29bc7fe7b9129e05897479"
+  },
+  "https://courses.ctda.hcmus.edu.vn/theme/image.php/academi/quiz/1792331416/monologo?filtericon=1": {
+    "file": "9687830f63a3091c07.svg",
+    "type": "image/svg+xml",
+    "sha256": "d63bd7b50af73320445e66d428731ff8fe0f91bd5cfa94b95ea5cad48a7ac597"
+  }
+}

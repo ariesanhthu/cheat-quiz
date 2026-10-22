@@ -1,0 +1,10 @@
+node_modules/
+test-results/
+playwright-report/
+artifacts/
+dist/
+LICH-SU-DANG-NGUYEN-VAN/anh-trang/
+LICH-SU-DANG-NGUYEN-VAN/tai-nguyen/
+LICH-SU-DANG-NGUYEN-VAN/PHU-LUC-MAU-TRANG.md
+LICH-SU-DANG-NGUYEN-VAN/KIEM-TRA.json
+*.log

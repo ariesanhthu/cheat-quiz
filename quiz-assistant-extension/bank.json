@@ -1,0 +1,1922 @@
+[
+  {
+    "id": "quiz.json:1",
+    "q": "Đối tượng nghiên cứu của môn học Lịch sử Đảng Cộng sản Việt Nam là gì?",
+    "options": [
+      "Sự ra đời, phát triển và hoạt động lãnh đạo của Đảng qua các thời kì lịch sử",
+      "Là sự ra đời của Đảng cộng sản Việt Nam",
+      "Là quá trình lãnh đạo nhân dân kháng chiến chống giặc ngoại xâm và xây dựng đất nước",
+      "Là sự lãnh đạo giai cấp công nhân chống lại giai cấp tư sản"
+    ],
+    "answer": "Sự ra đời, phát triển và hoạt động lãnh đạo của Đảng qua các thời kì lịch sử",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:2",
+    "q": "Lịch sử Đảng Cộng sản Việt Nam nghiên cứu nội dung chủ yếu nào sau đây?",
+    "options": [
+      "Quá trình phát triển kinh tế Việt Nam qua các thời kỳ",
+      "Sự ra đời và hoạt động lãnh đạo của Đảng qua các thời kỳ lịch sử",
+      "Các phong trào đấu tranh tôn giáo ở Việt Nam",
+      "Quá trình mở rộng lãnh thổ quốc gia"
+    ],
+    "answer": "Sự ra đời và hoạt động lãnh đạo của Đảng qua các thời kỳ lịch sử",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:3",
+    "q": "Nội dung nào sau đây thuộc đối tượng nghiên cứu của môn Lịch sử Đảng Cộng sản Việt Nam?",
+    "options": [
+      "A. Hệ thống quan điểm, chủ trương và đường lối của Đảng trong tiến trình cách mạng",
+      "B. Toàn bộ các học thuyết kinh tế trên thế giới",
+      "C. Lịch sử hình thành các tôn giáo ở Việt Nam",
+      "D. Sự phát triển của các nền văn minh cổ đại"
+    ],
+    "answer": "A. Hệ thống quan điểm, chủ trương và đường lối của Đảng trong tiến trình cách mạng",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:4",
+    "q": "Chức năng nào của môn học Lịch sử Đảng Cộng sản Việt Nam ?",
+    "options": [
+      "Giáo dục tri thức về Lịch sử Đảng Cộng sản Việt Nam, quan điểm, đường lối và truyền thống vẻ vang của Đảng",
+      "Phân tích xu thế phát triển kinh tế đất nước",
+      "Đánh giá các chính sách đối ngoại của Nhà nước",
+      "Nghiên cứu các cuộc kháng chiến trong lịch sử"
+    ],
+    "answer": "Giáo dục tri thức về Lịch sử Đảng Cộng sản Việt Nam, quan điểm, đường lối và truyền thống vẻ vang của Đảng",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:5",
+    "q": "Một trong những nhiệm vụ của môn học Lịch sử Đảng Cộng sản Việt Nam là gì?",
+    "options": [
+      "Trình bày Cương lĩnh, đường lối của Đảng",
+      "Làm rõ sự lãnh đạo, tổ chức thực hiện, những thành tựu nổi bật và những hạn chế, khuyết điểm, nguyên nhân",
+      "Tổng kết kinh nghiệm lãnh đạo đấu tranh của Đảng",
+      "Làm rõ những truyền thống nổi bật của Đảng"
+    ],
+    "answer": "Làm rõ sự lãnh đạo, tổ chức thực hiện, những thành tựu nổi bật và những hạn chế, khuyết điểm, nguyên nhân",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:6",
+    "q": "Lịch sử Đảng Cộng sản Việt Nam nghiên cứu nội dung nào sau đây liên quan đến quá trình lãnh đạo của Đảng?",
+    "options": [
+      "Những thành tựu và những hạn chế, khuyết điểm trong lãnh đạo",
+      "Quá trình phát triển kinh tế tư bản chủ nghĩa",
+      "Hoạt động đối ngoại của các triều đại phong kiến",
+      "Sự hình thành các tôn giáo lớn ở Việt Nam"
+    ],
+    "answer": "Những thành tựu và những hạn chế, khuyết điểm trong lãnh đạo",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:7",
+    "q": "Điền vào chỗ trống: Đảng Cộng sản Việt Nam là đội tiên phong của ...................., đồng thời là đội tiền phong của nhân dân lao động và của dân tộc Việt Nam, đại biểu trung thành lợi ích của giai cấp công nhân, nhân dân lao động và của dân tộc.",
+    "options": [
+      "giai cấp công nhân",
+      "giai cấp nông dân",
+      "giai cấp tư sản",
+      "giai cấp công - nông"
+    ],
+    "answer": "giai cấp công nhân",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:8",
+    "q": "Đảng Cộng sản Việt Nam lãnh đạo cách mạng giải phóng dân tộc, xây dựng và phát triển đất nước bằng.....",
+    "options": [
+      "Đường lối giải phóng dân tộc",
+      "Cương lĩnh chính trị năm 1930",
+      "Cương lĩnh, đường lối, chủ trương, chính sách lớn",
+      "Đường lối qua các kì Đại hội Đảng"
+    ],
+    "answer": "Cương lĩnh, đường lối, chủ trương, chính sách lớn",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:9",
+    "q": "Hai phương pháp nghiên cứu cơ bản được sử dụng trong khoa học Lịch sử Đảng là:",
+    "options": [
+      "A. Phương pháp lịch sử và phương pháp logic",
+      "B. Phương pháp thống kê và thực nghiệm",
+      "C. Phương pháp điều tra và phỏng vấn",
+      "D. Phương pháp mô hình hóa và toán học"
+    ],
+    "answer": "A. Phương pháp lịch sử và phương pháp logic",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:10",
+    "q": "Một trong những chức năng của môn Lịch sử Đảng Cộng sản Việt Nam là gì ?",
+    "options": [
+      "Giáo dục chính trị tư tưởng",
+      "Phê phán và đấu tranh tư tưởng",
+      "Dự báo sự phát triển trong tương lai",
+      "Tổng kết thực tiễn lịch sử"
+    ],
+    "answer": "Dự báo sự phát triển trong tương lai",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:11",
+    "q": "Một trong những nhiệm vụ của môn học Lịch sử Đảng Cộng sản Việt Nam là gì?",
+    "options": [
+      "Trình bày Cương lĩnh, đường lối của Đảng",
+      "Làm rõ những truyền thống nổi bật của Đảng",
+      "Tổng kết kinh nghiệm lãnh đạo đấu tranh của Đảng",
+      "Phê phán những sai lầm trong lãnh đạo"
+    ],
+    "answer": "Tổng kết kinh nghiệm lãnh đạo đấu tranh của Đảng",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:12",
+    "q": "Một trong những nhiệm vụ của môn học Lịch sử Đảng Cộng sản Việt Nam là gì?",
+    "options": [
+      "Trình bày có hệ thống Cương lĩnh, đường lối của Đảng",
+      "Tổng kết kinh nghiệm lãnh đạo đấu tranh của Đảng",
+      "Phê phán những hạn chế, khuyết điểm trong lãnh đạo",
+      "Dự báo sự phát triển trong tương lai"
+    ],
+    "answer": "Trình bày có hệ thống Cương lĩnh, đường lối của Đảng",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:13",
+    "q": "Hãy điền vào khoảng trống sau đây: ..........đứng trên lập trường của chủ nghĩa Marx-Lenin, tư tưởng Hồ Chí Minh để nhận thức lịch sử khoa học, đúng đắn, phản ánh chính xác đường lối, quan điểm của Đảng vì lợi ích của giai cấp, nhân dân lao động và dân tộc.",
+    "options": [
+      "Tính Đảng trong nghiên cứu, học tập Lịch sử Đảng là",
+      "Tính khoa học trong nghiên cứu, học tập Lịch sử Đảng là",
+      "Tính lịch sử trong nghiên cứu, học tập Lịch sử Đảng là",
+      "Tính khách quan trong nghiên cứu, học tập Lịch sử Đảng là"
+    ],
+    "answer": "Tính Đảng trong nghiên cứu, học tập Lịch sử Đảng là",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:14",
+    "q": "Một trong những chức năng của môn học Lịch sử Đảng Cộng sản Việt Nam là gì?",
+    "options": [
+      "Đánh giá thành tựu kinh tế – xã hội",
+      "Phê phán nhằm ngăn chặn và đẩy lùi sự suy thoái về tư tưởng chính trị, đạo đức, lối sống",
+      "Dự báo các xu hướng phát triển toàn cầu",
+      "Giáo dục truyền thống yêu nước"
+    ],
+    "answer": "Phê phán nhằm ngăn chặn và đẩy lùi sự suy thoái về tư tưởng chính trị, đạo đức, lối sống",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz.json:15",
+    "q": "Phương pháp lịch sử trong nghiên cứu Lịch sử Đảng yêu cầu người nghiên cứu phải:",
+    "options": [
+      "A. Trình bày sự kiện theo quá trình phát sinh, phát triển trong những điều kiện lịch sử cụ thể",
+      "B. Chỉ tập trung vào kết quả cuối cùng của sự kiện",
+      "C. Loại bỏ hoàn toàn yếu tố thời gian",
+      "D. Chỉ nghiên cứu các văn kiện của Đảng"
+    ],
+    "answer": "A. Trình bày sự kiện theo quá trình phát sinh, phát triển trong những điều kiện lịch sử cụ thể",
+    "verified": true,
+    "source": "quiz.json"
+  },
+  {
+    "id": "quiz2.json:1",
+    "q": "Hạn chế chủ yếu của Luận cương chính trị tháng 10/1930 là:",
+    "options": [
+      "A. Không xác định vai trò lãnh đạo của Đảng",
+      "B. Không đề cập đến cách mạng ruộng đất",
+      "C. Chưa đặt nhiệm vụ giải phóng dân tộc lên hàng đầu và đánh giá chưa đầy đủ khả năng cách mạng của các giai cấp, tầng lớp khác",
+      "D. Phủ nhận vai trò của giai cấp công nhân"
+    ],
+    "answer": "C. Chưa đặt nhiệm vụ giải phóng dân tộc lên hàng đầu và đánh giá chưa đầy đủ khả năng cách mạng của các giai cấp, tầng lớp khác",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:2",
+    "q": "Thời gian diễn ra cuộc khai thác thuộc địa lần thứ nhất của thực dân Pháp ở Việt Nam?",
+    "options": [
+      "1897 - 1914.",
+      "1884 - 1914.",
+      "1858 - 1914.",
+      "1919 - 1929."
+    ],
+    "answer": "1897 - 1914.",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:3",
+    "q": "Yêu cầu số một của cách mạng Việt Nam được phản ánh trong nhiệm vụ nào của Cương lĩnh chính trị đầu tiên của Đảng (đầu năm 1930)?",
+    "options": [
+      "Đánh đổ đế quốc giành độc lập dân tộc",
+      "Tịch thu ruộng đất của đế quốc chia cho dân cày",
+      "Lập chính phủ công nông binh",
+      "Tiến hành cách mạng ruộng đất"
+    ],
+    "answer": "Đánh đổ đế quốc giành độc lập dân tộc",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:4",
+    "q": "Sự kiện nào chấm dứt thời kì khủng hoảng về đường lối và giai cấp lãnh đạo cách mạng Việt Nam?",
+    "options": [
+      "Đảng Cộng sản Việt Nam ra đời",
+      "Cách mạng tháng Tám thành công",
+      "Nguyễn Ái Quốc tìm thấy con đường cứu nước.",
+      "Nước Việt Nam Dân chủ Cộng hòa ra đời."
+    ],
+    "answer": "Đảng Cộng sản Việt Nam ra đời",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:5",
+    "q": "Sự kiện nào dưới đây đánh dấu bước ngoặt vĩ đại của cách mạng Việt Nam?",
+    "options": [
+      "Thành lập Đảng Cộng sản Việt Nam",
+      "Thành lập Đông Dương Cộng sản liên đoàn.",
+      "Thành lập An Nam Cộng sản đảng.",
+      "Thành lập Đông Dương Cộng sản đảng."
+    ],
+    "answer": "Thành lập Đảng Cộng sản Việt Nam",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:6",
+    "q": "Phong trào Đông Kinh Nghĩa Thục thuộc khuynh hướng nào trong các khuynh hướng sau?",
+    "options": [
+      "Phong trào yêu nước theo khuynh hướng Cần Vương.",
+      "Phong trào yêu nước theo khuynh hướng phong kiến.",
+      "Phong trào yêu nước theo khuynh hướng dân chủ tư sản.",
+      "Phong trào yêu nước theo khuynh hướng vô sản."
+    ],
+    "answer": "Phong trào yêu nước theo khuynh hướng dân chủ tư sản.",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:7",
+    "q": "Sự ra đời của Đảng Cộng sản Việt Nam đã chấm dứt cuộc khủng hoảng về đường lối cứu nước và giai cấp lãnh đạo cách mạng Việt Nam.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:8",
+    "q": "“Muốn cứu nước và giải phóng dân tộc không có con đường nào khác con đường cách mạng vô sản” là nhận định của ai?",
+    "options": [
+      "Hoàng Hoa Thám",
+      "Phan Bộ Châu",
+      "Nguyễn Thái Học",
+      "Nguyễn Ái Quốc"
+    ],
+    "answer": "Nguyễn Ái Quốc",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:9",
+    "q": "Năm 1920, Sơ thảo lần thứ nhất Luận cương về vấn đề dân tộc và vấn đề thuộc địa của V.I Lênin đã chỉ ra phương hướng đấu tranh giải phóng các dân tộc thuộc địa và các dân tộc bị áp bức trên lập trường nào?",
+    "options": [
+      "Cách mạng vô sản",
+      "Cách mạng tư sản kiểu mới",
+      "Cách mạng giải phóng dân tộc",
+      "Cách mạng dân chủ nhân dân"
+    ],
+    "answer": "Cách mạng vô sản",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:10",
+    "q": "Sau khi tìm thấy con đường cứu nước cho dân tộc Việt Nam, Nguyễn Ái Quốc đã trực tiếp chuẩn bị điều kiện gì cho sự thành lập Đảng Cộng sản Việt Nam?",
+    "options": [
+      "Phương pháp cách mạng",
+      "Tư tưởng, chính trị, tổ chức",
+      "Đường lối, tổ chức",
+      "Tư tưởng, chính trị"
+    ],
+    "answer": "Tư tưởng, chính trị, tổ chức",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:11",
+    "q": "Luận cương chính trị tháng 10 năm 1930 xác định giai cấp công nhân và giai cấp nông dân là hai động lực chính của cách mạng.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:12",
+    "q": "Cương lĩnh chính trị đầu tiên của Đảng gồm Chánh cương vắn tắt và Sách lược vắn tắt do Nguyễn Ái Quốc soạn thảo.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:13",
+    "q": "Người soạn thảo Cương lĩnh chính trị đầu tiên của Đảng Cộng sản Việt Nam là đồng chí nào?",
+    "options": [
+      "Trần Phú",
+      "Trịnh Đình Cửu",
+      "Nguyễn Ái Quốc",
+      "Nguyễn Đức Cảnh"
+    ],
+    "answer": "Nguyễn Ái Quốc",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:14",
+    "q": "Đại biểu các tổ chức cộng sản nào đã tham dự Hội nghị thành lập Đảng đầu năm 1930?",
+    "options": [
+      "Đông Dương cộng sản Đảng, An Nam cộng sản Đảng và Đông Dương cộng sản liên đoàn",
+      "Đông Dương cộng sản Đảng và An Nam cộng sản Đảng",
+      "An Nam cộng sản Đảng và Đông Dương cộng sản liên đoàn",
+      "Đông Dương cộng sản Đảng và Đông Dương cộng sản liên đoàn"
+    ],
+    "answer": "Đông Dương cộng sản Đảng và An Nam cộng sản Đảng",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:15",
+    "q": "Quan điểm của Cương lĩnh chính trị đầu tiên về lực lượng cách mạng thể hiện rõ điều gì?",
+    "options": [
+      "A. Chỉ dựa vào giai cấp công nhân",
+      "B. Chủ trương tập hợp rộng rãi các lực lượng yêu nước chống đế quốc",
+      "C. Loại bỏ hoàn toàn tầng lớp tiểu tư sản và tư sản dân tộc",
+      "D. Chỉ liên minh với địa chủ phong kiến"
+    ],
+    "answer": "B. Chủ trương tập hợp rộng rãi các lực lượng yêu nước chống đế quốc",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:16",
+    "q": "Công lao to lớn đầu tiên của Nguyễn Ái Quốc đối với cách mạng Việt Nam trong những năm 1911 - 1930 là gì?",
+    "options": [
+      "Tìm ra con đường cứu nước đúng đắn.",
+      "Khởi thảo Cương lĩnh chính trị đầu tiên của Đảng.",
+      "Thành lập Hội Việt Nam cách mạng thanh niên.",
+      "Hợp nhất các tổ chức cộng sản thành một đảng."
+    ],
+    "answer": "Tìm ra con đường cứu nước đúng đắn.",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:17",
+    "q": "Theo Luận cương chính trị tháng 10 năm 1930, lực lượng giữ vai trò lãnh đạo cách mạng là:",
+    "options": [
+      "A. Giai cấp nông dân",
+      "B. Giai cấp tư sản dân tộc",
+      "C. Giai cấp công nhân thông qua Đảng Cộng sản",
+      "D. Tầng lớp trí thức"
+    ],
+    "answer": "C. Giai cấp công nhân thông qua Đảng Cộng sản",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:18",
+    "q": "Luận cương chính trị tháng 10 năm 1930 cho rằng cách mạng Đông Dương là một bộ phận của cách mạng vô sản thế giới.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:19",
+    "q": "Trong những năm đầu thế kỉ XX, đâu là nhiệm vụ hàng đầu của cách mạng Việt Nam?",
+    "options": [
+      "Giải phóng giai cấp",
+      "Giải phóng dân tộc",
+      "Ruộng đất cho dân cày",
+      "Lật đổ nhà nước phong kiến"
+    ],
+    "answer": "Giải phóng dân tộc",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:20",
+    "q": "Luận cương chính trị tháng 10 năm 1930 được thông qua tại hội nghị nào?",
+    "options": [
+      "A. Hội nghị thành lập Đảng",
+      "B. Hội nghị lần thứ nhất Ban Chấp hành Trung ương Đảng",
+      "C. Hội nghị Trung ương lần thứ 6",
+      "D. Đại hội đại biểu lần thứ nhất của Đảng"
+    ],
+    "answer": "B. Hội nghị lần thứ nhất Ban Chấp hành Trung ương Đảng",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:21",
+    "q": "Vì sao đầu năm 1929, những người cộng sản ở Việt Nam nhận thức cần thiết phải thành lập một Đảng Cộng sản?",
+    "options": [
+      "Do sự phát triển mạnh của Hội Việt Nam Cách mạng Thanh niên",
+      "Do phong trào yêu nước theo khuynh hướng tư sản phát triển mạnh",
+      "Do phong trào công, nông theo con đường cách mạng vô sản phát triển mạnh",
+      "Do cuộc khởi nghĩa Yên Bái thất bại, Việt Nam Quốc dân đảng tan rã"
+    ],
+    "answer": "Do phong trào công, nông theo con đường cách mạng vô sản phát triển mạnh",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:22",
+    "q": "Các chương trình khai thác thuộc địa của thực dân Pháp đã dẫn tới sự ra đời của giai tầng mới nào?",
+    "options": [
+      "Giai cấp tư sản, nông dân và địa chủ",
+      "Giai cấp nông dân, công nhân và địa chủ",
+      "Giai cấp công nhân, tiểu tư sản nông dân",
+      "Giai cấp công nhân, tư sản và tầng lớp tiểu tư sản"
+    ],
+    "answer": "Giai cấp công nhân, tư sản và tầng lớp tiểu tư sản",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:23",
+    "q": "Bản Sơ thảo lần thứ nhất những luận cương về vấn đề dân tộc và thuộc địa của Lênin đã giúp Nguyễn Ái Quốc điều gì?",
+    "options": [
+      "Tìm ra con đường cứu nước đúng đắn.",
+      "Trực tiếp chuẩn bị các điều kiện thành lập Đảng.",
+      "Nhận thức rõ về bản chất của chủ nghĩa đế quốc.",
+      "Có cơ sở để hợp nhất các tổ chức cộng sản."
+    ],
+    "answer": "Tìm ra con đường cứu nước đúng đắn.",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:24",
+    "q": "Hội Việt Nam Cách mạng Thanh niên là tổ chức yêu nước theo khuynh hướng chính trị nào?",
+    "options": [
+      "Vô sản",
+      "Cải lương",
+      "Quân chủ",
+      "Dân chủ tư sản"
+    ],
+    "answer": "Vô sản",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:25",
+    "q": "Trong các nhà yêu nước tiêu biểu cho phong trào yêu nước cuối thế kỷ XIX đầu thế kỷ XX được kể sau đây, ai là người tiêu biểu cho xu hướng bạo động cách mạng?",
+    "options": [
+      "Hàm Nghi.",
+      "Đề Thám.",
+      "Phan Bội Châu.",
+      "Phan Châu Trinh."
+    ],
+    "answer": "Phan Bội Châu.",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:26",
+    "q": "Điểm khác biệt nổi bật nhất giữa Cương lĩnh chính trị đầu tiên và Luận cương chính trị tháng 10/1930 là gì?",
+    "options": [
+      "A. Quan niệm về vai trò của Đảng",
+      "B. Cách xác định nhiệm vụ dân tộc và nhiệm vụ giai cấp",
+      "C. Quan niệm về cách mạng thế giới",
+      "D. Vai trò của giai cấp công nhân"
+    ],
+    "answer": "B. Cách xác định nhiệm vụ dân tộc và nhiệm vụ giai cấp",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:27",
+    "q": "Đảng Cộng sản Việt Nam ra đời là sự kết hợp của nhân tố nào dưới đây?",
+    "options": [
+      "Chủ nghĩa Mác-Lênin với phong trào yêu nước và phong trào công nhân",
+      "Chủ nghĩa Mác-Lênin với phong trào đấu tranh của nhân dân",
+      "Chủ nghĩa Mác-Lênin với phong trào công nhân",
+      "Chủ nghĩa Mác-Lênin với phong trào yêu nước"
+    ],
+    "answer": "Chủ nghĩa Mác-Lênin với phong trào yêu nước và phong trào công nhân",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:28",
+    "q": "Tổ chức Cộng sản nào được thành lập ngày 17/6/1929, tại số nhà 312, phố Khâm Thiên, Hà Nội?",
+    "options": [
+      "An Nam Cộng sản đảng",
+      "Việt Nam Quốc dân đảng",
+      "Đông Dương Cộng sản đảng",
+      "Đông Dương Cộng sản Liên đoàn"
+    ],
+    "answer": "Đông Dương Cộng sản Liên đoàn",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:29",
+    "q": "Luận cương chính trị tháng 10 năm 1930 do ai khởi thảo?",
+    "options": [
+      "A. Nguyễn Ái Quốc",
+      "B. Trần Phú",
+      "C. Lê Hồng Phong",
+      "D. Hà Huy Tập"
+    ],
+    "answer": "B. Trần Phú",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:30",
+    "q": "Cương lĩnh chính trị đầu tiên xác định phương hướng chiến lược của cách mạng Việt Nam là làm tư sản dân quyền cách mạng và thổ địa cách mạng để đi tới xã hội cộng sản.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:31",
+    "q": "Văn kiện nào của Đảng đặt nhiệm vụ chống đế quốc lên hàng đầu?",
+    "options": [
+      "Chính cương vắn tắt, Sách lược vắn tắt do Hội nghị thành lập Đảng thông qua",
+      "Nghị quyết Đại hội lần thứ nhất của Đảng (3-1935)",
+      "Luận cương chính trị tháng 10-1930 (Dự án cương lĩnh để thảo luận trong Đảng)",
+      "Thư của Trung ương gửi cho các cấp đảng bộ (12-1930)"
+    ],
+    "answer": "Chính cương vắn tắt, Sách lược vắn tắt do Hội nghị thành lập Đảng thông qua",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:32",
+    "q": "Sự kiện nào đánh dấu bước chuyển biến quyết định trong tư tưởng và lập trường chính trị của Nguyễn Ái Quốc?",
+    "options": [
+      "Nguyễn Ái Quốc gửi bản yêu sách tới Hội nghị Vécxây 6/1919",
+      "Nguyễn Ái Quốc tham gia Đại hội V của Quốc tế Cộng sản 1924",
+      "Nguyễn Ái Quốc ra đi tìm đường cứu nước năm 1919",
+      "Người tham gia Đại hội lần thứ XVIII của Đảng Xã hội Pháp 12/1920"
+    ],
+    "answer": "Người tham gia Đại hội lần thứ XVIII của Đảng Xã hội Pháp 12/1920",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:33",
+    "q": "Hội nghị hợp nhất các tổ chức cộng sản đầu năm 1930 do Trần Phú chủ trì.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "SAI",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:34",
+    "q": "Trong các nhà yêu nước tiêu biểu cho phong trào yêu nước cuối thế kỷ XIX đầu thế kỷ XX được kể sau đây, ai là người đứng đầu nghĩa quân Yên Thế?",
+    "options": [
+      "Hàm Nghi.",
+      "Đề Thám.",
+      "Phan Bội Châu.",
+      "Phan Châu Trinh."
+    ],
+    "answer": "Đề Thám.",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:35",
+    "q": "Lãnh đạo phong trào Cần Vương (1885 - 1896) chống thực dân Pháp là:",
+    "options": [
+      "Phan Thanh Giản và vua Thành Thái",
+      "Nguyễn Tri Phương và vua Đồng Khánh",
+      "Phan Đình Phùng và vua Duy Tân",
+      "Tôn Thất Thuyết và vua Hàm Nghi"
+    ],
+    "answer": "Tôn Thất Thuyết và vua Hàm Nghi",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:36",
+    "q": "Sự kiện lịch sử nào bắt đầu diễn ra từ ngày 6/1/1930 đến ngày 7/2/1930 tại Cửu Long, Hương Cảng, Trung Quốc?",
+    "options": [
+      "Hợp nhất các tổ chức yêu nước",
+      "Hợp nhất các tổ chức cộng sản",
+      "Thành lập An Nam Cộng sản đảng",
+      "Thành lập Đảng Cộng sản Đông Dương"
+    ],
+    "answer": "Hợp nhất các tổ chức cộng sản",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:37",
+    "q": "Đặc điểm cơ bản nhất của tầng lớp tiểu tư sản thể hiện vai trò của tầng lớp này trong phong trào cách mạng Việt Nam là?",
+    "options": [
+      "Có khả năng tiếp thu những tư tưởng cách mạng mới, tiến bộ.",
+      "Có trình độ cao và đông đảo, có tinh thần cách mạng triệt để.",
+      "Có khả năng lãnh đạo với các giai cấp khác vì mục tiêu chung.",
+      "Có điều kiện sống và làm việc ở nhiều nơi, gắn bó với nhân dân."
+    ],
+    "answer": "Có khả năng tiếp thu những tư tưởng cách mạng mới, tiến bộ.",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:38",
+    "q": "Từ năm 1920 đến năm 1928, Nguyễn Ái Quốc đã viết hai tác phẩm nổi tiếng. Cho biết tên của hai tác phẩm ấy?",
+    "options": [
+      "“Bản án chế độ thực dân Pháp”; “Đường kách mệnh”",
+      "“Tuyên ngôn độc lập”; “Bản án chế độ thực dân Pháp”",
+      "“Đường kách mệnh”; “Nhật ký trong tù”",
+      "Tất cả đều sai"
+    ],
+    "answer": "“Bản án chế độ thực dân Pháp”; “Đường kách mệnh”",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:39",
+    "q": "Tham dự Hội nghị hợp nhất các tổ chức cộng sản thành Đảng Cộng sản Việt Nam gồm đại biểu của tổ chức nào?",
+    "options": [
+      "Ba tổ chức cộng sản và các đại biểu hoạt động ở nước ngoài",
+      "An Nam Cộng sản đảng, Đông Dương Cộng sản đảng",
+      "Đông Dương Cộng sản Liên đoàn, An Nam Cộng sản đảng",
+      "Đông Dương Cộng sản đảng, Đông Dương Cộng sản Liên đoàn"
+    ],
+    "answer": "An Nam Cộng sản đảng, Đông Dương Cộng sản đảng",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz2.json:40",
+    "q": "Với những chính sách thống trị bóc lột của thực dân Pháp, trong xã hội Việt Nam đồng thời tồn tại những mâu thuẫn nào?",
+    "options": [
+      "Mẫu thuẫn giữa nông dân với địa chủ",
+      "Mâu thuẫn dân tộc và mâu thuẫn giai cấp",
+      "Mâu thuẫn giữa giai cấp vô sản với giai cấp tư sản",
+      "Mâu thuẫn giữa giai cấp công nhân với giai cấp tư sản"
+    ],
+    "answer": "Mâu thuẫn dân tộc và mâu thuẫn giai cấp",
+    "verified": true,
+    "source": "quiz2.json"
+  },
+  {
+    "id": "quiz3.json:1",
+    "q": "Hội nghị Trung ương 8 tháng 5/1941 do Nguyễn Ái Quốc chủ trì.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:2",
+    "q": "Phong trào cách mạng 1930–1931 diễn ra trong bối cảnh khủng hoảng kinh tế thế giới 1929–1933 tác động mạnh đến Đông Dương.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:3",
+    "q": "Lực lượng vũ trang được thành lập trong phong trào Xô Viết Nghệ - Tĩnh được gọi là",
+    "options": [
+      "hồng vệ binh",
+      "hồng quân",
+      "cận vệ Đỏ",
+      "tự vệ Đỏ"
+    ],
+    "answer": "tự vệ Đỏ",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:4",
+    "q": "Văn kiện nào của Đảng nhấn mạnh “Vấn đề thổ địa là cái cốt của cách mạng tư sản dân quyền”?",
+    "options": [
+      "Chính cương vắn tắt, Sách lược vắn tắt.",
+      "Chỉ thị thành lập Hội phản đế đồng minh (18-11-1930).",
+      "Luận cương chính trị tháng 10-1930.",
+      "Chung quanh vấn đề chính sách mới của Đảng (10-1936)."
+    ],
+    "answer": "Luận cương chính trị tháng 10-1930.",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:5",
+    "q": "Luận cương Chính trị do đồng chí Trần Phú khởi thảo ra đời vào thời gian nào?",
+    "options": [
+      "2-1930",
+      "10-1930",
+      "9-1930",
+      "8-1930"
+    ],
+    "answer": "10-1930",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:6",
+    "q": "Cương lĩnh chính trị đầu tiên của Đảng Cộng sản Việt Nam (1930) đã xác định đường lối chiến lược của cách mạng Việt Nam là?",
+    "options": [
+      "Tiến hành cách mạng tư sản dân quyền và thổ địa cách mạng để đi tới xã hội cộng sản.",
+      "Tiến hành cách mạng tư sản dân quyền, sau đó tiến thẳng lên con đường TBCN.",
+      "Xây dựng chính quyền công nông binh, tiến lên xây dựng chủ nghĩa xã hội",
+      "Đánh đổ đế quốc và phong kiến làm cho Việt Nam hoàn toàn độc lập."
+    ],
+    "answer": "Tiến hành cách mạng tư sản dân quyền và thổ địa cách mạng để đi tới xã hội cộng sản.",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:7",
+    "q": "Nhiệm vụ trước mắt của cách mạng Đông Dương trong thời kỳ 1936–1939 là:",
+    "options": [
+      "A. Đánh đổ đế quốc và phong kiến ngay lập tức",
+      "B. Chống phát xít, chống chiến tranh, chống phản động thuộc địa, đòi tự do, dân chủ, cơm áo và hòa bình",
+      "C. Tiến hành tổng khởi nghĩa",
+      "D. Thành lập chính quyền Xô viết"
+    ],
+    "answer": "B. Chống phát xít, chống chiến tranh, chống phản động thuộc địa, đòi tự do, dân chủ, cơm áo và hòa bình",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:8",
+    "q": "Điểm khác biệt cơ bản giữa Cương lĩnh Chính trị (2/1930) và Luận cương chính trị (10/1930)?",
+    "options": [],
+    "answer": null,
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:9",
+    "q": "Tính chất Cách mạng Tháng Tám - 1945?",
+    "options": [
+      "Cách mạng dân tộc",
+      "Cách mạng dân chủ",
+      "Cách mạng dân tộc dân chủ nhân dân"
+    ],
+    "answer": "Cách mạng dân tộc dân chủ nhân dân",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:10",
+    "q": "Sau cuộc đảo chính Nhật lật đổ Pháp ngày 9/3/1945, Ban Thường vụ Trung ương Đảng đã ban hành chỉ thị nào?",
+    "options": [
+      "A. Toàn dân kháng chiến",
+      "B. Nhật – Pháp bắn nhau và hành động của chúng ta",
+      "C. Kháng chiến kiến quốc",
+      "D. Sửa đổi lối làm việc"
+    ],
+    "answer": "B. Nhật – Pháp bắn nhau và hành động của chúng ta",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:11",
+    "q": "Đoạn văn sau đây được Nguyễn Ái Quốc trình bày lúc nào: “Nếu không giải quyết được vấn đề dân tộc giải phóng, không đòi được độc lập tự do cho toàn thể dân tộc, thì chẳng những toàn thể quốc gia dân tộc còn chịu mãi kiếp ngựa trâu, mà quyền lợi của bộ phận giai cấp đến vạn năm sau cũng không đòi được”?",
+    "options": [
+      "Trong Hội nghị Trung ương Đảng lần 6 (tháng 11/1939).",
+      "Trong Hội nghị Trung ương Đảng lần 8 (tháng 5/1941).",
+      "Trong thư gửi đồng bào toàn quốc sau Hội nghị Trung ương lần 8.",
+      "Trong lời kêu gọi toàn quốc kháng chiến."
+    ],
+    "answer": "Trong Hội nghị Trung ương Đảng lần 8 (tháng 5/1941).",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:12",
+    "q": "Chủ trương của Đảng Cộng sản Đông Dương về “cuộc cách mạng giải phóng dân tộc không nhất định phải kết hợp chặt chẽ với cách mạng điền địa” trong giai đoạn 1936 - 1939 thực chất là:",
+    "options": [
+      "Bước phát triển toàn diện của Luận cương chính trị tháng 10/1930.",
+      "Nhận thức mới về mối quan hệ giữa hai nhiệm vụ dân tộc và dân chủ.",
+      "Sự trở về với tư tưởng cốt lõi của Cương lĩnh chính trị đầu năm 1930.",
+      "Khắc phục những hạn chế về xác định lực lượng cách mạng trước đó."
+    ],
+    "answer": "Sự trở về với tư tưởng cốt lõi của Cương lĩnh chính trị đầu năm 1930.",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:13",
+    "q": "Quốc dân Đại hội họp tại Tân Trào tháng 8/1945 đã thông qua chủ trương nào?",
+    "options": [
+      "A. Phát động toàn quốc kháng chiến chống Pháp",
+      "B. Tổng khởi nghĩa giành chính quyền",
+      "C. Thành lập Đảng Cộng sản Việt Nam",
+      "D. Thành lập Mặt trận Dân chủ Đông Dương"
+    ],
+    "answer": "B. Tổng khởi nghĩa giành chính quyền",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:14",
+    "q": "Phong trào cách mạng 1930 – 1931 ở Việt Nam phát triển mạnh mẽ nhất ở",
+    "options": [
+      "Hà Nội - Hải Phòng",
+      "Hải Phòng - Quảng Ninh",
+      "Sài Gòn - Chợ Lớn",
+      "Nghệ An - Hà Tĩnh"
+    ],
+    "answer": "Nghệ An - Hà Tĩnh",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:15",
+    "q": "Mặt trận được thành lập trong thời kỳ 1936–1939 để tập hợp lực lượng đấu tranh dân chủ là:",
+    "options": [
+      "A. Mặt trận Việt Minh",
+      "B. Mặt trận Dân chủ Đông Dương",
+      "C. Mặt trận Liên Việt",
+      "D. Mặt trận Tổ quốc Việt Nam"
+    ],
+    "answer": "B. Mặt trận Dân chủ Đông Dương",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:16",
+    "q": "Trong phong trào 1930–1931, hình thức chính quyền cách mạng được thành lập ở một số địa phương là:",
+    "options": [
+      "A. Chính phủ lâm thời",
+      "B. Hội đồng nhân dân",
+      "C. Xô viết công – nông",
+      "D. Ủy ban giải phóng dân tộc"
+    ],
+    "answer": "C. Xô viết công – nông",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:17",
+    "q": "Thời cơ trực tiếp để Đảng phát động Tổng khởi nghĩa Tháng Tám năm 1945 xuất hiện khi:",
+    "options": [
+      "A. Pháp đầu hàng Đức",
+      "B. Nhật đầu hàng Đồng minh vô điều kiện",
+      "C. Mỹ tham chiến ở Đông Dương",
+      "D. Pháp quay trở lại Việt Nam"
+    ],
+    "answer": "B. Nhật đầu hàng Đồng minh vô điều kiện",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:18",
+    "q": "Ý nghĩa nổi bật của phong trào cách mạng 1930–1931 là gì?",
+    "options": [
+      "A. Giành được chính quyền trong cả nước",
+      "B. Là cuộc tổng diễn tập đầu tiên cho Cách mạng Tháng Tám năm 1945",
+      "C. Buộc Pháp trao trả độc lập",
+      "D. Thành lập Mặt trận Việt Minh"
+    ],
+    "answer": "B. Là cuộc tổng diễn tập đầu tiên cho Cách mạng Tháng Tám năm 1945",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:19",
+    "q": "Nét nổi bật nhất của cuộc vận động dân chủ 1936 - 1939 là gì?",
+    "options": [
+      "Uy tín và ảnh hưởng của Đảng được mở rộng và ăn sâu trong quân chúng nhân dân.",
+      "Tư tưởng và chủ trương của Đảng được phổ biến, trình độ chính trị và công tác của đảng viên được nâng cao.",
+      "Tập hợp được một lực lượng công - nông hùng mạnh.",
+      "Đảng đã tập hợp được một lực lượng chính trị đông đảo của quần chúng và sử dụng hình thức, phương pháp đấu tranh phong phú."
+    ],
+    "answer": "Đảng đã tập hợp được một lực lượng chính trị đông đảo của quần chúng và sử dụng hình thức, phương pháp đấu tranh phong phú.",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:20",
+    "q": "Thời kì cách mạng từ 1930-1935 là thời kì?",
+    "options": [
+      "A: Đảng ta ra hoạt động công khai",
+      "B: Đảng ta hoạt động mạnh mẽ",
+      "C: Đảng ta hoạt động nửa công khai, nửa bí mật",
+      "D: Đảng ta hoạt động bí mật"
+    ],
+    "answer": "D: Đảng ta hoạt động bí mật",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:21",
+    "q": "Đỉnh cao của phong trào cách mạng 1930–1931 là:",
+    "options": [
+      "A. Phong trào Đông Du",
+      "B. Xô viết Nghệ – Tĩnh",
+      "C. Khởi nghĩa Bắc Sơn",
+      "D. Khởi nghĩa Nam Kỳ"
+    ],
+    "answer": "B. Xô viết Nghệ – Tĩnh",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:22",
+    "q": "Thắng lợi của Cách mạng Tháng Tám năm 1945 cho thấy việc nhận định đúng thời cơ và kịp thời phát động toàn dân đứng lên có ý nghĩa đặc biệt quan trọng.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:23",
+    "q": "Phong trào Đông Dương Đại hội năm 1936 là một trong những hoạt động tiêu biểu của phong trào dân chủ 1936–1939.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:24",
+    "q": "Hội nghị lần 6 (tháng 11 - 1939) của Ban chấp hành Trung ương Đảng đã xác định nhiệm vụ của cách mạng Đông Dương lúc này là gì?",
+    "options": [
+      "Đặt nhiệm vụ giải phóng dân tộc và giải phóng giai cấp lên hàng đầu.",
+      "Chống chủ nghĩa phát xít và chống chiến tranh.",
+      "Đặt nhiệm vụ giải phóng dân tộc lên hàng đầu và cấp bách.",
+      "Tất cả các nhiệm vụ trên."
+    ],
+    "answer": "Đặt nhiệm vụ giải phóng dân tộc lên hàng đầu và cấp bách.",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:25",
+    "q": "Phong trào dân chủ 1936–1939 được xem là:",
+    "options": [
+      "A. Cuộc tổng diễn tập lần thứ hai cho Cách mạng Tháng Tám năm 1945",
+      "B. Một cuộc khởi nghĩa vũ trang",
+      "C. Một cuộc chiến tranh giải phóng dân tộc",
+      "D. Một phong trào cải cách thuần túy"
+    ],
+    "answer": "A. Cuộc tổng diễn tập lần thứ hai cho Cách mạng Tháng Tám năm 1945",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:26",
+    "q": "Hội nghị Trung ương 8 tháng 5/1941 xác định nhiệm vụ chủ yếu, trước hết của cách mạng Việt Nam là:",
+    "options": [
+      "A. Cách mạng ruộng đất",
+      "B. Giải phóng dân tộc",
+      "C. Cải cách dân chủ",
+      "D. Xây dựng chủ nghĩa xã hội"
+    ],
+    "answer": "B. Giải phóng dân tộc",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:27",
+    "q": "Một trong những điểm sáng tạo của cương lĩnh chính trị đầu tiên của Đảng cộng sản Việt Nam do Nguyễn Ái Quốc soạn thảo là gì?",
+    "options": [
+      "A. Xác định đúng con đường giải phóng dân tộc của cách mạng Việt Nam.",
+      "B. Xác định đúng đắn mối quan hệ giữa cách mạng Việt Nam với cách mạng thế giới.",
+      "C. Xác định đúng vai trò lãnh đạo của Đảng cộng sản.",
+      "D. Đánh giá đúng khả năng cách mạng của tiểu tư sản, tư sản dân tộc, trung tiểu địa chủ."
+    ],
+    "answer": "D. Đánh giá đúng khả năng cách mạng của tiểu tư sản, tư sản dân tộc, trung tiểu địa chủ.",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:28",
+    "q": "Đại hội lần thứ nhất của Đảng diễn ra vào thời gian nào? ở đâu?",
+    "options": [
+      "A: tháng 3/1935 ở Xiêm- Thái Lan",
+      "B: tháng 3/1935 ở Ma Cao- Trung Quốc",
+      "C: tháng 3/1935 ở Hương Cảng- Trung Quốc",
+      "D: Tháng /1935 ở Cao Bằng- Việt Nam"
+    ],
+    "answer": "B: tháng 3/1935 ở Ma Cao- Trung Quốc",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:29",
+    "q": "Phong trào nào phát triển mạnh trong cao trào kháng Nhật cứu nước năm 1945?",
+    "options": [
+      "A. Phong trào phá kho thóc của Nhật để giải quyết nạn đói",
+      "B. Phong trào Đông Du",
+      "C. Phong trào chống thuế Trung Kỳ",
+      "D. Phong trào Duy Tân"
+    ],
+    "answer": "A. Phong trào phá kho thóc của Nhật để giải quyết nạn đói",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:30",
+    "q": "Một đặc điểm nổi bật của phong trào dân chủ 1936–1939 là kết hợp nhiều hình thức đấu tranh công khai, nửa công khai, hợp pháp và nửa hợp pháp.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:31",
+    "q": "Cuộc tập dượt đầu tiên của Đảng và quần chúng chuẩn bị cho Cách mạng Tháng Tám năm 1945 là?",
+    "options": [
+      "Phong trào dân tộc dân chủ 1936-1939.",
+      "Phong trào cách mạng 1930-1931.",
+      "Cao trào kháng Nhật cứu nước 1945.",
+      "Cuộc vận động giải phóng dân tộc 1939-1945."
+    ],
+    "answer": "Phong trào cách mạng 1930-1931.",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:32",
+    "q": "Sau ngày 9/3/1945, kẻ thù chính, cụ thể trước mắt của nhân dân Đông Dương được Đảng xác định là:",
+    "options": [
+      "A. Thực dân Pháp",
+      "B. Phát xít Nhật",
+      "C. Đế quốc Mỹ",
+      "D. Chính quyền Tưởng Giới Thạch"
+    ],
+    "answer": "B. Phát xít Nhật",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:33",
+    "q": "Mặt trận Việt Minh chính thức thành lập ngày nào?",
+    "options": [
+      "10/5/1941.",
+      "15/5/1941.",
+      "19/5/1941.",
+      "29/5/1941."
+    ],
+    "answer": "19/5/1941.",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:34",
+    "q": "Hình thức đấu tranh nào mới xuất hiện trong thời kì 1932-1935?",
+    "options": [
+      "A: tổng bãi công chính trị của công nhân phối hợp với nổi dậy của nông dân",
+      "B: biểu tình có vũ trang tự vệ",
+      "C: vận động bầu cử và bút chiến trên lĩnh vực báo chí",
+      "D: khởi nghĩa vũ trang của công dân"
+    ],
+    "answer": "C: vận động bầu cử và bút chiến trên lĩnh vực báo chí",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:35",
+    "q": "Văn kiện nào của Đảng nhấn mạnh “Vấn đề thổ địa là cái cốt của cách mạng tư sản dân quyền”?",
+    "options": [
+      "Chính cương vắn tắt, Sách lược vắn tắt.",
+      "Luận cương chính trị tháng 10-1930",
+      "Chung quanh vấn đề chính sách mới của Đảng (10-1936)",
+      "Chỉ thị thành lập Hội phản đế đồng minh (18-11-1930)"
+    ],
+    "answer": "Luận cương chính trị tháng 10-1930",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:36",
+    "q": "Nguyên nhân chủ quan của sự thắng lợi trong cuộc Cách mạng tháng 8/1945 là?",
+    "options": [
+      "Truyền thống yêu nước nồng nàn, đấu tranh kiên cường, bất khuất của dân tộc cho độc lập, tự do.",
+      "Đường lối lãnh đạo đúng đắn của Đảng, đứng đầu là Chủ tịch Hồ Chí Minh vĩ đại.",
+      "Quá trình chuẩn bị trong suốt 15 năm qua các phong trào cách mạng 1930 - 1935, 1936 - 1939, 1939 - 1945.",
+      "Toàn Đảng, toàn dân nhất trí, đồng lòng, không sợ hy sinh, gian khổ, quyết tâm giành độc lâp, tự do.",
+      "Tất cả các đáp án trên"
+    ],
+    "answer": "Tất cả các đáp án trên",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:37",
+    "q": "Hội nghị Trung ương 8 tháng 5/1941 xác định nhiệm vụ cách mạng ruộng đất là nhiệm vụ trước hết và cấp bách nhất.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "SAI",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:38",
+    "q": "Chỉ thị “Nhật – Pháp bắn nhau và hành động của chúng ta” ra đời khi nào?",
+    "options": [
+      "9/3/1945",
+      "12/3/1945",
+      "10/3/1846",
+      "12/3/1946"
+    ],
+    "answer": "12/3/1945",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:39",
+    "q": "Được sự giúp đỡ của Quốc tế Cộng sản Đảng ta đã kịp thời công bố chương trình hành động của Đảng Cộng sản Đông Dương vào thời gian nào?",
+    "options": [
+      "A: tháng 5/1932",
+      "B: Tháng 6/1932",
+      "C: Tháng 7/1932",
+      "D: Tháng 8/1932"
+    ],
+    "answer": "B: Tháng 6/1932",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz3.json:40",
+    "q": "Hệ thống tổ chức Đảng trong nước nói chung đã được khôi phục từ",
+    "options": [
+      "A: đầu năm 1932",
+      "B: cuối năm 1935",
+      "C: đầu năm 1933",
+      "D: cuối năm 1934 đầu 1935"
+    ],
+    "answer": "B: cuối năm 1935",
+    "verified": true,
+    "source": "quiz3.json"
+  },
+  {
+    "id": "quiz4.json:1",
+    "q": "Cuộc Tổng tuyển cử bầu Quốc hội đầu tiên của nước Việt Nam Dân chủ Cộng hòa được tổ chức vào ngày nào?",
+    "options": [
+      "A. 2/9/1945",
+      "B. 6/1/1946",
+      "C. 2/3/1946",
+      "D. 9/11/1946"
+    ],
+    "answer": "B. 6/1/1946",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:2",
+    "q": "Năm 1945, 20 vạn quân của Tưởng Giới Thạch tiến vào miền Bắc Việt Nam với âm mưu gì?",
+    "options": [
+      "“Đồng hóa dân tộc”",
+      "“Xâm chiếm lãnh thổ”",
+      "“Diệt Cộng, cầm Hồ”",
+      "“Giết gà dọa khỉ”"
+    ],
+    "answer": "“Diệt Cộng, cầm Hồ”",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:3",
+    "q": "Thành tựu có ý nghĩa bao quát nhất của cách mạng Việt Nam trong giai đoạn 1945–1946 là:",
+    "options": [
+      "A. Hoàn thành công nghiệp hóa đất nước",
+      "B. Củng cố, xây dựng và bảo vệ được chính quyền cách mạng non trẻ",
+      "C. Giải phóng hoàn toàn miền Nam",
+      "D. Hoàn thành cách mạng xã hội chủ nghĩa"
+    ],
+    "answer": "B. Củng cố, xây dựng và bảo vệ được chính quyền cách mạng non trẻ",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:4",
+    "q": "Biện pháp có ý nghĩa lâu dài để giải quyết nạn đói năm 1945 là:",
+    "options": [
+      "A. Kêu gọi viện trợ quốc tế",
+      "B. Tổ chức quyên góp tiền",
+      "C. Đẩy mạnh tăng gia sản xuất",
+      "D. Phát hành công trái"
+    ],
+    "answer": "C. Đẩy mạnh tăng gia sản xuất",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:5",
+    "q": "Theo chỉ thị \"kháng chiến kiến quốc\" 25-11-1945, Trung ương Đảng đưa ra nguyên tắc ngoại giao của Chính phủ ta là gì?",
+    "options": [
+      "Bình đẳng, tương trợ",
+      "Thêm bạn, bớt thù",
+      "Bình đẳng, tương trợ. Hai bên cùng có lợi",
+      "Bình đẳng, tương trợ .Thêm bạn, bớt thù"
+    ],
+    "answer": "Bình đẳng, tương trợ .Thêm bạn, bớt thù",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:6",
+    "q": "Những khó khăn, thách thức đối với Việt Nam sau cách mạng tháng Tám năm 1945:",
+    "options": [
+      "Các thế lực đế quốc, phản động bao vây, chống phá",
+      "Kinh tế kiệt quệ và nạn đói hoành hành",
+      "Hơn 90% dân số không biết chữ",
+      "Cả 3 phương án trên"
+    ],
+    "answer": "Cả 3 phương án trên",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:7",
+    "q": "Ngày 23/9/1945, thực dân Pháp đã nổ súng mở màn cuộc chiến tranh xâm lược Việt Nam lần ...",
+    "options": [
+      "Đầu",
+      "Hai",
+      "Ba",
+      "Bốn"
+    ],
+    "answer": "Hai",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:8",
+    "q": "Chính phủ Việt Nam đồng ý cho 15.000 quân Pháp ra miền Bắc thay thế 20 vạn quân đội Tưởng rút về nước và sẽ rút dần trong thời hạn?",
+    "options": [
+      "3 năm",
+      "4 năm",
+      "6 năm",
+      "5 năm"
+    ],
+    "answer": "5 năm",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:9",
+    "q": "Việc ký Hiệp định Sơ bộ với Pháp ngày 6/3/1946 đã giúp Việt Nam đạt được những gì?",
+    "options": [
+      "Mượn tay quân Pháp đẩy 20 vạn quân Tưởng về nước.",
+      "Lần đầu tiên trong một văn bản có tính pháp lý, Pháp phải công nhận Việt Nam là nước tự do.",
+      "Ta tranh thủ được thời gian hòa bình cần thiết để chuẩn bị cho kháng chiến chống Pháp lâu dài.",
+      "Tất cả các đáp án trên đều đúng."
+    ],
+    "answer": "Tất cả các đáp án trên đều đúng.",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:10",
+    "q": "Chỉ thị \"kháng chiến kiến quốc\" (25-11-1945) Đảng ta đã đưa ra những nguyên tắc gì để đấu tranh với thực dân Pháp?",
+    "options": [
+      "Độc lập về chính trị, nhân nhượng về kinh tế, văn hóa",
+      "Độc lập về chính trị ,nhân nhượng về văn hóa",
+      "Độc lập về kinh tế, nhân nhượng về chính trị",
+      "Độc lập về chính trị, nhân nhượng về kinh tế"
+    ],
+    "answer": "Độc lập về chính trị, nhân nhượng về kinh tế",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:11",
+    "q": "Đảng đã đề ra chủ trương gì đối với Pháp khi Pháp - Tưởng ký Hiệp ước Trùng Khánh (28/02/1946), Tưởng đồng ý cho Pháp kéo quân ra miền Bắc Việt Nam?",
+    "options": [
+      "Đánh Pháp",
+      "Hòa với Pháp",
+      "Hòa với Tưởng với Pháp",
+      "Kêu gọi giúp đỡ của Mỹ"
+    ],
+    "answer": "Hòa với Pháp",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:12",
+    "q": "Ngày 8/9/1945, Chủ tịch Hồ Chí Minh ký sắc lệnh thành lập cơ quan nào?",
+    "options": [
+      "A. Nha Bình dân học vụ",
+      "B. Quốc hội",
+      "C. Mặt trận Liên Việt",
+      "D. Hội đồng Chính phủ"
+    ],
+    "answer": "A. Nha Bình dân học vụ",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:13",
+    "q": "Chỉ thị kháng chiến kiến quốc (25-11-1945) của Trung ương Đảng xác định biện pháp chính trị để thực hiện nhiệm vụ xây dựng chính quyền là gì?",
+    "options": [
+      "Xúc tiến bầu Quốc hội",
+      "Thành lập chính phủ chính thức",
+      "Lập hiến pháp",
+      "Cả 3 phương án trên"
+    ],
+    "answer": "Cả 3 phương án trên",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:14",
+    "q": "Ngày 3/3/1946, Ban Thường vụ Trung ương Đảng và Hồ Chí Minh đã nhanh chóng ra bản Chỉ thị với chủ trương tạm thời?",
+    "options": [
+      "“Quyết chiến tới cùng”",
+      "“Dàn hòa với Pháp”",
+      "“Thăm dò kẻ địch”",
+      "“Ngừng chiến”"
+    ],
+    "answer": "“Dàn hòa với Pháp”",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:15",
+    "q": "Sách lược đối ngoại của Đảng và Chính phủ năm 1945–1946 thể hiện sự mềm dẻo về sách lược nhưng kiên định về nguyên tắc.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "ĐÚNG",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:16",
+    "q": "Những thuận lợi căn bản của đất nước sau cách mạng tháng Tám năm 1945",
+    "options": [
+      "Cách mạng thế giới phát triển mạnh mẽ",
+      "Hệ thống chính quyền cách mạng nhân dân được thiết lập",
+      "Nhân dân có quyết tâm bảo vệ chế độ mới",
+      "Cách mạng thế giới phát triển mạnh mẽ, hệ thống chính quyền cách mạng nhân dân được thiết lập, nhân dân có quyết tâm bảo vệ chế độ mới."
+    ],
+    "answer": "Cách mạng thế giới phát triển mạnh mẽ, hệ thống chính quyền cách mạng nhân dân được thiết lập, nhân dân có quyết tâm bảo vệ chế độ mới.",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:17",
+    "q": "Để giải quyết nạn đói sau Cách mạng Tháng Tám, Chính phủ đã phát động phong trào nào?",
+    "options": [
+      "A. Tuần lễ vàng",
+      "B. Hũ gạo cứu đói",
+      "C. Bình dân học vụ",
+      "D. Tăng gia quân sự"
+    ],
+    "answer": "B. Hũ gạo cứu đói",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:18",
+    "q": "Bức tranh chung của nước Việt Nam Dân chủ Cộng hòa ngay sau Cách mạng tháng Tám 1945",
+    "options": [
+      "bị các nước đế quốc bao vây và cấm vận",
+      "gặp muôn vàn khó khăn, như “ngàn cân treo sợi tóc”",
+      "được sự giúp đỡ của Liên Xô và các nước xã hội chủ nghĩa",
+      "khủng hoảng nghiêm trọng do hậu quả của chế độ thực dân"
+    ],
+    "answer": "gặp muôn vàn khó khăn, như “ngàn cân treo sợi tóc”",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:19",
+    "q": "Nhận định nào sau đây thể hiện đúng ý nghĩa Chỉ thị Kháng chiến kiến quốc:",
+    "options": [
+      "Thể hiện 1 quy luật của VN sau CM T8/1945 là xây dựng chế độ mới phải đi đôi với bảo vệ chế độ mới đó cũng chính là quy luật dựng nước và giữ nước của dân tộc.",
+      "Soi sáng con đường xây dựng và bảo vệ chính quyền cách mạng",
+      "Xác định đúng những vấn đề cơ bản về chiến lược và sách lược của cách mạng.",
+      "Tất cả các đáp án trên"
+    ],
+    "answer": "Tất cả các đáp án trên",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:20",
+    "q": "Ngày 11/11/1945, Đảng rút vào hoạt động bí mật với danh nghĩa “tự giải tán” với lý do?",
+    "options": [
+      "Âm thầm chờ ngày phản công",
+      "Khiến kẻ địch lơ là",
+      "Tránh mũi nhọn tấn công của kẻ thù",
+      "Thâm nhập vào lòng địch"
+    ],
+    "answer": "Tránh mũi nhọn tấn công của kẻ thù",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:21",
+    "q": "Chính phủ lâm thời họp phiên đầu tiên dưới sự chủ trì của Chủ tịch Hồ Chí Minh vào ngày?",
+    "options": [
+      "3/9/1945",
+      "9/3/1945",
+      "3/9/1954",
+      "9/3/1954"
+    ],
+    "answer": "3/9/1945",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:22",
+    "q": "Thời gian nào Quốc hội khóa I đã họp phiên đầu tiên và thành lập Chính phủ chính thức?",
+    "options": [
+      "6/1/1946",
+      "3/9/1945",
+      "2/3/1946",
+      "25/11/1945"
+    ],
+    "answer": "2/3/1946",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:23",
+    "q": "Để đối phó với quân Trung Hoa Dân quốc và các tổ chức chính trị tay sai ở miền Bắc, Đảng và Chính phủ chủ trương:",
+    "options": [
+      "A. Đối đầu quân sự ngay lập tức",
+      "B. Hòa hoãn, nhân nhượng có nguyên tắc",
+      "C. Rút khỏi Hà Nội",
+      "D. Giải tán chính quyền cách mạng"
+    ],
+    "answer": "B. Hòa hoãn, nhân nhượng có nguyên tắc",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:24",
+    "q": "Sau khi giành chính quyền, nhiệm vụ duy nhất của cách mạng Việt Nam là chống thực dân Pháp.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "SAI",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:25",
+    "q": "Phong trào Bình dân học vụ được phát động nhằm giải quyết khó khăn về tài chính của Nhà nước.",
+    "options": [
+      "ĐÚNG",
+      "SAI"
+    ],
+    "answer": "SAI",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:26",
+    "q": "Chỉ thị kháng chiến, kiến quốc đã xác định khẩu hiệu cách mạng Việt Nam sau cách mạng tháng Tám năm 1945:",
+    "options": [
+      "Dân tộc giải phóng",
+      "Thành lập chính quyền cách mạng",
+      "Dân tộc trên hết, Tổ quốc trên hết",
+      "Đoàn kết dân tộc và thế giới"
+    ],
+    "answer": "Dân tộc trên hết, Tổ quốc trên hết",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:27",
+    "q": "Đoạn trích “Bất kì đàn ông, đàn bà, bất kì người già, người trẻ, không chia tôn giáo, đảng phái, dân tộc. Hễ là người Việt Nam thì phải đứng lên đánh thực dân Pháp để cứu Tổ quốc” đề cập đến nội dung nào trong đường lối kháng chiến chống Pháp của Đảng?",
+    "options": [
+      "Kháng chiến toàn diện.",
+      "Kháng chiến toàn dân.",
+      "Kháng chiến lâu dài.",
+      "Tự lực cánh sinh."
+    ],
+    "answer": "Kháng chiến toàn dân.",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:28",
+    "q": "“Trong thời điểm phải đối phó cùng một lúc với nhiều thế lực quân sự, Chủ tịch Hồ Chí Minh đã khéo léo lợi dụng mâu thuẫn giữa các nước với nhau và đưa ra những chính sách phù hợp với từng bên đối địch.” Câu này để chỉ bài học?",
+    "options": [
+      "Phân hóa kẻ thù",
+      "Nhân nhượng đúng lúc",
+      "Hòa hoãn tạm thời",
+      "Đề cao thế hợp pháp"
+    ],
+    "answer": "Phân hóa kẻ thù",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:29",
+    "q": "Sau ngày tuyên bố độc lập, Chính phủ lâm thời đã xác định các nhiệm vụ cấp bách cần giải quyết của cách mạng Việt Nam là:",
+    "options": [
+      "Chống ngoại xâm",
+      "Chống ngoại xâm và nội phản",
+      "Diệt giặc đói, giặc dốt và giặc ngoại xâm",
+      "Cả ba phương án trên"
+    ],
+    "answer": "Diệt giặc đói, giặc dốt và giặc ngoại xâm",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz4.json:30",
+    "q": "Chỉ thị Kháng chiến kiến quốc của Trung ương Đảng ngày 25/11/1945, xác định nhiệm vụ nào là trung tâm, bao trùm nhất?",
+    "options": [
+      "Củng cố, bảo vệ chính quyền cách mạng",
+      "Chống thực dân Pháp xâm lược",
+      "Cải thiện đời sống nhân dân",
+      "Củng cố, bảo vệ chính quyền cách mạng; Chống thực dân Pháp xâm lược; Cải thiện đời sống nhân dân"
+    ],
+    "answer": "Củng cố, bảo vệ chính quyền cách mạng",
+    "verified": true,
+    "source": "quiz4.json"
+  },
+  {
+    "id": "quiz5.json:1",
+    "q": "Chiến dịch Điện Biên Phủ năm 1954 diễn ra trong bao nhiêu ngày?",
+    "options": [],
+    "answer": null,
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:2",
+    "q": "6. Đâu là nơi được coi căn cứ địa cách mạng của cả nước trong kháng chiến chống Pháp?",
+    "options": [
+      "A. Tây Bắc",
+      "B. Hà Nội",
+      "C. Việt Bắc",
+      "D. Điện Biên Phủ"
+    ],
+    "answer": "C. Việt Bắc",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:3",
+    "q": "5. Tác phẩm “Kháng chiến nhất định thắng lợi của tác giả nào?",
+    "options": [
+      "A. Hồ Chí Minh",
+      "B. Trường Chinh",
+      "C. Lê Duẩn",
+      "D. Phạm Văn Đồng"
+    ],
+    "answer": "B. Trường Chinh",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:4",
+    "q": "“Không! chúng ta thà hi sinh tất cả chứ nhất định không chịu mất nước, nhất định không chịu làm nô lệ.” Câu văn trên trích trong văn bản nào?",
+    "options": [
+      "Tuyên ngôn độc lập.",
+      "Lời kêu gọi toàn quốc kháng chiến.",
+      "Lời kêu gọi nhân ngày thành lập Đảng.",
+      "Hịch Việt Minh."
+    ],
+    "answer": "Lời kêu gọi toàn quốc kháng chiến.",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:5",
+    "q": "Bộ chính trị đã thông qua phương án mở chiến dịch Điện Biên Phủ vào thời gian nào?",
+    "options": [
+      "20-11-1953",
+      "3-12-1953",
+      "6-12-1953",
+      "7-5-1953"
+    ],
+    "answer": "6-12-1953",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:6",
+    "q": "Kháng chiến toàn diện là: đánh địch trên mọi ____ ___, mọi ___ ____ không chỉ bằng quân sự mà cả về chính trị, kinh tế, ___ ___, tư tưởng, ngoại giao, trong đó mặt trận quân sự, đấu tranh vũ trang giữ vai trò mũi nhọn, mang tính quyết định.",
+    "options": [
+      "lãnh thổ - mặt trận - văn hóa",
+      "khu vực - địa điểm - xã hội",
+      "lĩnh vực - mặt trận - văn hóa",
+      "lĩnh vực - địa điểm - văn hóa"
+    ],
+    "answer": "lĩnh vực - mặt trận - văn hóa",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:7",
+    "q": "3. Cuộc họp Ban Thường vụ Trung ương Đảng (18/12/1946) diễn ra ở đâu?",
+    "options": [
+      "A. Làng Vạn Phúc, Hà Đông",
+      "B. Làng Vũ Đại, Hà Nam",
+      "C. Làng Cựu, Phú Xuyên",
+      "D. Tất cả đáp án trên đều sai"
+    ],
+    "answer": "A. Làng Vạn Phúc, Hà Đông",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:8",
+    "q": "Sau thất bại ở Việt Bắc thu đông 1947, Pháp buộc phải thay đổi chiến lược chiến tranh ở Đông Dương như thế nào?",
+    "options": [
+      "Từ đánh nhanh, thắng nhanh sang đáng lâu dài.",
+      "Chuyển sang phòng ngự.",
+      "Cầu viện và phụ thuộc nhiều vào Mĩ.",
+      "Chuyển sang đàm phán với Chính phủ ta."
+    ],
+    "answer": "Từ đánh nhanh, thắng nhanh sang đáng lâu dài.",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:9",
+    "q": "Nơi nào được xem là một tập đoàn cứ điểm mạnh nhất Đông Dương?",
+    "options": [
+      "Bình Trị Thiên",
+      "Lai Châu",
+      "Điện Biên Phủ",
+      "Mường Thanh"
+    ],
+    "answer": "Điện Biên Phủ",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:10",
+    "q": "Thực dân Pháp mở cuộc tấn công Việt Bắc vào thu - đông năm 1947 nhằm mục đích gì?",
+    "options": [
+      "Ngăn chặn con đường liên lạc của ta với quốc tế.",
+      "Tiêu diệt cơ quan đầu não kháng chiến của ta.",
+      "Giải quyết mâu thuẫn giữa tập trung và phân tán lực lượng.",
+      "Kết thúc chiến tranh trong danh dự."
+    ],
+    "answer": "Tiêu diệt cơ quan đầu não kháng chiến của ta.",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:11",
+    "q": "Đại hội đại biểu lần thứ II được tiến hành trong bối cảnh?",
+    "options": [
+      "Liên Xô lớn mạnh vượt bậc về mọi mặt.",
+      "Nước Cộng Hòa nhân dân Trung Hoa ra đời.",
+      "Các nước xã hội chủ nghĩa Đông Âu bước vào xây dựng cơ sở vật chất chủ nghĩa xã hội.",
+      "Tất cả đều đúng."
+    ],
+    "answer": "Tất cả đều đúng.",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:12",
+    "q": "Kế hoạch Nava lập ra nhằm mục đích gì?",
+    "options": [
+      "Chuyển bại thành thắng",
+      "Thực hiện chiến lược “Đánh nhanh thắng nhanh”",
+      "Thực hiện chiến lược “Dùng người Việt đánh người Việt”",
+      "Thực hiện chiến lược “Dùng người Đông Dương đánh người Đông Dương”"
+    ],
+    "answer": "Chuyển bại thành thắng",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:13",
+    "q": "Đoạn trích “Bất kì đàn ông, đàn bà, bất kì người già, người trẻ, không chia tôn giáo, đảng phái, dân tộc. Hễ là người Việt Nam thì phải đứng lên đánh thực dân Pháp để cứu Tổ quốc” đề cập đến nội dung nào trong đường lối kháng chiến chống Pháp của Đảng?",
+    "options": [
+      "Kháng chiến toàn diện.",
+      "Kháng chiến toàn dân.",
+      "Kháng chiến lâu dài.",
+      "Tự lực cánh sinh."
+    ],
+    "answer": "Kháng chiến toàn dân.",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:14",
+    "q": "Hội nghị Genevo bàn về chấm dứt chiến tranh ở Đông Dương khai mạc vào ngày nào?",
+    "options": [
+      "08/05/1954",
+      "09/05/1954",
+      "09/05/1953",
+      "10/05/1953"
+    ],
+    "answer": "08/05/1954",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:15",
+    "q": "Đại hội đại biểu lần thứ II của Đảng diễn ra ở đâu?",
+    "options": [
+      "Cao Bằng",
+      "Tuyên Quang",
+      "Thái Nguyên",
+      "Sơn La"
+    ],
+    "answer": "Tuyên Quang",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:16",
+    "q": "Đây là hình ảnh của chiến dịch nào? (câu hỏi có hình ảnh, không lấy được)",
+    "options": [
+      "Điện Biên Phủ",
+      "Điện Biên Phủ trên không",
+      "Đông Xuân",
+      "Hòa Bình"
+    ],
+    "answer": "Điện Biên Phủ",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:17",
+    "q": "8. Nhà nước Cộng hòa nhân dân Trung Hoa ra đời vào thời gian nào?",
+    "options": [
+      "A. 1/10/1949",
+      "B. 10/1/1949",
+      "C. 1/10/1946",
+      "D. 10/1/1946"
+    ],
+    "answer": "A. 1/10/1949",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:18",
+    "q": "Việt Nam nổ súng tấn công mở màn cho chiến dịch Điện Biên Phủ vào ngày mấy?",
+    "options": [
+      "12/03/1954",
+      "11/03/1954",
+      "13/03/1954",
+      "13/02/1954"
+    ],
+    "answer": "13/03/1954",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:19",
+    "q": "9. Để phá thế bao vây cô lập, phát triển lực lượng và giành thế chủ động, tháng 6/1950, lần đầu tiên TW Đảng đã chủ trương mở chiến dịch tấn công quy mô lớn. Đó là:",
+    "options": [
+      "A. Chiến dịch Tây Bắc",
+      "B. Chiến dịch Việt Bắc",
+      "C. Chiến dịch Thượng Lào",
+      "D. Chiến dịch Biên giới"
+    ],
+    "answer": "D. Chiến dịch Biên giới",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:20",
+    "q": "2. Chủ tịch Hồ Chí Minh ra “Lời kêu gọi toàn quốc kháng chiến” vào thời gian nào?",
+    "options": [
+      "A. Đêm ngày 18/12/1946",
+      "B. Đêm ngày 19/12/1946",
+      "C. Ngày 20/12/1946",
+      "D. Đêm 20/12/1946"
+    ],
+    "answer": "B. Đêm ngày 19/12/1946",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:21",
+    "q": "Ai được cử là Tư lệnh kiêm Bí thư Đảng ủy chiến dịch Điện Biên Phủ ? (a) _ _ _ _ _ _ _ _ _ _ (câu điền khuyết)",
+    "options": [
+      "Đại tướng Võ Nguyên Giáp"
+    ],
+    "answer": "Đại tướng Võ Nguyên Giáp",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:22",
+    "q": "Tại Đại hội đại biểu toàn quốc lần thứ II, Đảng ta quyết định đổi tên là gì?",
+    "options": [
+      "Đông Dương Cộng sản Đảng",
+      "Đảng Cộng sản Việt Nam.",
+      "An Nam Cộng sản Đảng",
+      "Đảng Lao Động Việt Nam"
+    ],
+    "answer": "Đảng Lao Động Việt Nam",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:23",
+    "q": "Câu nói này là của ai “ chiến dịch này là một chiến dịch rất quan trọng, không những về quân sự mà cả về chính trị, không những đối phó với trong nước mà đối phó với quốc tế. Vì vậy, toàn quân, toàn dân, toàn Đảng phải tập trung hoàn thành cho kỳ được”.",
+    "options": [
+      "Chủ tịch Hồ Chí Minh",
+      "Đại tướng Võ Nguyên Giáp",
+      "Tổng Bí Thư Trường Chinh",
+      "Phó Thủ Tướng Phạm Văn Đồng"
+    ],
+    "answer": "Chủ tịch Hồ Chí Minh",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:24",
+    "q": "Tháng 11/1953, Hội nghị lần thứ năm và Hội nghị toàn quốc lần thứ nhất quyết nghị thông qua?",
+    "options": [
+      "Luật cải cách ruộng đất.",
+      "Cương lĩnh ruộng đất.",
+      "Chính sách cải cách ruộng đất.",
+      "Tất cả phương án trên"
+    ],
+    "answer": "Cương lĩnh ruộng đất.",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:25",
+    "q": "4. Phương châm chiến lược của của kháng chiến chống Pháp là:",
+    "options": [
+      "A. Toàn dân",
+      "B. Toàn diện",
+      "C. Lâu dài và dựa vào sức mình là chính",
+      "D. Cả 3 đáp án đều đúng"
+    ],
+    "answer": "D. Cả 3 đáp án đều đúng",
+    "verified": true,
+    "source": "quiz5.json"
+  },
+  {
+    "id": "quiz5.json:26",
+    "q": "Ngày 15/10/1947, để đối phó với cuộc tấn công của thực dân Pháp lên căn cứ địa Việt Bắc, Ban thường vụ Trung ương Đảng đã đề ra:",
+    "options": [
+      "A. Chỉ thị kháng chiến, kiến quốc",
+      "B. Chủ trương tiến công quân Pháp ở vùng sau lưng chúng",
+      "C. Lời kêu gọi đánh tan cuộc tấn công lên Việt Bắc của thực dân Pháp",
+      "D. Chỉ thị “Phá tan cuộc tấn công mùa Đông của giặc Pháp”"
+    ],
+    "answer": "D. Chỉ thị “Phá tan cuộc tấn công mùa Đông của giặc Pháp”",
+    "verified": true,
+    "source": "quiz5.json"
+  }
+]
