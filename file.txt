@@ -1,0 +1,241 @@
+// ==UserScript==
+// @name         Quiz bank matcher (inline)
+// @namespace    tool-quiz
+// @version      1.0
+// @description  Like the floating version, but when toggled on the panel replaces the question text in place.
+// @match        https://courses.ctda.hcmus.edu.vn/mod/quiz/attempt.php*
+// @grant        none
+// ==/UserScript==
+
+// Toggle with the "Flag question" link. Fork of match.user.js.
+// Usage: install in Tampermonkey/Violentmonkey, or paste the whole file into the DevTools console.
+// Bank = the quiz*.json files in this folder: [{ n, q, options: [...], answer: index | [indexes] | null }]
+
+(() => {
+  const STORE = 'quizBank.v1';
+  const HIGHLIGHT_THRESHOLD = 0.8;
+
+  // ---------- matcher (pure, no DOM) ----------
+
+  const norm = (s) =>
+    String(s || '')
+      .normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/đ/gi, 'd')
+      .toLowerCase()
+      .replace(/^\s*(question\s*)?\d+\s*[.)]\s*/, '')   // "Question 5." / "6. "
+      .replace(/^\s*[a-d]\s*[.):]\s*/, '')              // "a. " / "B: "
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+
+  const bigrams = (s) => {
+    const t = ' ' + s + ' ';
+    const m = new Map();
+    for (let i = 0; i < t.length - 1; i++) {
+      const g = t.slice(i, i + 2);
+      m.set(g, (m.get(g) || 0) + 1);
+    }
+    return m;
+  };
+
+  const dice = (a, b) => {
+    if (!a || !b) return 0;
+    if (a === b) return 1;
+    const A = bigrams(a), B = bigrams(b);
+    let inter = 0, sa = 0, sb = 0;
+    for (const v of A.values()) sa += v;
+    for (const v of B.values()) sb += v;
+    for (const [g, v] of A) inter += Math.min(v, B.get(g) || 0);
+    return (2 * inter) / (sa + sb);
+  };
+
+  const jaccard = (a, b) => {
+    const A = new Set(a.split(' ').filter(Boolean)), B = new Set(b.split(' ').filter(Boolean));
+    if (!A.size || !B.size) return 0;
+    let i = 0;
+    for (const x of A) if (B.has(x)) i++;
+    return i / (A.size + B.size - i);
+  };
+
+  const sim = (a, b) => 0.6 * dice(a, b) + 0.4 * jaccard(a, b);
+
+  // Bank options are shuffled on the page, so compare as a set: each page option vs. its best bank option.
+  const optionsScore = (pageOpts, bankOpts) => {
+    if (!pageOpts.length || !bankOpts.length) return null;
+    const bn = bankOpts.map(norm);
+    const total = pageOpts.reduce((s, o) => {
+      const on = norm(o);
+      return s + Math.max(...bn.map((b) => sim(on, b)));
+    }, 0);
+    return total / pageOpts.length;
+  };
+
+  const correctTexts = (item) => {
+    if (item.answer == null) return [];
+    const idx = Array.isArray(item.answer) ? item.answer : [item.answer];
+    return idx.map((i) => item.options[i]).filter((x) => x != null);
+  };
+
+  const loadBank = (files) =>
+    files.flatMap(({ name, data }) => data.map((x) => ({ ...x, source: x.source || name, _qn: norm(x.q) })));
+
+  function match(question, pageOpts, bank, top = 3) {
+    const qn = norm(question);
+    return bank
+      .map((item) => {
+        const qs = sim(qn, item._qn);
+        const os = optionsScore(pageOpts, item.options);
+        const score = os == null ? qs : 0.7 * qs + 0.3 * os;
+        return { item, score, qs, os };
+      })
+      .sort((a, b) => b.score - a.score)
+      .slice(0, top);
+  }
+
+  if (typeof document === 'undefined') {
+    module.exports = { norm, sim, match, loadBank, correctTexts };
+    return;
+  }
+
+  // ---------- page side ----------
+
+  // Open the side panel (Moodle "Quiz navigation" block drawer) if it is closed.
+  function openQuizPanel() {
+    const drawer = document.getElementById('theme_boost-drawers-blocks');
+    if (drawer && !drawer.classList.contains('show')) {
+      document
+        .querySelector('[data-toggler="drawers"][data-action="toggle"][data-target="theme_boost-drawers-blocks"]')
+        ?.click();
+    }
+  }
+
+  function readQuestion() {
+    const que = document.querySelector('.que');
+    if (!que) return null;
+    const q = que.querySelector('.qtext')?.innerText.trim() || '';
+    const optEls = [...que.querySelectorAll('.answer > div')];
+    const opts = optEls.map((el) => (el.querySelector('.flex-fill') || el).innerText.trim());
+    return { q, opts, optEls };
+  }
+
+  const loadStored = () => {
+    try { return JSON.parse(localStorage.getItem(STORE) || '[]'); } catch { return []; }
+  };
+  const saveStored = (files) => {
+    try { localStorage.setItem(STORE, JSON.stringify(files)); } catch {}
+  };
+
+  let files = loadStored();
+  let bank = loadBank(files);
+
+  // State is kept separately from the floating-panel version. Default is off, so the page looks normal.
+  const UI_KEY = 'quizBank.inline.ui.v1';
+  const loadUi = () => {
+    try { return { open: false, ...JSON.parse(localStorage.getItem(UI_KEY) || '{}') }; } catch { return { open: false }; }
+  };
+  const ui = loadUi();
+  const saveUi = () => { try { localStorage.setItem(UI_KEY, JSON.stringify(ui)); } catch {} };
+
+  // The "x" marker: invisible until selected.
+  const style = document.createElement('style');
+  style.textContent =
+    '.qm-x{color:transparent !important;user-select:text}' +
+    '.qm-x::selection{color:#0a7a2f;background:transparent}' +
+    // Scrollbar hidden but the panel still scrolls (wheel, touchpad, keys).
+    '.qm-panel{scrollbar-width:none;-ms-overflow-style:none}' +
+    '.qm-panel::-webkit-scrollbar{display:none}';
+  document.head.appendChild(style);
+
+  // The panel sits where the question text is. When on, it replaces only the question text;
+  // the answer options stay visible and usable.
+  const que = document.querySelector('.que');
+  const questionBody = que?.querySelector('.qtext');
+  const panel = document.createElement('div');
+  panel.className = 'qm-panel';
+  panel.style.cssText =
+    'box-sizing:border-box;overflow:auto;padding:0;background:transparent;color:inherit;border:0;' +
+    'font:inherit;line-height:1.4;max-height:4.2em'; // ~3 lines; scroll for more
+  const content = panel; // run() writes its HTML here
+  if (questionBody) questionBody.parentNode.insertBefore(panel, questionBody);
+  else document.body.appendChild(panel);
+
+  const applyOpen = () => {
+    panel.style.display = ui.open ? 'block' : 'none';
+    if (questionBody) questionBody.style.display = ui.open ? 'none' : '';
+  };
+  applyOpen();
+
+  // The "Flag question" link now toggles this panel instead of flagging. Listening on window in the capture
+  // phase runs before Moodle's own click handler, and stopImmediatePropagation keeps that handler from firing.
+  const isFlagLink = (el) => el instanceof Element && el.closest('.questionflag a, .questionflag .aabtn');
+  window.addEventListener(
+    'click',
+    (e) => {
+      if (!isFlagLink(e.target)) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      ui.open = !ui.open;
+      applyOpen();
+      saveUi();
+    },
+    true
+  );
+  document.querySelectorAll('.questionflag a.aabtn').forEach((a) => { a.title = 'Toggle bank matcher panel'; });
+
+  const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+
+  function run() {
+    openQuizPanel();
+    document.querySelectorAll('.qm-x').forEach((e) => e.remove());
+
+    const cur = readQuestion();
+    const bar = `<div style="font-size:11px;font-weight:400">Bank matcher · ${bank.length} loaded
+      <input id="qm-file" type="file" accept=".json" multiple style="font-size:11px;max-width:60%"></div>`;
+    let html = '';
+
+    if (!cur) html += '<div>No question found on this page.</div>';
+    else if (!bank.length) html += '<div>Load the quiz*.json bank files below.</div>';
+    else {
+      const results = match(cur.q, cur.opts, bank);
+      // Same color as the question text; only the top match is bold.
+      results.forEach((r, i) => {
+        const ans = correctTexts(r.item);
+        html += `<div style="font-weight:${i ? 400 : 700}">${(r.score * 100).toFixed(0)}%
+          <small>${esc(r.item.source)} #${r.item.n}</small>
+          → ${ans.length ? ans.map(esc).join(' | ') : '(no answer in bank)'}</div>`;
+      });
+
+      // Hint only (never clicks): when the best match scores >= 80%, append a transparent "x" after the
+      // correct option's text. It only becomes readable when you select (highlight) the text.
+      const best = results[0];
+      if (best && best.score >= HIGHLIGHT_THRESHOLD) {
+        const ans = correctTexts(best.item).map(norm);
+        cur.optEls.forEach((el, i) => {
+          const on = norm(cur.opts[i]);
+          if (ans.some((a) => sim(on, a) >= 0.85)) {
+            const x = document.createElement('span');
+            x.className = 'qm-x';
+            x.textContent = ' x';
+            (el.querySelector('.flex-fill') || el).appendChild(x);
+          }
+        });
+      }
+    }
+
+    content.innerHTML = html + bar;
+    content.querySelector('#qm-file').onchange = async (e) => {
+      const read = await Promise.all(
+        [...e.target.files].map(async (f) => ({ name: f.name, data: JSON.parse(await f.text()) }))
+      );
+      files = read;
+      saveStored(files);
+      bank = loadBank(files);
+      run();
+    };
+  }
+
+  run();
+  window.quizMatch = {
+    run, openQuizPanel, readQuestion, match: (q, o = []) => match(q, o, bank),
+    toggle: () => { ui.open = !ui.open; applyOpen(); saveUi(); },
+  };
+})();
