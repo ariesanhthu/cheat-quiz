@@ -21,9 +21,9 @@
   }));
   $('login').onclick = () => task(async () => { $('status').textContent = 'Đang mở đăng nhập ChatGPT…'; await send({ type: 'native-login' }); $('status').textContent = 'Hoàn tất đăng nhập, rồi mở lại popup để Chạy.'; });
   $('test').onclick = () => task(async () => { $('status').textContent = 'Đang hỏi thử ChatGPT ở nền…'; const result = await send({ type: 'native-test' }); $('status').textContent = result.message; await account(); });
-  async function pageCommand(action) {
+  async function pageCommand(action, data = {}) {
     if (!Number.isInteger(tabId)) throw Error('Mở trang quiz rồi bấm lại icon.');
-    try { return await chrome.tabs.sendMessage(tabId, { type: 'page-command', action }); }
+    try { return await chrome.tabs.sendMessage(tabId, { type: 'page-command', action, ...data }); }
     catch { throw Error('Tải lại tab quiz. Với file HTML, bật Allow access to file URLs trong Details extension.'); }
   }
   $('run').onclick = () => task(async () => {
@@ -33,11 +33,17 @@
     clearInterval(poll); poll = setInterval(async () => { try { const state = await pageCommand('status'); $('status').textContent = state.status; } catch {} }, 700);
   });
   $('cancel').onclick = () => task(async () => { await pageCommand('cancel'); clearInterval(poll); $('status').textContent = 'Đã dừng.'; });
+  $('factCheck').onchange = () => task(async () => {
+    const enabled = $('factCheck').checked;
+    await chrome.storage.local.set({ factCheckEnabled: enabled }); await pageCommand('fact-check', { enabled });
+    $('status').textContent = enabled ? 'Đã mở đối chiếu bên phải.' : 'Đã ẩn đối chiếu. Tool vẫn chạy nền.';
+  });
   window.addEventListener('pagehide', () => clearInterval(poll));
   task(async () => {
     $('version').textContent = `v${chrome.runtime.getManifest().version}`; $('extensionId').textContent = chrome.runtime.id;
     const [info, tabs] = await Promise.all([send({ type: 'info' }), chrome.tabs.query({ active: true, currentWindow: true })]); tabId = tabs[0]?.id;
     document.querySelector(`[name=mode][value=${info.settings.provider === 'chatgpt-native' && info.settings.autoAI ? 'chatgpt' : 'tfidf'}]`).checked = true;
     paint(); $('status').textContent = 'Sẵn sàng.'; if (mode() === 'chatgpt') await account();
+    $('factCheck').checked = (await chrome.storage.local.get('factCheckEnabled')).factCheckEnabled === true;
   });
 })();

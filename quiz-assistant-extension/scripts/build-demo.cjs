@@ -10,7 +10,7 @@ const assets = path.join(workspace, 'page-assets');
 const sourcePath = path.join(base, 'tests/fixtures/moodle-original.html');
 const source = fs.readFileSync(sourcePath, 'utf8');
 const bank = require('../bank.json');
-const items = [null, bank.find(x => x.id === 'quiz.json:5'), bank.find(x => x.id === 'quiz.json:11')];
+const items = [bank.find(x => x.id === 'quiz.json:0') || bank[0], bank.find(x => x.id === 'quiz.json:5'), bank.find(x => x.id === 'quiz.json:11')];
 const pages = ['page.html', 'page-2.html', 'page-3.html'];
 const origin = 'https://courses.ctda.hcmus.edu.vn';
 fs.mkdirSync(assets, { recursive: true });

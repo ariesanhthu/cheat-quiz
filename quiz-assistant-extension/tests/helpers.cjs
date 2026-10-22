@@ -44,7 +44,7 @@ function area(initial = {}) {
 function environment() { return { local: area(), session: area(), resources: [], network: [], permissions: true }; }
 function worker(env = environment(), customFetch) {
   const listeners = {}, id = 'a'.repeat(32), settingsURL = `chrome-extension://${id}/settings.html`;
-  const chrome = { runtime: { id, connectNative: (...args) => env.connectNative(...args), getManifest: () => ({ version: '1.2.0' }), getURL: p => `chrome-extension://${id}/${p}`, getPlatformInfo: async () => ({}), openOptionsPage: async () => {}, onStartup: { addListener: fn => { listeners.startup = fn; } }, onInstalled: { addListener: fn => { listeners.installed = fn; } }, onMessage: { addListener: fn => { listeners.message = fn; } } },
+  const chrome = { runtime: { id, connectNative: (...args) => env.connectNative(...args), getManifest: () => ({ version: require('../manifest.json').version }), getURL: p => `chrome-extension://${id}/${p}`, getPlatformInfo: async () => ({}), openOptionsPage: async () => {}, onStartup: { addListener: fn => { listeners.startup = fn; } }, onInstalled: { addListener: fn => { listeners.installed = fn; } }, onMessage: { addListener: fn => { listeners.message = fn; } } },
     alarms: { create: async (name, info) => { env.alarm = { name, ...info }; }, clear: async () => { env.alarm = null; }, onAlarm: { addListener: fn => { listeners.alarm = fn; } } },
     storage: { local: env.local, session: env.session }, permissions: { contains: async () => env.permissions },
     tabs: { query: async () => [], onRemoved: { addListener: fn => { listeners.removed = fn; } }, create: async value => { env.opened = value; } },

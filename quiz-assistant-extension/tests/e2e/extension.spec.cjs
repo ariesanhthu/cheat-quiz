@@ -58,6 +58,10 @@ test.afterAll(async () => {
     fs.rmSync(resolved, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 });
   }
 });
+test.beforeEach(async () => {
+  const sw = context.serviceWorkers().find(worker => worker.url().includes(extensionId));
+  if (sw) await sw.evaluate(async () => { await chrome.storage.local.set({ factCheckEnabled: false }); });
+});
 async function settingsPage() {
   const p = await context.newPage(); await p.goto(`chrome-extension://${extensionId}/settings.html`);
   await expect(p.locator('#status')).toHaveText('Sẵn sàng.'); return p;
@@ -111,7 +115,8 @@ test('settings import is atomic, persists after reload, blocks conflicts beyond 
   const page = await context.newPage(); await page.goto(`${origin}/conflict`); await inject(page);
   await action(page, 'run').click(); await complete(page);
   await expect(page.locator('#q0 input:checked')).toHaveValue('-1');
-  await expect(page.locator('#q0 .qa-assistant-result')).toContainText('mâu thuẫn');
+  await action(page, 'facts').click();
+  await expect(control(page).locator('aside')).toContainText('mâu thuẫn');
   await expect(page.locator('#q0 .qa-assistant-result article')).toHaveCount(0);
   await ui.locator('#reset').click(); await expect(ui.locator('#status')).toContainText('151 câu');
   await page.close(); await ui.close();
@@ -187,7 +192,7 @@ test('in-flight AI: pause/resume, validated source viewer, cancel and actual tab
     const page = await context.newPage(); await page.goto(`${origin}/${suffix}`);
     await page.locator('.que').evaluateAll(els => { for (const el of els.slice(1)) el.remove(); els[0].querySelector('.qtext').textContent = 'Căn cứ địa cách mạng Việt Bắc trong kháng chiến năm 1947 có ý nghĩa gì?'; });
     await inject(page); await action(page, 'run').click();
-    await expect(page.locator('#q0 .qa-assistant-result')).toContainText('Đang hỏi AI');
+    await expect(page.locator('#q0 .qa-assistant-result')).toContainText('AI đang trả lời');
     return page;
   }
   try {
@@ -198,9 +203,11 @@ test('in-flight AI: pause/resume, validated source viewer, cancel and actual tab
     await expect(page.locator('#q0 input:checked')).toHaveValue('-1');
     await action(page, 'pause').click(); await complete(page);
     await expect(page.locator('#q0 input[value="0"]')).toBeChecked();
-    await expect(page.locator('#q0 .qa-assistant-result')).toContainText('AI gợi ý');
+    await expect(page.locator('#q0 .qa-assistant-result')).toContainText('AI:');
+    await expect(page.locator('#q0 .qa-assistant-result section')).toHaveCount(0);
+    await action(page, 'facts').click();
     const opened = context.waitForEvent('page');
-    await page.locator('#q0 .qa-assistant-result [data-action="source"]').click();
+    await control(page).locator('aside [data-action="source"]').click();
     const source = await opened; await expect(source.locator('#text')).not.toBeEmpty();
     expect(source.url()).toContain(`chrome-extension://${extensionId}/source.html?id=`);
     await source.close();
@@ -297,7 +304,7 @@ test('page.html: original Moodle layout, two sample text variants on real local 
   expect(samples[0].q).toBe(samples[1].q); expect(samples[0].answer).not.toBe(samples[1].answer);
   await expect(page.locator('.que')).toHaveCount(1);
   await expect(page.locator('.navbar')).toBeVisible();
-  await expect(page.locator('.que .qtext')).toContainText('300 global websites');
+  await expect(page.locator('.que .qtext')).toHaveText(bank[0].q);
   await page.screenshot({ path: path.join(artifacts, 'moodle-original-layout.png') });
   await page.locator('#mod_quiz-next-nav').click();
   await expect(page).toHaveURL(`${origin}/page-2.html`);
@@ -305,7 +312,7 @@ test('page.html: original Moodle layout, two sample text variants on real local 
   await expect(control(page)).toHaveCount(1);
   await inject(page); await action(page, 'run').click(); await complete(page);
   await expect(page.locator('.que .answer input[value="2"]')).toBeChecked();
-  await expect(page.locator('.qa-assistant-result')).toContainText(samples[0].answer);
+  await expect(page.locator('.qa-assistant-result')).toBeHidden();
   await page.screenshot({ path: path.join(artifacts, 'demo-page-1.png') });
   await page.locator('#mod_quiz-next-nav').click();
   await expect(page).toHaveURL(`${origin}/page-3.html`);
@@ -314,11 +321,10 @@ test('page.html: original Moodle layout, two sample text variants on real local 
   // Persisted tab state resumes on a genuine new document, with no toolbar/page click.
   await expect(page.locator('.qa-assistant-result')).toHaveCount(1);
   await expect(page.locator('.que .answer input[value="1"]')).toBeChecked();
-  await expect(page.locator('.qa-assistant-result')).toContainText(samples[1].answer);
-  const optionsBox = await page.locator('.que fieldset').boundingBox();
-  const resultBox = await page.locator('.que .qa-assistant-result').boundingBox();
-  expect(resultBox.y).toBeGreaterThanOrEqual(optionsBox.y + optionsBox.height);
-  expect(resultBox.width).toBeGreaterThan(optionsBox.width * 0.9);
+  await expect(page.locator('.qa-assistant-result')).toBeHidden();
+  await inject(page); await action(page, 'facts').click();
+  await expect(control(page).locator('aside')).toContainText(samples[1].answer);
+  await expect(control(page).locator('aside')).toBeVisible();
   await page.screenshot({ path: path.join(artifacts, 'demo-page-2.png') });
   expect(page.url()).toBe(`${origin}/page-3.html`);
   await page.locator('#mod_quiz-prev-nav').click(); await expect(page).toHaveURL(`${origin}/page-2.html`);
@@ -345,14 +351,15 @@ test('shipping auto-injection: real mouse highlighting survives a Translate-like
   const target = await page.locator('.qtext').boundingBox();
   await page.mouse.move(target.x + 4, target.y + 10); await page.mouse.down();
   await page.mouse.move(target.x + target.width - 4, target.y + target.height - 3, { steps: 15 }); await page.mouse.up();
-  await expect(panel).toBeVisible();
-  await expect(control(page)).toContainText('Đáp án:');
+  await expect(page.locator('.que input[value="2"]')).toBeChecked();
+  await expect(panel).toBeHidden();
   await expect(control(page).locator('[data-action="use-answer"]')).toHaveCount(0);
   expect(await page.evaluate(() => window.translateSawSelection)).toBe(true);
   await expect(page.locator('.que input[value="2"]')).toBeChecked();
+  await toggle.click(); await expect(panel).toBeVisible();
   await action(page, 'close').click(); await expect(panel).toBeHidden(); await expect(toggle).toBeVisible();
   await toggle.click(); await expect(panel).toBeVisible(); await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-  await expect(action(page, 'updates')).toContainText('1.2.0');
+  await expect(action(page, 'updates')).toContainText('1.3.0');
   await page.keyboard.press('Escape'); await expect(panel).toBeHidden();
   await expect(toggle).toBeFocused(); expect(page.url()).toBe(`${origin}/page-2.html`);
   await page.close();
@@ -366,12 +373,12 @@ test('GitHub update settings: check, opt-in alarm, restart persistence, safe rel
     chrome.permissions.contains = async () => true;
     globalThis.fetch = async (url, init) => {
       if (!String(url).startsWith('https://api.github.com/')) return updateFetch(url, init);
-      return new Response(JSON.stringify({ tag_name: 'v1.3.0', html_url: 'https://github.com/ariesanhthu/cheat-quiz/releases/tag/v1.3.0', assets: [] }));
+      return new Response(JSON.stringify({ tag_name: 'v1.4.0', html_url: 'https://github.com/ariesanhthu/cheat-quiz/releases/tag/v1.4.0', assets: [] }));
     };
   });
   await ui.evaluate(() => { chrome.permissions.request = async () => true; });
   try {
-    await ui.locator('#checkUpdates').click(); await expect(ui.locator('#updateStatus')).toContainText('v1.3.0');
+    await ui.locator('#checkUpdates').click(); await expect(ui.locator('#updateStatus')).toContainText('v1.4.0');
     await ui.locator('#autoUpdates').check();
     await expect.poll(() => ui.evaluate(async () => !!(await chrome.alarms.get('qa-check-updates')))).toBe(true);
     await ui.reload(); await expect(ui.locator('#autoUpdates')).toBeChecked();
@@ -379,7 +386,7 @@ test('GitHub update settings: check, opt-in alarm, restart persistence, safe rel
     await ui.locator('#autoUpdates').uncheck();
     await expect.poll(() => ui.evaluate(async () => !!(await chrome.alarms.get('qa-check-updates')))).toBe(false);
     const popup = context.waitForEvent('page'); await ui.locator('#downloadUpdate').click();
-    const release = await popup; await release.waitForURL('https://github.com/ariesanhthu/cheat-quiz/releases/tag/v1.3.0'); await release.close();
+    const release = await popup; await release.waitForURL('https://github.com/ariesanhthu/cheat-quiz/releases/tag/v1.4.0'); await release.close();
   } finally {
     await sw.evaluate(async () => { globalThis.fetch = updateFetch; chrome.permissions.contains = updatePermission; await chrome.storage.local.remove(['updateState', 'updatePreferences']); });
     await ui.close();

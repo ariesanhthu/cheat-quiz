@@ -1,4 +1,8 @@
-# Quiz Assistant v1.2.0
+# Quiz Assistant v1.3.0
+
+- TF-IDF chạy âm thầm, không hiện kết quả dưới câu hỏi. Bật **Đối chiếu đáp án** để mở khung bên phải khi cần xem nguồn, mức khớp và lựa chọn thực tế.
+- AI hiện thẳng dưới khung câu hỏi, chỉ chữ nhỏ, bỏ nền/viền/box. Dẫn chứng chuyển vào khung đối chiếu.
+- Sửa câu và option của page.html đầu tiên để khớp kho. Deploy ba trang Moodle lên web để test; Next/Previous vẫn tự xử lý sau một lần Chạy.
 
 - Popup gọn từ icon trên thanh Chrome: TF-IDF / ChatGPT, Đăng nhập, Thử kết nối, Chạy và Dừng.
 - SETUP.cmd cài bộ kết nối một lần trên Windows x64. Tự nhận extension, tìm/cài Codex và Node khi thiếu. Không cần API key, token bridge hay terminal mỗi lần dùng.
@@ -9,6 +13,6 @@
 
 ## Cài / cập nhật
 
-Tải **quiz-assistant-extension-1.2.0.zip** duy nhất, giải nén/chép đè đúng thư mục extension cũ rồi Reload trong chrome://extensions, tải lại trang quiz. Chạy **SETUP.cmd** một lần để dùng ChatGPT, sau đó mở popup → ChatGPT → Đăng nhập (nếu chưa đăng nhập) → Chạy.
+Tải **quiz-assistant-extension-1.3.0.zip** duy nhất, giải nén/chép đè đúng thư mục extension cũ rồi Reload trong chrome://extensions, tải lại trang quiz. Nếu đã cài bộ kết nối ở 1.2 thì không cần cài lại. Máy mới chạy **SETUP.cmd** một lần, sau đó mở popup → ChatGPT → Đăng nhập (nếu cần) → Chạy.
 
 Bộ kết nối đã được cài trên máy phát triển và kiểm tra bằng native messaging Chrome thật. Luồng popup → AI thật → tự chọn đáp án/dẫn chứng đã qua, không mở tab mới. Xem TEST_REPORT.md trong repository về phạm vi kiểm chứng.

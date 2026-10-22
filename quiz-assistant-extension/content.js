@@ -8,6 +8,8 @@
   let selectionGeneration = 0, requestSequence = 0, locationKey = location.href, observerTimer, selectionTimer, pointerDown = false;
   let counts = { done: 0, total: 0, applied: 0, review: 0, errors: 0 };
   const processed = new WeakMap(), revisions = new WeakMap(), operations = new WeakMap(), activeQuestions = new WeakSet(), resultsHosts = new Set(), pending = new Map();
+  const factRecords = new Map();
+  let factEnabled = false, factRevision = 0;
   const host = document.createElement('div'); host.dataset.quizAssistant = 'control';
   const root = host.attachShadow({ mode: 'open' }); document.documentElement.append(host);
   const style = document.createElement('style');
@@ -51,6 +53,52 @@
     parent.append(b); return b;
   }
   const manual = document.createElement('div'); box.append(manual);
+  const facts = document.createElement('aside'); facts.hidden = true; facts.dataset.factCheck = 'panel';
+  facts.setAttribute('aria-label', 'Đối chiếu đáp án'); root.append(facts);
+  const factStyle = document.createElement('style');
+  factStyle.textContent = 'aside{position:fixed;inset:56px 0 0 auto;width:300px;max-width:100vw;overflow:auto;overscroll-behavior:contain;padding:16px;background:#fff;color:#172033;border-left:1px solid #d7e0ed;box-shadow:-4px 0 16px #10213c14;pointer-events:auto}aside header{cursor:default;display:flex;align-items:center;justify-content:space-between;position:sticky;top:-16px;background:#fff;z-index:1;padding:8px 0}aside h2{font-size:15px;margin:0}aside h3{font-size:13px;margin:8px 0}aside article{padding:12px 0;margin:0}aside p{margin:6px 0}aside small{display:block;font-size:11px;color:#667085;margin:4px 0}aside button{font-size:12px;padding:5px 8px}aside article article{border:0;padding:0 0 8px}aside summary{cursor:pointer;color:#52647e;font-size:12px}'; root.append(factStyle);
+  const factHeader = document.createElement('header'); facts.append(factHeader);
+  const factTitle = document.createElement('h2'); factTitle.textContent = 'Đối chiếu đáp án'; factHeader.append(factTitle);
+  button(factHeader, 'Đóng', 'close-facts', () => setFacts(false));
+  const factList = document.createElement('div'); facts.append(factList);
+  function setFacts(enabled, persist = true) {
+    factEnabled = enabled === true; factRevision++;
+    if (factEnabled && isPanelOpen()) { if (nativePopover) box.hidePopover(); else box.hidden = true; launcher.setAttribute('aria-expanded', 'false'); }
+    if (persist) (async () => { try { await chrome.storage.local.set({ factCheckEnabled: factEnabled }); } catch {} })();
+    refreshFacts();
+  }
+  function refreshFacts() {
+    for (const [el, entry] of factRecords) if (!A.current(entry.x)) factRecords.delete(el);
+    facts.hidden = !factEnabled || !factRecords.size;
+    factList.replaceChildren(); if (facts.hidden) return;
+    for (const entry of factRecords.values()) {
+      const { x, results, decision, localDecision, note } = entry;
+      const article = document.createElement('article'); factList.append(article);
+      paragraph(article, x.q, 'h3');
+      paragraph(article, localDecision.status === 'matched' ? (x.inputs[localDecision.index]?.checked ? 'Khớp kho · đã chọn' : 'Khớp kho · giữ lựa chọn hiện tại') : note || 'Kho chưa đủ khớp');
+      const selected = x.inputs.findIndex(input => input.checked);
+      if (selected >= 0) paragraph(article, `Đang chọn: ${C.optionText(x.options[selected])}`, 'small');
+      const top = results[0];
+      if (top) paragraph(article, `Câu hỏi ${(top.questionScore * 100).toFixed(1)}% · Phương án ${(top.optionScore * 100).toFixed(1)}%`, 'small');
+      if (localDecision.reason) paragraph(article, localDecision.reason, 'small');
+      const fallback = localDecision.status !== 'matched' && top && C.questionNorm(x.q) !== C.questionNorm(top.item.q) && C.optionKey(x.options) !== C.optionKey(top.item.options);
+      candidates(article, fallback ? results : results.slice(0, 1), x);
+      if (decision.status === 'model_suggested') {
+        paragraph(article, `AI: ${C.optionText(decision.answer)}`);
+        if (localDecision.status === 'matched' && C.optionNorm(localDecision.answer) !== C.optionNorm(decision.answer)) paragraph(article, 'AI trả lời khác kho. Giữ lựa chọn hiện tại.', 'small');
+      }
+      for (const evidence of decision.evidence || []) {
+        paragraph(article, `“${evidence.quote}”`);
+        button(article, `Nguồn: ${evidence.title}`, 'source', () => send({ type: 'open-source', id: evidence.id }));
+      }
+      if (decision.status !== 'matched' && decision.status !== 'model_suggested') {
+        button(article, 'Thử lại', 'retry', () => processQuestion(A.scan(x.el), epoch, false));
+        button(article, 'Hỏi AI', 'ask-ai', () => processQuestion(A.scan(x.el), epoch, true));
+      }
+      if (decision.status === 'matched') button(article, 'Kiểm tra bằng AI', 'ask-ai', () => processQuestion(A.scan(x.el), epoch, true));
+      button(article, 'Tới câu hỏi', 'locate-question', () => x.el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+    }
+  }
   function progress(label) {
     status.textContent = `${label}: ${counts.done}/${counts.total} · đã chọn ${counts.applied} · cần kiểm tra ${counts.review} · lỗi ${counts.errors}`;
   }
@@ -106,12 +154,13 @@
   }
   function resultHost(x) {
     // Keep results inside the question's block column. A Moodle .que can be a flex row.
-    const mount = x.el.querySelector('.formulation') || x.el;
+    const formulation = x.el.querySelector('.formulation');
+    const mount = formulation?.parentElement || x.el;
     let h = [...resultsHosts].find(n => n.parentElement === mount);
     if (!h) h = [...mount.children].find(n => n.matches('.qa-assistant-result[data-quiz-assistant="result"]'));
     if (!h) {
       h = document.createElement('div'); h.className = 'qa-assistant-result'; h.dataset.quizAssistant = 'result';
-      mount.append(h);
+      if (formulation) formulation.after(h); else mount.append(h);
     }
     if (!h.shadowRoot) h.attachShadow({ mode: 'open' });
     resultsHosts.add(h);
@@ -121,38 +170,35 @@
   function paragraph(parent, value, tag = 'p') {
     const p = document.createElement(tag); p.textContent = value; parent.append(p); return p;
   }
-  function candidates(parent, results) {
+  function candidates(parent, results, current) {
     for (const [i, r] of results.slice(0, 3).entries()) {
       const article = document.createElement('article'); parent.append(article);
-      paragraph(article, `${i + 1}. ${r.item.q}`);
+      if (!current || C.questionNorm(current.q) !== C.questionNorm(r.item.q)) paragraph(article, `${i + 1}. ${r.item.q}`);
       paragraph(article, `Đáp án: ${r.item.answer ? C.optionText(r.item.answer) : 'Chưa có trong kho'}`);
-      paragraph(article, `${r.item.source} · tương đồng văn bản ${(r.score * 100).toFixed(1)}% (không phải xác suất đúng)`, 'small');
+      paragraph(article, `Nguồn: ${r.item.source} · Khớp ${(r.score * 100).toFixed(1)}%`, 'small');
       const details = document.createElement('details'); article.append(details);
       details.open = false;
       paragraph(details, 'Các phương án trong kho', 'summary');
       for (const option of r.item.options) paragraph(details, `${C.optionNorm(option) === C.optionNorm(r.item.answer) ? '✓ ' : '• '}${C.optionText(option)}`);
     }
   }
-  function render(x, results, decision, applied, note) {
+  function render(x, results, decision, applied, note, localDecision = decision) {
     if (!A.current(x)) return;
+    factRecords.set(x.el, { x, results, decision, localDecision, applied, note }); refreshFacts();
     const h = resultHost(x), r = h.shadowRoot; r.replaceChildren();
     const css = document.createElement('style');
-    css.textContent = ':host{display:block;margin:6px 0;font:12px/1.45 Arial,sans-serif;color:#23334b}section{background:#f0f5ff;border-left:3px solid #5485db;padding:7px 10px}p{margin:3px 0;white-space:pre-wrap;overflow-wrap:anywhere}small{font-size:11px}article{margin-top:7px;border-top:1px solid #d3deee;padding-top:4px}button{font:12px Arial;margin:4px;padding:4px 7px;background:#fff;color:#234;border:1px solid #bbc;border-radius:4px;cursor:pointer}a{color:#175bb1}'; r.append(css);
-    const section = document.createElement('section'); r.append(section);
-    paragraph(section, `${decision.status === 'matched' || applied ? 'Đáp án' : 'Gợi ý'}: ${decision.answer ? C.optionText(decision.answer) : 'Chưa tìm thấy đáp án'}`);
-    paragraph(section, applied ? 'Đã tự chọn phương án bên trên.' : note || (decision.status === 'matched' ? 'Có đáp án khớp; giữ lựa chọn hiện tại hoặc tự chọn đang tắt.' : 'Cần kiểm tra.'));
-    if (decision.status === 'matched') return;
-    paragraph(section, decision.reason || '');
-    if (decision.explanation) paragraph(section, `AI: ${decision.explanation}`);
-    for (const e of decision.evidence || []) {
-      paragraph(section, `“${e.quote}”`);
-      button(section, `Xem nguồn: ${e.title}`, 'source', () => send({ type: 'open-source', id: e.id }));
-    }
-    const top = results[0];
-    if (decision.status !== 'model_suggested' && top && C.questionNorm(x.q) !== C.questionNorm(top.item.q) && C.optionKey(x.options) !== C.optionKey(top.item.options)) candidates(section, results);
-    if (decision.status === 'model_suggested') return;
-    button(section, 'Kiểm tra lại', 'retry', () => processQuestion(A.scan(x.el), epoch, false));
-    button(section, 'Hỏi AI + giáo trình', 'ask-ai', () => processQuestion(A.scan(x.el), epoch, true));
+    css.textContent = ':host{all:initial;display:block;margin:6px 0 0;padding:0;font:12px/1.5 Arial,sans-serif;color:#23334b;background:transparent;border:0;box-shadow:none}p{margin:0 0 3px;white-space:pre-wrap;overflow-wrap:anywhere}small{font-size:11px;color:#667085}'; r.append(css);
+    const isAI = decision.status === 'model_suggested';
+    const pendingAI = !!note && /Đang hỏi AI/.test(note);
+    const failedAI = !!note && /AI lỗi/.test(note);
+    const reviewedAI = decision.status === 'needs_review' && !!decision.explanation;
+    h.hidden = !(isAI || pendingAI || failedAI || reviewedAI);
+    if (h.hidden) { h.style.display = 'none'; return; }
+    h.style.removeProperty('display');
+    if (isAI) {
+      paragraph(r, `AI: ${C.optionText(decision.answer)}`);
+      if (decision.explanation) paragraph(r, decision.explanation, 'small');
+    } else paragraph(r, pendingAI ? 'AI đang trả lời…' : failedAI ? note : `AI: ${decision.explanation || 'Chưa đủ dữ liệu để kết luận.'}`);
   }
   async function processQuestion(x, token, forceAI = false) {
     if (activeQuestions.has(x.el)) return;
@@ -170,6 +216,7 @@
     const response = await cancellable(send({ type: 'search', q: x.q, options: x.options }));
     if (!await ready(token) || !valid()) return { review: true };
     let decision = response.decision;
+    const localDecision = response.decision;
     const config = response.config || {};
     if (!decision) throw Error('Extension trả kết quả không hợp lệ.');
     let aiError;
@@ -188,7 +235,7 @@
     finally { applying = false; }
     const alreadySelected = decision.status === 'matched' && x.inputs[decision.index]?.checked;
     render(x, response.results, decision, applied, aiError ? `AI lỗi: ${aiError}. Giữ gợi ý từ kho.` :
-      alreadySelected && !applied ? 'Phương án khớp đã được chọn từ trước.' : undefined);
+      alreadySelected && !applied ? 'Phương án khớp đã được chọn từ trước.' : undefined, localDecision);
     return { applied, review: !applied && !alreadySelected, error: !!aiError };
   }
   async function run(fresh = true, quiet = false) {
@@ -235,6 +282,7 @@
   });
   button(actions, 'Hủy', 'cancel', () => cancel());
   button(actions, 'Cài đặt', 'settings', () => send({ type: 'open-settings' }));
+  button(actions, 'Đối chiếu đáp án', 'facts', () => { setFacts(!factEnabled); });
   button(box, 'Đóng bảng', 'close', closePanel);
   const versionButton = button(box, 'Phiên bản · cập nhật', 'updates', () => send({ type: 'open-settings' }));
   async function refreshVersion() {
@@ -258,20 +306,25 @@
   async function selection(snapshot) {
     const { q, range, x } = snapshot;
     const generation = ++selectionGeneration;
-    showPanel(); manual.replaceChildren(); paragraph(manual, 'Đang tra cứu vùng bôi đen…');
+    if (!x) showPanel();
+    manual.replaceChildren(); if (!x) paragraph(manual, 'Đang tra cứu vùng bôi đen…');
     try {
       const response = await cancellable(send({ type: 'search', q: x?.q || q, options: x?.options || [] }));
       if (dead || generation !== selectionGeneration || location.href !== locationKey) return;
       manual.replaceChildren();
       if (!response.results.length) paragraph(manual, 'Chưa có kết quả phù hợp trong kho.');
       if (x && response.decision?.status === 'matched') {
-        const applied = response.config?.autoSelect !== false && A.apply(x, response.decision, { overwrite: false });
+        let applied;
+        applying = true; try { applied = response.config?.autoSelect !== false && A.apply(x, response.decision, { overwrite: false }); } finally { applying = false; }
+        revisions.set(x.el, (revisions.get(x.el) || 0) + 1);
         render(x, response.results, response.decision, applied);
-        paragraph(manual, `Đáp án: ${C.optionText(response.decision.answer)}`);
-        paragraph(manual, applied ? 'Đã tự chọn.' : 'Giữ lựa chọn hiện tại.');
+        status.textContent = applied ? 'Đã tự chọn đáp án khớp kho.' : 'Giữ lựa chọn hiện tại.';
+        return;
       } else if (x && response.config?.autoAI) {
-        paragraph(manual, 'AI đang xử lý nền. Kết quả sẽ hiện dưới câu hỏi.');
         await processQuestion(x, epoch, true);
+        return;
+      } else if (x) {
+        render(x, response.results, response.decision, false); return;
       } else if (response.fallback !== false) candidates(manual, response.results);
       else paragraph(manual, response.decision?.reason || 'Chưa đủ dữ liệu để tự chọn.');
       button(manual, 'Sao chép đáp án', 'copy', async () => {
@@ -303,6 +356,7 @@
     if (applying || !event.target.matches?.('input[type="radio"],input[type="checkbox"]')) return;
     const el = event.target.closest('.que') || event.target.closest('fieldset');
     if (el) revisions.set(el, (revisions.get(el) || 0) + 1);
+    if (factEnabled) refreshFacts();
   }
   function scheduleScan() {
     clearTimeout(observerTimer);
@@ -310,6 +364,7 @@
   }
   const observer = new MutationObserver(mutations => {
     for (const h of resultsHosts) if (!h.isConnected) resultsHosts.delete(h);
+    if (factEnabled && [...factRecords.values()].some(entry => !A.current(entry.x))) refreshFacts();
     if (!armed) return;
     const external = mutations.some(m => !m.target.closest?.('[data-quiz-assistant]') &&
       (m.type !== 'childList' || [...m.addedNodes, ...m.removedNodes].some(n => n.nodeType !== 1 || !n.matches?.('[data-quiz-assistant]'))));
@@ -362,6 +417,7 @@
       document.removeEventListener('selectionchange', onSelectionChange); document.removeEventListener('change', onChange, true);
       window.removeEventListener('pagehide', onNavigation); window.removeEventListener('popstate', onNavigation); window.removeEventListener('hashchange', onNavigation);
       chrome.runtime.onMessage?.removeListener(onCommand);
+      chrome.storage.onChanged?.removeListener(onStorageChange);
       host.remove(); for (const h of resultsHosts) h.remove(); resultsHosts.clear(); delete globalThis.__quizAssistant;
     }
   };
@@ -370,10 +426,14 @@
     if (message.action === 'run') { run(true, true).catch(() => {}); reply({ ok: true }); }
     else if (message.action === 'cancel') { cancel(); reply({ ok: true }); }
     else if (message.action === 'status') reply({ status: status.textContent, running });
+    else if (message.action === 'fact-check') { setFacts(message.enabled); reply({ ok: true }); }
     else reply({ error: 'Thao tác không hợp lệ.' });
     return false;
   }
   chrome.runtime.onMessage?.addListener(onCommand);
+  function onStorageChange(changes, area) { if (area === 'local' && changes.factCheckEnabled) setFacts(changes.factCheckEnabled.newValue, false); }
+  chrome.storage.onChanged?.addListener(onStorageChange);
+  (async () => { const revision = factRevision; try { const data = await chrome.storage.local.get('factCheckEnabled'); if (!dead && factRevision === revision) setFacts(data.factCheckEnabled, false); } catch {} })();
   status.textContent = 'Bôi đen câu hỏi để tra cứu, hoặc chạy trên trang.';
   (async () => { try { const state = await send({ type: 'running-state' }); if (!dead && state.enabled) run(true, true); } catch {} })();
 })();

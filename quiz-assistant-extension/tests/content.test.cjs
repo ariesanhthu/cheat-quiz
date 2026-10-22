@@ -178,7 +178,7 @@ test('capture snapshots survive another extension stopping mouseup and clearing 
     await until(() => p.w.document.querySelector('input[value="1"]').checked);
     assert.equal(p.requests.filter(m => m.type === 'search').length, 1);
     assert.equal(p.w.document.querySelector('input[value="1"]').checked, true);
-    assert.equal(p.host().shadowRoot.querySelector('section').hidden, false);
+    assert.equal(p.host().shadowRoot.querySelector('section').hidden, true);
     assert.deepEqual(p.errors, []);
   } finally { p.close(); }
 });
@@ -233,12 +233,91 @@ test('AI double-click and retry cannot create concurrent requests for one questi
   } });
   try {
     p.button('run').click(); await until(() => p.requests.some(m => m.type === 'ai'));
-    const result = p.w.document.querySelector('.qa-assistant-result').shadowRoot;
+    p.button('facts').click();
+    const result = p.host().shadowRoot.querySelector('[data-fact-check="panel"]');
     result.querySelector('[data-action="ask-ai"]').click(); result.querySelector('[data-action="retry"]').click();
     await delay(20); assert.equal(p.requests.filter(m => m.type === 'ai').length, 1);
     p.button('cancel').click(); await delay(10); release(); await delay(30);
     assert.equal(p.w.document.querySelector('input[value="1"]').checked, false);
   } finally { release(); p.close(); }
+});
+
+test('TF-IDF stays silent; optional fact sidebar shows the actual selection and toggling it never stops the run', async () => {
+  const p = page({ responder: async m => {
+    if (m.type !== 'search') return;
+    const results = C.engine(C.validate([{ q, options: ['Yes', 'No'], answer: 1, verified: true, source: 'fixture' }]))(m.q, m.options, 10);
+    return { results: [results[0], results[0], results[0]], decision: C.decide(m.q, m.options, results), config: { autoSelect: true } };
+  } });
+  try {
+    p.button('run').click(); await until(() => p.status().startsWith('Hoàn thành'));
+    const row = p.w.document.querySelector('.qa-assistant-result'), sidebar = p.host().shadowRoot.querySelector('aside');
+    assert.equal(row.hidden, true); assert.equal(sidebar.hidden, true);
+    assert.equal(row.shadowRoot.querySelector('p'), null);
+    const cancellations = p.requests.filter(m => m.type === 'cancel').length;
+    p.button('facts').click(); assert.equal(sidebar.hidden, false);
+    assert.ok(sidebar.textContent.includes('Đang chọn: No'));
+    assert.ok(sidebar.textContent.includes('100.0%'));
+    assert.equal(sidebar.querySelectorAll('article article').length, 1);
+    p.w.document.querySelector('input[value="0"]').click();
+    assert.ok(sidebar.textContent.includes('Đang chọn: Yes'));
+    p.host().shadowRoot.querySelector('[data-action="close-facts"]').click();
+    assert.equal(sidebar.hidden, true);
+    assert.equal(p.requests.filter(m => m.type === 'cancel').length, cancellations);
+    assert.equal(p.submits, 0); assert.equal(p.navigations, 0);
+  } finally { p.close(); }
+});
+
+test('AI answer is plain text after the original question frame; citations and details stay in the optional sidebar', async () => {
+  const p = page({ config: { autoAI: true, aiAutoSelect: true }, responder: async m => {
+    if (m.type === 'search') return { results: [], decision: { status: 'needs_review' }, config: { autoAI: true, aiAutoSelect: true } };
+    if (m.type === 'ai') return { decision: { status: 'model_suggested', answer: 'No', index: 1, explanation: 'Theo tài liệu.', evidence: [{ id: 'p1', title: 'Trang 1', quote: 'Một dẫn chứng gốc.' }] } };
+  } });
+  try {
+    p.button('run').click(); await until(() => p.status().startsWith('Hoàn thành'));
+    const row = p.w.document.querySelector('.qa-assistant-result');
+    assert.equal(row.hidden, false); assert.equal(row.previousElementSibling.className, 'formulation');
+    assert.equal(row.parentElement.className, 'content');
+    assert.ok(row.shadowRoot.textContent.includes('AI: No')); assert.ok(row.shadowRoot.textContent.includes('Theo tài liệu.'));
+    assert.equal(row.shadowRoot.querySelector('section,article,button'), null);
+    assert.ok(!row.shadowRoot.textContent.includes('background:#f0f5ff'));
+    assert.equal(p.w.document.querySelector('input[value="1"]').checked, true);
+    p.button('facts').click(); assert.ok(p.host().shadowRoot.querySelector('aside [data-action="source"]'));
+    p.w.document.querySelector('.que').remove(); await until(() => p.host().shadowRoot.querySelector('aside').hidden);
+    assert.deepEqual(p.errors, []);
+  } finally { p.close(); }
+});
+
+test('a trusted highlight match wins over an older in-flight AI response, including explicit overwrite mode', async () => {
+  let release, searches = 0;
+  const pending = new Promise(resolve => { release = resolve; });
+  const p = page({ config: { overwrite: true }, responder: async m => {
+    if (m.type === 'search' && ++searches === 1) return { results: [], decision: { status: 'needs_review' }, config: { autoAI: true, aiAutoSelect: true, autoSelect: true, overwrite: true } };
+    if (m.type === 'ai') { await pending; return { decision: { status: 'model_suggested', answer: 'Yes', index: 0 } }; }
+  } });
+  try {
+    p.button('run').click(); await until(() => p.requests.some(m => m.type === 'ai'));
+    const range = p.w.document.createRange(); range.selectNodeContents(p.w.document.querySelector('.qtext')); p.w.getSelection().addRange(range);
+    p.w.document.querySelector('.qtext').dispatchEvent(new p.w.MouseEvent('mouseup', { bubbles: true }));
+    await until(() => p.w.document.querySelector('input[value="1"]').checked);
+    release(); await delay(60);
+    assert.equal(p.w.document.querySelector('input[value="1"]').checked, true);
+    assert.equal(p.w.document.querySelector('.qa-assistant-result').hidden, true);
+  } finally { release(); p.close(); }
+});
+
+test('fact-checking a matched answer with AI keeps the local match status and makes a disagreement visible', async () => {
+  const p = page({ config: { autoAI: true, aiAutoSelect: true }, responder: async m => {
+    if (m.type === 'ai') return { decision: { status: 'model_suggested', answer: 'Yes', index: 0, explanation: 'An alternative AI answer.', evidence: [] } };
+  } });
+  try {
+    p.button('run').click(); await until(() => p.status().startsWith('Hoàn thành'));
+    p.button('facts').click(); p.host().shadowRoot.querySelector('aside [data-action="ask-ai"]').click();
+    await until(() => !p.w.document.querySelector('.qa-assistant-result').hidden);
+    await until(() => p.host().shadowRoot.querySelector('aside').textContent.includes('AI trả lời khác kho'));
+    assert.equal(p.w.document.querySelector('input[value="1"]').checked, true);
+    assert.ok(p.host().shadowRoot.querySelector('aside').textContent.includes('Khớp kho · đã chọn'));
+    assert.ok(p.w.document.querySelector('.qa-assistant-result').shadowRoot.textContent.includes('AI: Yes'));
+  } finally { p.close(); }
 });
 test('runtime deadline produces a per-question error without touching inputs', async () => {
   const p = page({ responder: async m => { if (m.type === 'search') return new Promise(() => {}); } });
