@@ -67,12 +67,13 @@
       throw error;
     } finally { clearTimeout(timer); }
   }
-  function cancel(label = 'Đã hủy') {
+  function cancel(label = 'Đã hủy', preserveRun = false) {
     epoch++; armed = false; paused = false; selectionGeneration++;
     for (const finish of pending.values()) finish();
     pending.clear();
     try { Promise.resolve(chrome.runtime.sendMessage({ type: 'cancel' })).catch(() => {}); }
     catch { /* Extension reload can invalidate this context synchronously. */ }
+    if (!preserveRun) { try { Promise.resolve(chrome.runtime.sendMessage({ type: 'set-running', enabled: false })).catch(() => {}); } catch {} }
     status.textContent = label;
   }
   const alive = token => !dead && token === epoch && location.href === locationKey;
@@ -120,23 +121,17 @@
   function paragraph(parent, value, tag = 'p') {
     const p = document.createElement(tag); p.textContent = value; parent.append(p); return p;
   }
-  function candidates(parent, results, use) {
+  function candidates(parent, results) {
     for (const [i, r] of results.slice(0, 3).entries()) {
       const article = document.createElement('article'); parent.append(article);
       paragraph(article, `${i + 1}. ${r.item.q}`);
       paragraph(article, `Đáp án: ${r.item.answer ? C.optionText(r.item.answer) : 'Chưa có trong kho'}`);
       paragraph(article, `${r.item.source} · tương đồng văn bản ${(r.score * 100).toFixed(1)}% (không phải xác suất đúng)`, 'small');
       const details = document.createElement('details'); article.append(details);
-      details.open = true;
+      details.open = false;
       paragraph(details, 'Các phương án trong kho', 'summary');
       for (const option of r.item.options) paragraph(details, `${C.optionNorm(option) === C.optionNorm(r.item.answer) ? '✓ ' : '• '}${C.optionText(option)}`);
-      if (use && r.item.answer) button(article, 'Dùng đáp án này', 'use-answer', () => use(r));
     }
-  }
-  function useCandidate(x, candidate) {
-    const matches = x.options.map((o, i) => C.optionNorm(o) === C.optionNorm(candidate.item.answer) ? i : -1).filter(i => i >= 0);
-    const applied = matches.length === 1 && A.apply(x, { status: 'matched', index: matches[0], answer: candidate.item.answer }, { overwrite: false });
-    status.textContent = applied ? 'Đã chọn đáp án được yêu cầu.' : 'Không chọn được: câu đã đổi, đã có lựa chọn hoặc đáp án không khớp duy nhất.';
   }
   function render(x, results, decision, applied, note) {
     if (!A.current(x)) return;
@@ -144,15 +139,18 @@
     const css = document.createElement('style');
     css.textContent = ':host{display:block;margin:6px 0;font:12px/1.45 Arial,sans-serif;color:#23334b}section{background:#f0f5ff;border-left:3px solid #5485db;padding:7px 10px}p{margin:3px 0;white-space:pre-wrap;overflow-wrap:anywhere}small{font-size:11px}article{margin-top:7px;border-top:1px solid #d3deee;padding-top:4px}button{font:12px Arial;margin:4px;padding:4px 7px;background:#fff;color:#234;border:1px solid #bbc;border-radius:4px;cursor:pointer}a{color:#175bb1}'; r.append(css);
     const section = document.createElement('section'); r.append(section);
-    paragraph(section, `Gợi ý: ${decision.answer ? C.optionText(decision.answer) : 'Chưa tìm thấy đáp án'}`);
+    paragraph(section, `${decision.status === 'matched' || applied ? 'Đáp án' : 'Gợi ý'}: ${decision.answer ? C.optionText(decision.answer) : 'Chưa tìm thấy đáp án'}`);
     paragraph(section, applied ? 'Đã tự chọn phương án bên trên.' : note || (decision.status === 'matched' ? 'Có đáp án khớp; giữ lựa chọn hiện tại hoặc tự chọn đang tắt.' : 'Cần kiểm tra.'));
+    if (decision.status === 'matched') return;
     paragraph(section, decision.reason || '');
     if (decision.explanation) paragraph(section, `AI: ${decision.explanation}`);
     for (const e of decision.evidence || []) {
       paragraph(section, `“${e.quote}”`);
       button(section, `Xem nguồn: ${e.title}`, 'source', () => send({ type: 'open-source', id: e.id }));
     }
-    candidates(section, results, candidate => useCandidate(x, candidate));
+    const top = results[0];
+    if (decision.status !== 'model_suggested' && top && C.questionNorm(x.q) !== C.questionNorm(top.item.q) && C.optionKey(x.options) !== C.optionKey(top.item.options)) candidates(section, results);
+    if (decision.status === 'model_suggested') return;
     button(section, 'Kiểm tra lại', 'retry', () => processQuestion(A.scan(x.el), epoch, false));
     button(section, 'Hỏi AI + giáo trình', 'ask-ai', () => processQuestion(A.scan(x.el), epoch, true));
   }
@@ -193,13 +191,15 @@
       alreadySelected && !applied ? 'Phương án khớp đã được chọn từ trước.' : undefined);
     return { applied, review: !applied && !alreadySelected, error: !!aiError };
   }
-  async function run(fresh = true) {
+  async function run(fresh = true, quiet = false) {
     if (running || dead) return;
-    if (fresh) showPanel();
-    if (location.href !== locationKey) { cancel('Trang đã đổi.'); locationKey = location.href; }
+    if (fresh && !quiet) showPanel();
+    if (location.href !== locationKey) { cancel('Trang đã đổi.', true); locationKey = location.href; }
     if (fresh) { epoch++; armed = true; paused = false; counts = { done: 0, total: 0, applied: 0, review: 0, errors: 0 }; }
     const token = epoch; running = true;
     try {
+      if (fresh) { try { await send({ type: 'set-running', enabled: true }); } catch {} }
+      if (!alive(token)) return;
       const questions = A.questions().filter(x => fresh || processed.get(x.el) !== x.signature);
       counts.total += questions.length;
       for (const x of questions) {
@@ -264,7 +264,16 @@
       if (dead || generation !== selectionGeneration || location.href !== locationKey) return;
       manual.replaceChildren();
       if (!response.results.length) paragraph(manual, 'Chưa có kết quả phù hợp trong kho.');
-      candidates(manual, response.results, x ? r => useCandidate(x, r) : null);
+      if (x && response.decision?.status === 'matched') {
+        const applied = response.config?.autoSelect !== false && A.apply(x, response.decision, { overwrite: false });
+        render(x, response.results, response.decision, applied);
+        paragraph(manual, `Đáp án: ${C.optionText(response.decision.answer)}`);
+        paragraph(manual, applied ? 'Đã tự chọn.' : 'Giữ lựa chọn hiện tại.');
+      } else if (x && response.config?.autoAI) {
+        paragraph(manual, 'AI đang xử lý nền. Kết quả sẽ hiện dưới câu hỏi.');
+        await processQuestion(x, epoch, true);
+      } else if (response.fallback !== false) candidates(manual, response.results);
+      else paragraph(manual, response.decision?.reason || 'Chưa đủ dữ liệu để tự chọn.');
       button(manual, 'Sao chép đáp án', 'copy', async () => {
         try { await navigator.clipboard.writeText(response.results[0]?.item.answer || ''); }
         catch { status.textContent = 'Trình duyệt không cho phép sao chép. Bạn có thể chọn và sao chép văn bản.'; }
@@ -307,7 +316,14 @@
     if (external) scheduleScan();
   });
   observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['value', 'name', 'aria-labelledby', 'disabled'] });
-  const onNavigation = () => { cancel('Trang đã đổi · nhấn Chạy để xử lý trang hiện tại'); locationKey = location.href; };
+  const onNavigation = event => {
+    const resume = armed || running;
+    cancel('Trang đã đổi · đang nhận câu hỏi mới…', true); locationKey = location.href;
+    if (event?.type !== 'pagehide' && resume) {
+      armed = true;
+      setTimeout(() => { if (!dead && armed && !running) run(true, true); }, 150);
+    }
+  };
   const navigationTimer = setInterval(() => { if (location.href !== locationKey) onNavigation(); }, 500);
   window.addEventListener('pointerdown', onPointerDown, true);
   window.addEventListener('mouseup', onSelection, true); window.addEventListener('pointerup', onSelection, true);
@@ -337,15 +353,27 @@
   globalThis.__quizAssistant = {
     show: showPanel,
     toggle: togglePanel,
+    run: () => run(true, true),
     destroy() {
-      cancel(); dead = true; observer.disconnect(); clearInterval(navigationTimer); clearTimeout(observerTimer); clearTimeout(selectionTimer);
+      cancel('Đã đóng trang', true); dead = true; observer.disconnect(); clearInterval(navigationTimer); clearTimeout(observerTimer); clearTimeout(selectionTimer);
       window.removeEventListener('pointerdown', onPointerDown, true);
       window.removeEventListener('mouseup', onSelection, true); window.removeEventListener('pointerup', onSelection, true);
       window.removeEventListener('keyup', onSelection, true); window.removeEventListener('keydown', onKeyDown, true);
       document.removeEventListener('selectionchange', onSelectionChange); document.removeEventListener('change', onChange, true);
       window.removeEventListener('pagehide', onNavigation); window.removeEventListener('popstate', onNavigation); window.removeEventListener('hashchange', onNavigation);
+      chrome.runtime.onMessage?.removeListener(onCommand);
       host.remove(); for (const h of resultsHosts) h.remove(); resultsHosts.clear(); delete globalThis.__quizAssistant;
     }
   };
+  function onCommand(message, sender, reply) {
+    if (sender.id !== chrome.runtime.id || sender.url !== chrome.runtime.getURL('popup.html') || message?.type !== 'page-command') return false;
+    if (message.action === 'run') { run(true, true).catch(() => {}); reply({ ok: true }); }
+    else if (message.action === 'cancel') { cancel(); reply({ ok: true }); }
+    else if (message.action === 'status') reply({ status: status.textContent, running });
+    else reply({ error: 'Thao tác không hợp lệ.' });
+    return false;
+  }
+  chrome.runtime.onMessage?.addListener(onCommand);
   status.textContent = 'Bôi đen câu hỏi để tra cứu, hoặc chạy trên trang.';
+  (async () => { try { const state = await send({ type: 'running-state' }); if (!dead && state.enabled) run(true, true); } catch {} })();
 })();

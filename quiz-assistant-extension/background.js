@@ -1,5 +1,5 @@
 /* MV3 worker: user data in chrome.storage.local; TF-IDF index only in memory. */
-importScripts('core.js', 'ai.js', 'updates.js');
+importScripts('core.js', 'ai.js', 'updates.js', 'native.js');
 'use strict';
 const DEFAULTS = { autoSelect: true, overwrite: false, autoAI: false, aiAutoSelect: false,
   threshold: 0.94, margin: 0.08, provider: 'openai', model: '', endpoint: 'http://127.0.0.1:8787/responses' };
@@ -80,7 +80,7 @@ function sanitizeSettings(value) {
     if (!Number.isFinite(value[k]) || value[k] < (k === 'threshold' ? 0.85 : 0.01) || value[k] > 1) throw Error(`Ngưỡng ${k} ngoài phạm vi.`);
     result[k] = value[k];
   }
-  if (!['openai', 'proxy', 'codex-cli', 'claude-cli'].includes(value.provider)) throw Error('Provider không hợp lệ.');
+  if (!['openai', 'proxy', 'codex-cli', 'claude-cli', 'chatgpt-native'].includes(value.provider)) throw Error('Provider không hợp lệ.');
   if (typeof value.model !== 'string' || value.model.length > 150 || !/^[\w.:-]*$/.test(value.model)) throw Error('Model không hợp lệ.');
   result.provider = value.provider; result.model = value.model;
   result.endpoint = String(value.endpoint || DEFAULTS.endpoint);
@@ -92,15 +92,27 @@ function query(message) {
     !Array.isArray(message.options) || message.options.length > 100 || message.options.some(o => typeof o !== 'string' || o.length > 20000)) throw Error('Câu hỏi gửi lên không hợp lệ.');
   return { q: message.q, options: message.options };
 }
-const owner = sender => `${sender.tab?.id ?? 'settings'}:${sender.frameId ?? 0}`;
+const owner = sender => `${sender.tab?.id ?? 'settings'}:${sender.frameId ?? 0}:${sender.documentId || 'document'}`;
 function abortOwner(sender, requestId) {
   for (const [id, task] of tasks) if (task.owner === owner(sender) && (!requestId || task.requestId === requestId)) task.controller.abort();
 }
 async function route(message, sender) {
   if (!message || typeof message.type !== 'string') throw Error('Yêu cầu không hợp lệ.');
   // Chrome supplies sender.tab for extension pages opened as tabs as well.
-  const trustedUI = sender.url === chrome.runtime.getURL('settings.html');
+  const trustedUI = ['settings.html', 'popup.html'].some(page => sender.url === chrome.runtime.getURL(page));
   if (message.type === 'update-info') return updateInfo();
+  if (['set-running', 'running-state'].includes(message.type)) {
+    if (!Number.isInteger(sender.tab?.id) || sender.frameId !== 0 || !sender.url) throw Error('Thiếu tab quiz.');
+    const url = new URL(sender.url), scope = url.protocol === 'file:' ? new URL('.', url).href : url.origin;
+    if (!['http:', 'https:', 'file:'].includes(url.protocol)) throw Error('Trang không hỗ trợ.');
+    const key = `running:${sender.tab.id}`;
+    if (message.type === 'set-running') {
+      if (typeof message.enabled !== 'boolean') throw Error('Trạng thái chạy không hợp lệ.');
+      if (message.enabled) await chrome.storage.session.set({ [key]: { scope } }); else await chrome.storage.session.remove(key);
+    }
+    const saved = (await chrome.storage.session.get(key))[key];
+    return { enabled: saved?.scope === scope };
+  }
   if (message.type === 'check-updates') return checkUpdate(true);
   if (message.type === 'open-update') {
     const info = await updateInfo();
@@ -126,11 +138,15 @@ async function route(message, sender) {
     await writes;
     const [data, config, session] = await Promise.all([load(), settings(), chrome.storage.session.get('credential')]);
     const all = data.search(q, options, 20000);
-    const aiAvailable = !!session.credential && session.credential.endpoint === QuizAI.endpoint(config) &&
-      (!!config.model || config.provider.endsWith('-cli'));
-    return { results: all.slice(0, 3), decision: QuizCore.decide(q, options, all, config), config: {
+    const aiAvailable = config.provider === 'chatgpt-native' || (!!session.credential && session.credential.endpoint === QuizAI.endpoint(config) &&
+      (!!config.model || config.provider.endsWith('-cli')));
+    const decision = QuizCore.decide(q, options, all, config), top = all[0];
+    const questionMatch = !!top && QuizCore.questionNorm(q) === QuizCore.questionNorm(top.item.q);
+    const optionsMatch = !!top && options.length > 0 && QuizCore.optionKey(options) === QuizCore.optionKey(top.item.options);
+    const fallback = decision.status !== 'matched' && !questionMatch && !optionsMatch;
+    return { results: all.slice(0, fallback ? 3 : 1), fallback, decision, config: {
       autoSelect: config.autoSelect, overwrite: config.overwrite, autoAI: config.autoAI && aiAvailable, aiAutoSelect: config.aiAutoSelect,
-      aiTimeout: config.provider.endsWith('-cli') ? 95000 : 28000
+      aiTimeout: config.provider.endsWith('-cli') || config.provider === 'chatgpt-native' ? 95000 : 28000
     } };
   }
   if (message.type === 'ai') {
@@ -144,6 +160,15 @@ async function route(message, sender) {
     let deadline = 25000, timer = setTimeout(() => controller.abort(), deadline), keepAlive;
     try {
       const config = await settings();
+      if (config.provider === 'chatgpt-native') {
+        const kb = await getKnowledge(), chunks = QuizAI.retrieve(kb.chunks, kb.index, q, options);
+        if (!chunks.length) throw Error('Knowledge base chưa có ngữ cảnh phù hợp.');
+        clearTimeout(timer); timer = setTimeout(() => controller.abort(), 90000);
+        const result = await QuizNative.request('ask', { q, options, chunks }, controller.signal);
+        if (controller.signal.aborted) throw Error('Đã hủy AI.');
+        return { decision: QuizAI.verify({ status: result.status === 'model_suggested' ? 'answered' : 'needs_review', answer_text: result.answer,
+          explanation: result.explanation, evidence: result.evidence }, options, chunks) };
+      }
       if (config.provider.endsWith('-cli')) {
         deadline = 90000; clearTimeout(timer); timer = setTimeout(() => controller.abort(), deadline);
         keepAlive = setInterval(() => { chrome.runtime.getPlatformInfo().catch(() => {}); }, 10000);
@@ -173,6 +198,23 @@ async function route(message, sender) {
     return { ok: true };
   }
   if (!trustedUI) throw Error('Thao tác này chỉ được phép trong trang Cài đặt.');
+  if (message.type === 'native-status') return QuizNative.request('status', {}, undefined, 25000);
+  if (message.type === 'native-test') return QuizNative.request('test');
+  if (message.type === 'native-login') {
+    const result = await QuizNative.request('login', {}, undefined, 25000);
+    const url = new URL(result.authURL);
+    if (url.protocol !== 'https:' || !['auth.openai.com', 'chatgpt.com'].includes(url.hostname) || url.username || url.password) throw Error('URL đăng nhập không hợp lệ.');
+    await chrome.tabs.create({ url: url.href }); return { ok: true };
+  }
+  if (message.type === 'set-mode') {
+    if (!['tfidf', 'chatgpt'].includes(message.mode)) throw Error('Chế độ không hợp lệ.');
+    const config = await settings();
+    const sameMode = message.mode === 'chatgpt' ? config.autoAI && config.provider === 'chatgpt-native' : !config.autoAI;
+    if (!sameMode) for (const task of tasks.values()) task.controller.abort();
+    await chrome.storage.local.set({ settings: { ...config, autoSelect: true, autoAI: message.mode === 'chatgpt',
+      ...(message.mode === 'chatgpt' ? { provider: 'chatgpt-native', aiAutoSelect: true } : {}) } });
+    return { ok: true };
+  }
   if (message.type === 'set-auto-updates') {
     if (typeof message.enabled !== 'boolean') throw Error('Cấu hình cập nhật không hợp lệ.');
     if (message.enabled && !await chrome.permissions.contains({ origins: ['https://api.github.com/*'] })) throw Error('Chưa cấp quyền kiểm tra GitHub.');
@@ -243,16 +285,10 @@ chrome.alarms.onAlarm.addListener(async alarm => {
   if (alarm.name !== 'qa-check-updates') return;
   try { if ((await updateInfo()).autoCheck) await checkUpdate(); } catch {}
 });
-chrome.tabs.onRemoved.addListener(tabId => {
+chrome.tabs.onRemoved.addListener(async tabId => {
   for (const task of tasks.values()) if (task.owner.startsWith(`${tabId}:`)) task.controller.abort();
+  try { await chrome.storage.session.remove(`running:${tabId}`); } catch {}
 });
-chrome.action.onClicked.addListener(async tab => {
-  try {
-    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['core.js', 'adapter.js', 'content.js'] });
-    await chrome.action.setBadgeText({ tabId: tab.id, text: '' });
-    await chrome.action.setTitle({ tabId: tab.id, title: 'Mở Quiz Assistant' });
-  } catch {
-    await chrome.action.setBadgeText({ tabId: tab.id, text: '!' }).catch(() => {});
-    await chrome.action.setTitle({ tabId: tab.id, title: 'Không truy cập được trang. Hãy mở trang quiz và nhấn lại.' }).catch(() => {});
-  }
+chrome.tabs.onUpdated?.addListener((tabId, change) => {
+  if (change.status === 'loading') for (const task of tasks.values()) if (task.owner.startsWith(`${tabId}:`)) task.controller.abort();
 });

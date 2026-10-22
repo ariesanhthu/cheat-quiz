@@ -20,7 +20,7 @@ test('packaged banks work offline; worker restart recovers Chrome local data and
   const env = environment();
   const first = worker(env);
   const result = await first.send(search);
-  assert.equal(result.results.length, 3); assert.equal(result.decision.status, 'matched');
+  assert.equal(result.results.length, 1); assert.equal(result.decision.status, 'matched');
   assert.equal(result.config.autoSelect, true); assert.equal(env.network.length, 0);
   const restarted = worker(env);
   const after = await restarted.send(search);

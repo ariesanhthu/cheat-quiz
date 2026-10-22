@@ -137,7 +137,7 @@ test('worker rejection or invalid context renders an error and does not crash th
     } finally { p.close(); }
   }
 });
-test('top-three is displayed with all candidate options and untrusted markup stays text', async () => {
+test('conflicting exact matches never show manual choice buttons or auto-select an answer', async () => {
   const items = C.validate(Array.from({ length: 3 }, (_, i) => ({ q, options: ['Yes', 'No'], answer: i % 2, source: `<img src=x onerror=alert(1)>${i}`, verified: true })));
   const search = C.engine(items);
   const p = page({ responder: async m => {
@@ -146,7 +146,7 @@ test('top-three is displayed with all candidate options and untrusted markup sta
   try {
     p.button('run').click(); await until(() => p.status().startsWith('Hoàn thành'));
     const root = p.w.document.querySelector('.qa-assistant-result').shadowRoot;
-    assert.equal(root.querySelectorAll('article').length, 3); assert.equal(root.querySelectorAll('details').length, 3);
+    assert.equal(root.querySelectorAll('article').length, 0); assert.equal(root.querySelectorAll('[data-action="use-answer"]').length, 0);
     assert.equal(root.querySelectorAll('img,script').length, 0);
     assert.equal(p.w.document.querySelector('input[value="1"]').checked, false);
   } finally { p.close(); }
@@ -175,23 +175,22 @@ test('capture snapshots survive another extension stopping mouseup and clearing 
     p.w.getSelection().addRange(range);
     p.w.document.addEventListener('mouseup', event => { p.w.getSelection().removeAllRanges(); event.stopImmediatePropagation(); });
     target.dispatchEvent(new p.w.MouseEvent('mouseup', { bubbles: true }));
-    await until(() => p.host().shadowRoot.querySelector('[data-action="use-answer"]'));
+    await until(() => p.w.document.querySelector('input[value="1"]').checked);
     assert.equal(p.requests.filter(m => m.type === 'search').length, 1);
-    assert.equal(p.w.document.querySelector('input[value="1"]').checked, false);
+    assert.equal(p.w.document.querySelector('input[value="1"]').checked, true);
     assert.equal(p.host().shadowRoot.querySelector('section').hidden, false);
     assert.deepEqual(p.errors, []);
   } finally { p.close(); }
 });
 
-test('manual highlight reuses one panel, includes use-answer, and ignores interaction inside extension', async () => {
+test('highlight auto-selects a unique match without requiring a manual candidate choice', async () => {
   const p = page();
   try {
     const range = p.w.document.createRange(); range.selectNodeContents(p.w.document.querySelector('.qtext'));
     p.w.getSelection().addRange(range);
     p.w.document.querySelector('.qtext').dispatchEvent(new p.w.MouseEvent('mouseup', { bubbles: true }));
-    await until(() => p.host().shadowRoot.querySelector('[data-action="use-answer"]'));
-    p.host().shadowRoot.querySelector('[data-action="use-answer"]').click();
     await until(() => p.w.document.querySelector('input[value="1"]').checked);
+    assert.equal(p.host().shadowRoot.querySelector('[data-action="use-answer"]'), null);
     assert.equal(p.submits, 0); assert.equal(p.navigations, 0);
   } finally { p.close(); }
 });

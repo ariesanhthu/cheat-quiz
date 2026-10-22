@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib
 import json
 import zipfile
+import sys
 
 BASE = Path(__file__).resolve().parents[1]
 WORKSPACE = BASE.parent
@@ -25,14 +26,16 @@ def archive(name, files):
     return target
 
 runtime = ['manifest.json', 'bootstrap.js', 'background.js', 'core.js', 'adapter.js', 'content.js', 'ai.js',
-           'updates.js', 'update-config.json', 'settings.html', 'settings.js', 'source.html', 'source.js',
+           'updates.js', 'native.js', 'popup.html', 'popup.js', 'SETUP.cmd', 'update-config.json', 'settings.html', 'settings.js', 'source.html', 'source.js',
            'bank.json', 'knowledge-base.json', 'data-manifest.json', 'README.md', 'RELEASE_NOTES.md',
-           'scripts/cli-bridge.cjs', 'scripts/proxy.cjs']
+           'scripts/cli-bridge.cjs', 'scripts/proxy.cjs', 'scripts/native-host.cjs', 'scripts/install-native.ps1', 'scripts/detect-chrome.cjs']
 extension = archive(f'quiz-assistant-extension-{VERSION}.zip', [(BASE / f, f) for f in runtime])
-demo_files = [(WORKSPACE / f, f) for f in ['page.html', 'page-2.html', 'page-3.html']]
-demo_files += [(f, f'page-assets/{f.name}') for f in (WORKSPACE / 'page-assets').iterdir() if f.is_file()]
-demo = archive(f'quiz-assistant-demo-{VERSION}.zip', demo_files)
-lines = [f'{hashlib.sha256(file.read_bytes()).hexdigest()}  {file.name}' for file in [extension, demo]]
+outputs = [extension]
+if '--demo' in sys.argv:
+    demo_files = [(WORKSPACE / f, f) for f in ['page.html', 'page-2.html', 'page-3.html']]
+    demo_files += [(f, f'page-assets/{f.name}') for f in (WORKSPACE / 'page-assets').iterdir() if f.is_file()]
+    outputs.append(archive(f'quiz-assistant-demo-{VERSION}.zip', demo_files))
+lines = [f'{hashlib.sha256(file.read_bytes()).hexdigest()}  {file.name}' for file in outputs]
 (OUT / 'SHA256SUMS.txt').write_text('\n'.join(lines) + '\n', encoding='utf-8')
-for file in [extension, demo]:
+for file in outputs:
     print(f'{file.name}: {file.stat().st_size:,} bytes')

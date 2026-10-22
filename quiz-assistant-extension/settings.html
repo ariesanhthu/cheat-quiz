@@ -47,9 +47,9 @@
     <section>
       <h2>AI dự phòng + knowledge base</h2>
       <p>Retrieve giáo trình nguyên văn theo trang, gửi câu hỏi, phương án và tối đa 6 đoạn liên quan để AI đối chiếu. Mặc định chỉ gợi ý; dẫn chứng phải có thật trong các đoạn đã gửi.</p>
-      <label><input id="autoAI" type="checkbox"> Tự hỏi AI khi TF-IDF chưa xác định được đáp án (có chi phí API)</label>
+      <label><input id="autoAI" type="checkbox"> Tự hỏi AI khi TF-IDF chưa xác định được đáp án (dùng hạn mức dịch vụ đã kết nối)</label>
       <label><input id="aiAutoSelect" type="checkbox"> Cho phép tự chọn gợi ý AI có dẫn chứng và khớp duy nhất</label>
-      <label>Nhà cung cấp: <select id="provider"><option value="openai">OpenAI API trực tiếp (khóa cá nhân trong phiên)</option><option value="proxy">Proxy API cục bộ (khóa API ở máy chủ)</option><option value="codex-cli">Codex CLI · đăng nhập ChatGPT, không API key</option><option value="claude-cli">Claude Code · đăng nhập Claude, không API key</option></select></label>
+      <label>Nhà cung cấp: <select id="provider"><option value="openai">OpenAI API trực tiếp (khóa cá nhân trong phiên)</option><option value="proxy">Proxy API cục bộ (khóa API ở máy chủ)</option><option value="chatgpt-native">ChatGPT ? b? k?t n?i t? ch?y n?n</option><option value="codex-cli">Codex CLI · đăng nhập ChatGPT, không API key</option><option value="claude-cli">Claude Code · đăng nhập Claude, không API key</option></select></label>
       <label>Model (CLI có thể để trống để dùng mặc định): <input id="model" type="text" placeholder="Nhập model bạn có quyền sử dụng" maxlength="150"></label>
       <label>Proxy / CLI bridge: <input id="endpoint" type="url" value="http://127.0.0.1:8787/responses"></label>
       <label>API key / token kết nối cục bộ: <input id="credential" type="password" autocomplete="off" placeholder="Chỉ lưu trong phiên trình duyệt" maxlength="1000"></label>

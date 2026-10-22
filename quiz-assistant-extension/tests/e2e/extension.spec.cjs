@@ -22,7 +22,7 @@ test.beforeAll(async () => {
   fs.mkdirSync(artifacts, { recursive: true });
   workspace = fs.mkdtempSync(path.join(artifacts, 'e2e-'));
   const extension = path.join(workspace, 'extension'); fs.mkdirSync(extension);
-  for (const file of ['manifest.json', 'bootstrap.js', 'background.js', 'core.js', 'adapter.js', 'content.js', 'ai.js', 'updates.js', 'update-config.json', 'settings.html', 'settings.js', 'source.html', 'source.js', 'bank.json', 'knowledge-base.json', 'data-manifest.json']) fs.copyFileSync(path.join(base, file), path.join(extension, file));
+  for (const file of ['manifest.json', 'bootstrap.js', 'background.js', 'core.js', 'adapter.js', 'content.js', 'ai.js', 'updates.js', 'native.js', 'popup.html', 'popup.js', 'update-config.json', 'settings.html', 'settings.js', 'source.html', 'source.js', 'bank.json', 'knowledge-base.json', 'data-manifest.json']) fs.copyFileSync(path.join(base, file), path.join(extension, file));
   server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     const pathname = new URL(req.url, 'http://127.0.0.1').pathname;
@@ -84,7 +84,7 @@ test('full installed MV3 extension: original questions intact, correct shuffled 
     const index = options.findIndex(o => C.optionNorm(o) === C.optionNorm(sample[i].answer));
     await expect(page.locator(`#q${i} input[value="${index}"]`)).toBeChecked();
   }
-  await expect(page.locator('#q0 .qa-assistant-result article')).toHaveCount(3);
+  await expect(page.locator('#q0 .qa-assistant-result article')).toHaveCount(0);
   const font = await page.locator('#q0 .qa-assistant-result').evaluate(el => getComputedStyle(el).fontSize);
   expect(font).toBe('12px');
   await action(page, 'run').click(); await complete(page);
@@ -112,11 +112,11 @@ test('settings import is atomic, persists after reload, blocks conflicts beyond 
   await action(page, 'run').click(); await complete(page);
   await expect(page.locator('#q0 input:checked')).toHaveValue('-1');
   await expect(page.locator('#q0 .qa-assistant-result')).toContainText('mâu thuẫn');
-  await expect(page.locator('#q0 .qa-assistant-result article')).toHaveCount(3);
+  await expect(page.locator('#q0 .qa-assistant-result article')).toHaveCount(0);
   await ui.locator('#reset').click(); await expect(ui.locator('#status')).toContainText('151 câu');
   await page.close(); await ui.close();
 });
-test('new questions handled once; user choice preserved; same-page URL navigation disarms work', async () => {
+test('new questions handled once; user choice preserved; same-tab navigation continues without another Run', async () => {
   const page = await context.newPage(); await page.goto(`${origin}/dynamic`); await inject(page);
   await page.locator('#q0 input[value="0"]').check();
   await action(page, 'run').click(); await complete(page);
@@ -125,9 +125,9 @@ test('new questions handled once; user choice preserved; same-page URL navigatio
   await expect(page.locator('#dynamic .qa-assistant-result')).toHaveCount(1);
   await expect(page.locator('#dynamic input:checked')).not.toHaveValue('-1');
   await page.evaluate(() => history.pushState({}, '', '/new-location'));
-  await expect(control(page).locator('[role=status]')).toContainText('Trang đã đổi');
   await page.locator('#responseform').evaluate((form, html) => form.insertAdjacentHTML('afterbegin', html), question(sample[0], 'after-navigation'));
-  await expect(page.locator('#after-navigation .qa-assistant-result')).toHaveCount(0);
+  await expect(page.locator('#after-navigation .qa-assistant-result')).toHaveCount(1);
+  await expect(page.locator('#after-navigation input:checked')).not.toHaveValue('-1');
   expect(await page.evaluate(() => ({ submits, navClicks }))).toEqual({ submits: 0, navClicks: 0 });
   await page.close();
 });
@@ -221,6 +221,41 @@ test('in-flight AI: pause/resume, validated source viewer, cancel and actual tab
     await ui.close();
   }
 });
+test('toolbar popup runs locally in the background; mode and native connection status persist without opening AI tabs', async () => {
+  const quiz = await context.newPage(); await quiz.goto(`${origin}/page-2.html`); await quiz.bringToFront();
+  const sw = context.serviceWorkers().find(w => w.url().includes(extensionId));
+  const tabId = await sw.evaluate(async () => (await chrome.tabs.query({ active: true, currentWindow: true }))[0].id);
+  const popup = await context.newPage();
+  await popup.addInitScript(({ tabId }) => { chrome.tabs.query = async () => [{ id: tabId }]; }, { tabId });
+  await popup.goto(`chrome-extension://${extensionId}/popup.html`);
+  await expect(popup.locator('#status')).toHaveText('Sẵn sàng.'); await expect(popup.locator('#account')).toBeHidden();
+  await popup.locator('#run').click();
+  await expect(quiz.locator('.que input[value="2"]')).toBeChecked();
+  await expect(control(quiz).locator('section')).toBeHidden();
+  await expect(quiz.locator('.qa-assistant-result article')).toHaveCount(0);
+  await expect(quiz.locator('[data-action="use-answer"]')).toHaveCount(0);
+  await popup.locator('#cancel').click(); await expect(popup.locator('#status')).toHaveText('Đã dừng.');
+  const before = context.pages().length;
+  await sw.evaluate(() => {
+    globalThis.savedNative = chrome.runtime.connectNative;
+    chrome.runtime.connectNative = () => {
+      let listener;
+      return { onMessage: { addListener: fn => { listener = fn; } }, onDisconnect: { addListener() {} }, postMessage(message) {
+        queueMicrotask(() => listener({ id: message.id, result: message.method === 'test' ? { ok: true, message: 'ChatGPT đã trả lời được.' } : { installed: true, loggedIn: true, plan: 'plus' } }));
+      } };
+    };
+  });
+  try {
+    await popup.locator('[value="chatgpt"]').check(); await expect(popup.locator('#accountStatus')).toContainText('Đã kết nối ChatGPT');
+    await popup.locator('#test').click(); await expect(popup.locator('#status')).toContainText('ChatGPT đã trả lời được.');
+    expect(context.pages().length).toBe(before);
+    await popup.reload(); await expect(popup.locator('[value="chatgpt"]')).toBeChecked();
+    await expect(popup.locator('#accountStatus')).toContainText('Đã kết nối');
+    await popup.screenshot({ path: path.join(artifacts, 'popup-1.2.png') });
+    await popup.locator('[value="tfidf"]').check(); await expect(popup.locator('#account')).toBeHidden();
+  } finally { await sw.evaluate(() => { chrome.runtime.connectNative = savedNative; }); await popup.close(); await quiz.close(); }
+});
+
 test('no uncaught page errors across extension settings and quiz flows', () => { expect(pageErrors).toEqual([]); });
 test('actual Chromium-to-loopback proxy request authenticates Origin/token and completes RAG without upstream network', async () => {
   const { createProxy } = require('../../scripts/proxy.cjs');
@@ -276,7 +311,8 @@ test('page.html: original Moodle layout, two sample text variants on real local 
   await expect(page).toHaveURL(`${origin}/page-3.html`);
   await expect(page.locator('.que')).toHaveCount(1);
   await expect(control(page)).toHaveCount(1);
-  await inject(page); await action(page, 'run').click(); await complete(page);
+  // Persisted tab state resumes on a genuine new document, with no toolbar/page click.
+  await expect(page.locator('.qa-assistant-result')).toHaveCount(1);
   await expect(page.locator('.que .answer input[value="1"]')).toBeChecked();
   await expect(page.locator('.qa-assistant-result')).toContainText(samples[1].answer);
   const optionsBox = await page.locator('.que fieldset').boundingBox();
@@ -287,6 +323,12 @@ test('page.html: original Moodle layout, two sample text variants on real local 
   expect(page.url()).toBe(`${origin}/page-3.html`);
   await page.locator('#mod_quiz-prev-nav').click(); await expect(page).toHaveURL(`${origin}/page-2.html`);
   await expect(page.locator('.que .answer input[value="2"]')).toBeChecked();
+  await expect(page.locator('.qa-assistant-result')).toHaveCount(1);
+  await inject(page); await action(page, 'cancel').click();
+  await page.locator('#mod_quiz-next-nav').click(); await expect(page).toHaveURL(`${origin}/page-3.html`);
+  await expect(control(page)).toHaveCount(1);
+  await page.waitForTimeout(350);
+  await expect(page.locator('.qa-assistant-result')).toHaveCount(0);
   await page.close();
 });
 test('shipping auto-injection: real mouse highlighting survives a Translate-like listener; corner launcher and native popover remain usable', async () => {
@@ -304,12 +346,13 @@ test('shipping auto-injection: real mouse highlighting survives a Translate-like
   await page.mouse.move(target.x + 4, target.y + 10); await page.mouse.down();
   await page.mouse.move(target.x + target.width - 4, target.y + target.height - 3, { steps: 15 }); await page.mouse.up();
   await expect(panel).toBeVisible();
-  await expect(control(page).locator('article')).toHaveCount(3);
+  await expect(control(page)).toContainText('Đáp án:');
+  await expect(control(page).locator('[data-action="use-answer"]')).toHaveCount(0);
   expect(await page.evaluate(() => window.translateSawSelection)).toBe(true);
-  await expect(page.locator('.que input[value="2"]')).not.toBeChecked();
+  await expect(page.locator('.que input[value="2"]')).toBeChecked();
   await action(page, 'close').click(); await expect(panel).toBeHidden(); await expect(toggle).toBeVisible();
   await toggle.click(); await expect(panel).toBeVisible(); await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-  await expect(action(page, 'updates')).toContainText('1.1.0');
+  await expect(action(page, 'updates')).toContainText('1.2.0');
   await page.keyboard.press('Escape'); await expect(panel).toBeHidden();
   await expect(toggle).toBeFocused(); expect(page.url()).toBe(`${origin}/page-2.html`);
   await page.close();
@@ -323,12 +366,12 @@ test('GitHub update settings: check, opt-in alarm, restart persistence, safe rel
     chrome.permissions.contains = async () => true;
     globalThis.fetch = async (url, init) => {
       if (!String(url).startsWith('https://api.github.com/')) return updateFetch(url, init);
-      return new Response(JSON.stringify({ tag_name: 'v1.2.0', html_url: 'https://github.com/ariesanhthu/cheat-quiz/releases/tag/v1.2.0', assets: [] }));
+      return new Response(JSON.stringify({ tag_name: 'v1.3.0', html_url: 'https://github.com/ariesanhthu/cheat-quiz/releases/tag/v1.3.0', assets: [] }));
     };
   });
   await ui.evaluate(() => { chrome.permissions.request = async () => true; });
   try {
-    await ui.locator('#checkUpdates').click(); await expect(ui.locator('#updateStatus')).toContainText('v1.2.0');
+    await ui.locator('#checkUpdates').click(); await expect(ui.locator('#updateStatus')).toContainText('v1.3.0');
     await ui.locator('#autoUpdates').check();
     await expect.poll(() => ui.evaluate(async () => !!(await chrome.alarms.get('qa-check-updates')))).toBe(true);
     await ui.reload(); await expect(ui.locator('#autoUpdates')).toBeChecked();
@@ -336,7 +379,7 @@ test('GitHub update settings: check, opt-in alarm, restart persistence, safe rel
     await ui.locator('#autoUpdates').uncheck();
     await expect.poll(() => ui.evaluate(async () => !!(await chrome.alarms.get('qa-check-updates')))).toBe(false);
     const popup = context.waitForEvent('page'); await ui.locator('#downloadUpdate').click();
-    const release = await popup; await release.waitForURL('https://github.com/ariesanhthu/cheat-quiz/releases/tag/v1.2.0'); await release.close();
+    const release = await popup; await release.waitForURL('https://github.com/ariesanhthu/cheat-quiz/releases/tag/v1.3.0'); await release.close();
   } finally {
     await sw.evaluate(async () => { globalThis.fetch = updateFetch; chrome.permissions.contains = updatePermission; await chrome.storage.local.remove(['updateState', 'updatePreferences']); });
     await ui.close();
