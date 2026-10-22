@@ -359,7 +359,7 @@ test('shipping auto-injection: real mouse highlighting survives a Translate-like
   await toggle.click(); await expect(panel).toBeVisible();
   await action(page, 'close').click(); await expect(panel).toBeHidden(); await expect(toggle).toBeVisible();
   await toggle.click(); await expect(panel).toBeVisible(); await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-  await expect(action(page, 'updates')).toContainText('1.3.0');
+  await expect(action(page, 'updates')).toContainText(require('../../manifest.json').version);
   await page.keyboard.press('Escape'); await expect(panel).toBeHidden();
   await expect(toggle).toBeFocused(); expect(page.url()).toBe(`${origin}/page-2.html`);
   await page.close();

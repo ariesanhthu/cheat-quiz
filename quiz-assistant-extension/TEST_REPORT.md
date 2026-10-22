@@ -1,4 +1,4 @@
-# Kiểm thử v1.3.0 — 2026-10-23
+# Kiểm thử v1.3.1 — 2026-10-23
 
 | Hạng mục | Kết quả |
 | --- | --- |
@@ -12,6 +12,8 @@
 | Web deploy + extension thật | HTTP 200; câu đầu khớp kho, TF-IDF ẩn, toggle popup mở sidebar, Next/Previous tự tiếp tục; ChatGPT thật hiện chữ ngoài khung, không mở tab, không có page error |
 
 Môi trường Windows x64, Node 22.20.0, Playwright 1.64.1. Test tự động dùng fixture; các lần thử AI thật dùng tài khoản đã đăng nhập trên máy.
+
+Bản 1.3.1 chỉ cập nhật phiên bản/đóng gói; 95 test code và 13 test trình duyệt được chạy lại. Các lần kiểm thử ChatGPT thật và web deploy bên trên thực hiện ở 1.3.0, cùng mã chức năng.
 
 ## Phạm vi
 

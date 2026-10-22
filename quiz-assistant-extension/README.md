@@ -4,7 +4,7 @@ Bấm icon trên thanh Chrome → chọn **TF-IDF** hoặc **ChatGPT** → **Ch�
 
 ## Cài một lần
 
-1. Tải **quiz-assistant-extension-1.3.0.zip**, giải nén vào thư mục cố định.
+1. Tải **quiz-assistant-extension-1.3.1.zip**, giải nén vào thư mục cố định.
 2. Mở chrome://extensions → Developer mode → Load unpacked → chọn thư mục có manifest.json. Khi cập nhật, chép đè đúng thư mục cũ rồi Reload để giữ dữ liệu Chrome.
 3. Dùng ChatGPT: chạy **SETUP.cmd** trong thư mục đó một lần. Installer tự nhận extension và Codex; nếu thiếu thì tải Node.js/Codex chính thức vào thư mục riêng, không cần quyền admin.
 4. Bấm icon → **ChatGPT → Đăng nhập**. Nếu trên máy đã đăng nhập thì hiện trạng thái kết nối ngay. Bấm **Thử kết nối** để hỏi một bài thử thật.
